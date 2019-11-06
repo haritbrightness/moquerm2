@@ -1,0 +1,8 @@
+{
+    "shipping_tablerate": {
+        "column": {
+            "dest_zip": true,
+            "eta": true
+        }
+    }
+}
