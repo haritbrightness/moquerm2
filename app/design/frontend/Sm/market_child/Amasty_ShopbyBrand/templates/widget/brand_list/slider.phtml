@@ -25,6 +25,7 @@
         ($imgWidth + 10) * $itemsPerView;
     $buttonWidth    = 40;
     $sliderId       = $block->getSliderId();
+    $allBrands = $this->helper('BG\Custom\Helper\CustomHelper')->getSubCategories(27);
 ?>
 
 <style>
@@ -81,6 +82,9 @@
         <div class="swiper-container">
             <div class="<?= /** @noEscape */ $swiperPrefix ?>wrapper">
                 <?php foreach ($items as $brand) : ?>
+                     <?php
+                        if(in_array($brand['label'], $allBrands)){
+                        ?>
                     <a href="<?= /** @noEscape */ $brand['url']?>" class="<?= /** @noEscape */ $swiperPrefix?>slide">
                         <div class="swiper-brand <?php if ($showLabel) :
                             ?><?= ' brand-label' ?><?php
@@ -102,6 +106,7 @@
                             <?php endif; ?>
                         </div>
                     </a>
+                    <?php } ?>
                 <?php endforeach; ?>
             </div>
         </div>
