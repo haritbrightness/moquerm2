@@ -1,3 +1,4 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
 	<preference for="Sm\MegaMenu\Block\MegaMenu\View" type="BG\Custom\Plugin\Block\MegaMenu\View" />
+	<preference for="Amasty\Gdpr\Block\AccountLinkPlugin" type="BG\Custom\Block\AccountLinkPlugin" />
 </config>
