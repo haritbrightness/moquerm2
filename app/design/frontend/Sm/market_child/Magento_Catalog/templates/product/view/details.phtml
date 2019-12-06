@@ -7,9 +7,15 @@
 // @codingStandardsIgnoreFile
 $_config  = $this->helper('Sm\Market\Helper\Data');
 $tabStyle = $_config->getProductDetail('tab_style');
-
-/*$show_custom_tab   = $_config->getProductDetail('show_custom_tab');*/
-$show_custom_tab   = 0;
+$customHelper  = $this->helper('BG\Custom\Helper\CustomHelper');
+$videoUrl = $customHelper->getCurrentProduct()->getEmbedVideo();
+if($videoUrl != ''){
+    $show_custom_tab = 1;
+}
+else{
+    $show_custom_tab = 0;
+}
+//$show_custom_tab   = $_config->getProductDetail('show_custom_tab');
 $custom_tab_name   = $_config->getProductDetail('custom_tab_name');
 $customtab_content = $_config->getProductDetail('customtab_content');
 ?>
@@ -84,9 +90,7 @@ $customtab_content = $_config->getProductDetail('customtab_content');
                     <?php endforeach; ?>
                     <?php if ($show_custom_tab) { ?>
                         <div class="data item content resp-tab-content" id="customtab" data-role="content">
-                            <?php
-                            echo $customtab_content;
-                            ?>
+                           <?php echo $videoUrl;?>  
                         </div>
                     <?php } ?>
                 </div>
@@ -139,9 +143,7 @@ $customtab_content = $_config->getProductDetail('customtab_content');
                         </a>
                     </h2>
                     <div class="data item content resp-tab-content" id="customtab" data-role="content">
-                        <?php
-                        echo $customtab_content;
-                        ?>
+                        <?php echo $videoUrl;?>
                     </div>
                 <?php } ?>
             <?php } ?>

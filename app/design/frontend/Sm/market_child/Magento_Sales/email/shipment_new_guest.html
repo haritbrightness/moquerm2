@@ -1,0 +1,155 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<!--@subject {{trans "Your %store_name order has shipped" store_name=$store.getFrontendName()}} @-->
+<!--@vars {
+"var formattedBillingAddress|raw":"Billing Address",
+"var billing.getName()":"Guest Customer Name",
+"var order.increment_id":"Order Id",
+"var payment_html|raw":"Payment Details",
+"var comment":"Shipment Comment",
+"var shipment.increment_id":"Shipment Id",
+"layout handle=\"sales_email_order_shipment_items\" shipment=$shipment order=$order":"Shipment Items Grid",
+"block class='Magento\\\\Framework\\\\View\\\\Element\\\\Template' area='frontend' template='Magento_Sales::email\/shipment\/track.phtml' shipment=$shipment order=$order":"Shipment Track Details",
+"var formattedShippingAddress|raw":"Shipping Address",
+"var order.shipping_description":"Shipping Description",
+"var order.getShippingDescription()":"Shipping Description"
+} @-->
+{{template config_path="design/email/header_template"}}
+
+<table width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+    <tbody>
+        <tr>
+            <td valign="left" align="left" style="font-size:18px;line-height:28px;color:#333333;text-decoration:none;letter-spacing:0px;padding-bottom:20px">
+                {{trans "Dear"}} <strong style="color:#114745;font-weight:bolder">{{trans "%name," name=$billing.getName()}}</strong>
+            </td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" style="font-size:14px;text-decoration:none;color:#000000;line-height:1.3;padding-bottom:20px">
+                {{trans "Thank you for your order from %store_name." store_name=$store.getFrontendName()}}
+            </td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" style="font-size:18px;line-height:28px;color:#114745;padding-bottom:20px;">
+                <p>{{trans "Your shipping confirmation is below. Thank you again for your business."}}</p>
+                <strong>{{trans "Your Shipment #%shipment_id for Order #%order_id" shipment_id=$shipment.increment_id order_id=$order.increment_id}}</strong>
+            </td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" style="padding-bottom:20px">
+                {{layout handle="sales_email_order_shipment_track" shipment=$shipment order=$order}}
+            </td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" style="padding-bottom:20px">
+                <table width="100%" cellspacing="0" cellpadding="0" border="0" align="center" style="padding-bottom:1px; table-layout: fixed;">
+                    <tbody>
+                        <tr>
+                            <td align="left" valign="top" bgcolor="#114745" width="50%" style="width:50%;color:#fff;background-color:#114745;padding:20px 15px;border-right:2px solid #fff;max-width:50%;table-layout:auto;border-spacing:0;">
+                                <table width="100%" cellspacing="0" cellpadding="0" border="0" align="center" style="width:100%;color:#fff;background-color:#114745">
+                                    <tbody>
+                                        <tr>
+                                            <td align="left" valign="top" style="font-size:18px;line-height:24px;font-weight:bolder;font-style:normal;color:#fff;text-decoration:none;letter-spacing:0px;padding-bottom:10px">
+                                                {{trans "Billing Info"}}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="left" valign="top" style="font-size:16px;line-height:24px;font-weight:lighter;font-style:normal;color:#ffffff;text-decoration:none;letter-spacing:0px">
+                                                {{var formattedBillingAddress|raw}}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                            {{depend order.getIsNotVirtual()}}                   
+                                <td align="left" valign="top" bgcolor="#114745" width="50%" style="width:50%;color:#fff;background-color:#114745;padding:20px 15px;border-left:2px solid #fff;max-width:50%;table-layout:auto;border-spacing:0;">
+                                    <table width="100%" cellpadding="0" cellspacing="0" style="width: 100% ; color: #fff">
+                                        <tbody>
+                                            <tr>
+                                                <td valign="middle" align="left" style="font-size: 16px ; line-height: 24px ; font-weight: bolder ; font-style: normal ; color: #fff ; text-decoration: none ; letter-spacing: 0px ; padding-bottom: 10px">
+                                                    {{trans "Shipping Info"}}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="middle" align="left" style="font-size: 16px ; line-height: 24px ; font-weight: lighter ; font-style: normal ; color: #ffffff ; text-decoration: none ; letter-spacing: 0px">
+                                                    {{var formattedShippingAddress|raw}}
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            {{/depend}}
+                        </tr>
+                    </tbody>
+                </table>
+                <table width="100%" cellspacing="0" cellpadding="0" border="0" align="center" style="padding-top:2px;border-top:1px solid #fff;table-layout:fixed;">
+                    <tbody>
+                        <tr>
+                            <td align="left" valign="top" bgcolor="#114745" width="50%" style="width:50%;color:#fff;background-color:#114745;padding:20px 15px;border-right:2px solid #fff;max-width:50%;table-layout:auto;border-spacing:0;">                           
+                                <table width="100%" cellspacing="0" cellpadding="0" border="0" align="center" style="width:100%;color:#fff;background-color:#114745">
+                                    <tbody>
+                                        <tr>
+                                            <td align="left" valign="top" style="font-size:18px; line-height:24px;font-weight:bolder;font-style:normal;color:#fff;text-decoration:none;letter-spacing:0px;padding-bottom:10px">
+                                                {{trans "Payment Method"}}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="left" valign="top" style="font-size:16px; line-height:24px;font-weight:lighter;font-style:normal;color:#ffffff;text-decoration:none;letter-spacing: 0px">
+                                                {{var payment_html|raw}}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                            {{depend order.getIsNotVirtual()}}
+                                <td align="left" valign="top" bgcolor="#114745" width="50%" style="width:50%;color:#fff;background-color:#114745;padding:20px 15px;border-left:2px solid #fff;max-width:50%;table-layout:auto;border-spacing:0;">
+                                    <table width="100%" cellpadding="0" cellspacing="0" style="width:100%;color: #fff">
+                                        <tbody>
+                                            <tr>
+                                                <td valign="middle" align="left" style="font-size:18px;line-height:24px;font-weight:bolder;font-style:normal;color:#fff;text-decoration:none;letter-spacing:0px;padding-bottom:10px">
+                                                    {{trans "Shipping Method"}}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="middle" align="left" style="font-size:16px;line-height:24px;font-weight:lighter;font-style:normal;color:#ffffff;text-decoration: none;letter-spacing:0px">
+                                                    {{var order.getShippingDescription()}}
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            {{/depend}}
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" style="padding-bottom:20px">
+                {{layout handle="sales_email_order_shipment_items" shipment=$shipment order=$order}}
+            </td>
+        </tr>
+        {{depend comment}}
+            <tr>
+                <td align="left" valign="top" style="padding-bottom:20px">
+                    <p><strong>{{trans "Comment:"}}</strong></p>
+                    {{var comment|escape|nl2br}}
+                </td>
+            </tr>
+        {{/depend}}
+        <tr>
+            <td align="center" valign="top" style="font-size:14px;line-height:1.5;color:#878787">
+                {{trans 'If you have questions about your order, you can email us at <a href="mailto:%store_email">%store_email</a>' store_email=$store_email |raw}}{{depend store_phone}} {{trans 'or call us at <a href="tel:%store_phone">%store_phone</a>' store_phone=$store_phone |raw}}{{/depend}}.
+                <br>
+                {{depend store_hours}}
+                    {{trans 'Our hours are <span class="no-link">%store_hours</span>.' store_hours=$store_hours |raw}}
+                {{/depend}}
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+{{template config_path="design/email/footer_template"}}
