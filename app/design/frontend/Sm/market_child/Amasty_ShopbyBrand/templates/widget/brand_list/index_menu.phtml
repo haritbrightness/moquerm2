@@ -1,0 +1,128 @@
+<?php
+
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2019 Amasty (https://www.amasty.com)
+ * @package Amasty_ShopbyBrand
+ */
+?>
+<?php
+/** @var \Amasty\ShopbyBrand\Block\Widget\BrandList $block */
+$items = $block->getIndex();
+$columns = abs((int) $block->getData('columns'));
+$brandLetters = $block->getAllLetters();
+$isShowCount = $block->getData('show_count');
+$isShowImages = $block->getData('show_images');
+$imgWidth = $block->getImageWidth();
+$imgHeight = $block->getImageHeight();
+$isShowSearch = $block->getData('show_search');
+$isShowFilter = $block->getData('show_filter');
+$filterDisplayAll = $block->getData('filter_display_all');
+$display_zero = $block->getData('display_zero');
+$width = floor(100 / $columns);
+?>
+<style>
+    .bare-list .ambrands-image {
+        max-width: <?= $block->escapeHtml($imgWidth); ?>px;
+        max-height: <?= $block->escapeHtml($imgHeight); ?>px;
+    }
+
+    .brand-item .am-image-wrapper {
+        height: <?= $block->escapeHtml($imgWidth); ?>px;
+    }
+
+    .brand-item {
+        max-width: <?= $block->escapeHtml($imgWidth); ?>px;
+        min-width: <?= $block->escapeHtml($imgWidth); ?>px;
+        min-height: <?= $block->escapeHtml($imgWidth + 30); ?>px;
+    }
+
+    .brand-item .no-img {
+        width: <?= $block->escapeHtml($imgWidth); ?>px;
+        line-height: <?= $block->escapeHtml($imgWidth); ?>px;
+        font-size: <?= $block->escapeHtml($imgWidth * 0.65); ?>px;
+    }
+
+    .brand-item {
+        max-width: unset !important;
+        min-width: unset !important;
+        min-height: unset !important;
+        float: left;
+        width: 20%;
+        margin-top: 5px !important;
+    }
+
+    @media (min-width: 768px) {
+        .brand-images .brands-letter {
+            width: <?= $block->escapeHtml($width) ?>%;
+        }
+    }
+</style>
+<div class="content">
+    <?php if ($items) : ?>
+        <div class="brand-images">
+            <ul class="bare-list">
+                <?php foreach ($items as $letters) : ?>
+                    <?php foreach ($letters as $letter => $options) : ?>
+                        <?php foreach ($options as $option) : ?>
+                            <li class="brand-item" <?= /** @noEscape */ $block->getTooltipAttribute($option) ?>>
+                                <a href="<?= $block->escapeUrl($option['url']) ?>" class="item" title="<?= $block->escapeHtml($option['label']) ?>">
+                                    <p class="label"><?= $block->escapeHtml($option['label']) ?></p>
+                                </a>
+                            </li>
+                        <?php endforeach ?>
+                    <?php endforeach ?>
+                <?php endforeach ?>
+            </ul>
+        </div>
+        <div style="clear:both;"></div>
+    <?php else : ?>
+        <?= $block->escapeHtml(
+                __(
+                    'Please select brand attribute in Stores -> Configuration -> Amasty Extensions -> Improved Layered Navigation:
+                    Brands.'
+                )
+            ) ?>
+    <?php endif ?>
+</div>
+
+<script>
+    require([
+        'jquery',
+        'Amasty_ShopbyBrand/js/brand-filter',
+        'domReady!'
+    ], function($) {
+        $('[data-ambrands-js="filter-letter"]').on('click', function(e) {
+            e.preventDefault();
+            $(this).applyBrandFilter('[data-ambrands-js="brand-letter"]');
+        });
+    });
+
+    <?php if ($block->isTooltipEnabled()) : ?>
+        require([
+            'jquery',
+            "mage/tooltip"
+        ], function($) {
+            $('[data-amshopby-js="brand-tooltip"]').tooltip({
+                position: {
+                    my: "left-20 bottom",
+                    at: "right top",
+                    collision: "flip flip",
+                    using: function(position, feedback) {
+                        $(this).css(position);
+                        $("<div>")
+                            .addClass("arrow")
+                            .addClass(feedback.vertical)
+                            .addClass(feedback.horizontal)
+                            .appendTo(this);
+                    }
+                },
+                tooltipClass: "amshopby-brand-tooltip",
+                content: function() {
+                    var current = $(this).is('li') ? $(this) : $(this).parent();
+                    return current.data('tooltip-content');
+                }
+            });
+        });
+    <?php endif ?>
+</script>
