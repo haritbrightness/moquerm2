@@ -22,6 +22,9 @@
                     <option name="default" value="widget/brand_list/index.phtml" selected="true">
                         <label translate="true">Index</label>
                     </option>
+                    <option name="default" value="widget/brand_list/index_menu.phtml" selected="true">
+                        <label translate="true">Index</label>
+                    </option>
                 </options>
             </parameter>
         </parameters>
