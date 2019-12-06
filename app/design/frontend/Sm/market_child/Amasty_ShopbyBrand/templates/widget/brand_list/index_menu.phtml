@@ -20,6 +20,7 @@ $isShowFilter = $block->getData('show_filter');
 $filterDisplayAll = $block->getData('filter_display_all');
 $display_zero = $block->getData('display_zero');
 $width = floor(100 / $columns);
+$allBrands = $this->helper('BG\Custom\Helper\CustomHelper')->getSubCategories(27);
 ?>
 <style>
     .bare-list .ambrands-image {
@@ -65,11 +66,15 @@ $width = floor(100 / $columns);
                 <?php foreach ($items as $letters) : ?>
                     <?php foreach ($letters as $letter => $options) : ?>
                         <?php foreach ($options as $option) : ?>
+                            <?php
+                            if(in_array($option['label'], $allBrands)){
+                            ?>
                             <li class="brand-item" <?= /** @noEscape */ $block->getTooltipAttribute($option) ?>>
                                 <a href="<?= $block->escapeUrl($option['url']) ?>" class="item" title="<?= $block->escapeHtml($option['label']) ?>">
                                     <p class="label"><?= $block->escapeHtml($option['label']) ?></p>
                                 </a>
                             </li>
+                            <?php } ?>
                         <?php endforeach ?>
                     <?php endforeach ?>
                 <?php endforeach ?>
