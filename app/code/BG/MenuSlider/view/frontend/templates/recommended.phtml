@@ -1,0 +1,38 @@
+<?php
+if ($block->getData('categoryid')) {
+     $categoryid = $block->getData('categoryid');
+     $productCollection = $block->getProductCollection($categoryid);
+}
+$listProductBlock = $block->getLayout()->createBlock('Magento\Catalog\Block\Product\ListProduct');
+$_helper = $this->helper(Magento\Catalog\Helper\Output::class);
+$templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW;
+
+if (isset($productCollection) && $productCollection->count()) {
+     ?>
+     <div class="our-recommendations-slider">
+          <?php
+               foreach ($productCollection as $product) { ?>
+               <div class="slide-items">
+                    <div class="our-recommendations-image">
+                         <?php $productImage = $block->getImage($product); ?>
+                         <a href="<?php /* @escapeNotVerified */ echo $product->getProductUrl() ?>" class="product photo product-item-photo" tabindex="-1">
+                              <?php echo $productImage->toHtml(); ?>
+                         </a>
+                    </div>
+                    <div class="product details product-item-details">
+                         <?php $productNameStripped = $listProductBlock->stripTags($product->getName(), null, true); ?>
+                         <span class="product name product-item-name">
+                              <a class="product-item-link" href="<?= $listProductBlock->escapeUrl($product->getProductUrl()) ?>">
+                                   <?= /* @noEscape */ $_helper->productAttribute($product, $product->getName(), 'name') ?>
+                              </a>
+                         </span>
+                         <?= $listProductBlock->getReviewsSummaryHtml($product, $templateType) ?>
+                         <?= /* @noEscape */ $listProductBlock->getProductPrice($product) ?>
+                         <?= $listProductBlock->getProductDetailsHtml($product) ?>
+                    </div>
+               </div>
+          <?php } ?>
+     </div>
+<?php
+}
+?>
