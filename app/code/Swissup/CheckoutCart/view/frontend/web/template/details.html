@@ -16,9 +16,9 @@
 
             <div class="details-qty">
                 <div class="qty-wrapper">
+                    <button type="button" class="qty-less" data-bind="click: function() { decQty($parent); }"></button>
                     <input type="number" size="4" class="qty" data-bind="value: $parent.qty, event: { change: function(data, event) { newQty($parent, event); } }" />
-                    <span class="qty-toggler qty-less" data-bind="click: function() { decQty($parent); }"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="butt" stroke-linejoin="miter" shape-rendering="crispEdges"><line x1="5" y1="12" x2="19" y2="12"></line></svg></span>
-                    <span class="qty-toggler qty-more" data-bind="click: function() { incQty($parent); }"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="butt" stroke-linejoin="miter" shape-rendering="crispEdges"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></span>
+                    <button type="button" class="qty-more" data-bind="click: function() { incQty($parent); }"></button>
                 </div>
             </div>
         </div>

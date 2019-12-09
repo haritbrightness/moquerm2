@@ -25,7 +25,6 @@ define([
         }));
 
         delete paymentService.doNotUpdate;
-        quote.firecheckout.state.placeOrderPressed = false;
 
         return result;
     }
@@ -81,7 +80,6 @@ define([
         submitShippingInformation: function () {
             if (!quote.isVirtual() && quote.shippingMethod()) {
                 paymentService.doNotUpdate = true;
-                quote.firecheckout.state.placeOrderPressed = true;
 
                 $('body').trigger($.Event('fc:placeOrderSetShippingInformationBefore'));
 

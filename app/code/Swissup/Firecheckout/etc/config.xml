@@ -19,28 +19,6 @@
                 <display_billing_address_title>1</display_billing_address_title>
                 <display_billing_address_on>default</display_billing_address_on>
             </payment>
-            <performance>
-                <jsbuild>0</jsbuild>
-                <jsbuild_paths><![CDATA[
-Swissup_AddressAutocomplete
-Swissup_AddressFieldManager
-Swissup_Checkout
-Swissup_CheckoutCart
-Swissup_CheckoutFields
-Swissup_CustomerFieldManager
-Swissup_DeliveryDate
-Swissup_Geoip
-Swissup_Firecheckout---custom.js
-Swissup_FirecheckoutIntegrations
-Swissup_Orderattachment
-Swissup_SubscribeAtCheckout
-Swissup_Taxvat
-Magento_Checkout
-Magento_CheckoutAgreements
-Magento_OfflinePayments
-Magento_OfflineShipping
-]]></jsbuild_paths>
-            </performance>
         </firecheckout>
     </default>
 </config>

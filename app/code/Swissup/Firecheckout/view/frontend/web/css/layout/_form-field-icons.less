@@ -10,7 +10,6 @@
                 appearance: none;
                 background-image: url(@fc-icon__caret);
                 background-repeat: no-repeat;
-                background-size: auto auto;
                 .padding-right(@fc-form-field-caret__width);
                 .background-position(100% 45%, 0 45%);
 
@@ -39,8 +38,6 @@
             }
 
             .fc-form-tooltips& {
-                position: relative;
-
                 // dropdown icon
                 &._error,
                 &._warn,
@@ -93,14 +90,6 @@
                 div.mage-error,
                 div.field-error {
                     .lib-fc-form-field-icon(@fc-icon__error);
-                }
-                &.choice {
-                    div.warning,
-                    div.mage-error,
-                    div.field-error {
-                        top: max(0, @fc-form-field-icon__top - floor(@fc-form-field-icon__height / 2));
-                        .lib-fc-css(background, @fc-section__background);
-                    }
                 }
                 div.warning {
                     &::before {

@@ -84,11 +84,54 @@ class Preview extends \Magento\Config\Block\System\Config\Form\Field
                 ]
             ]);
 
+        // add hidden field with preview expire datetime
+        $currentTime = time();
+        $expiresField = $this->_createHiddenElement(
+            'preview_expires',
+            ($currentTime + 10 * 60), // current time + 10min
+            $element
+        );
+        // add hidden field with preview hash
+        $hashField = $this->_createHiddenElement(
+            'preview_hash',
+            $this->mathRandom->getUniqueHash(),
+            $element
+        );
+
         $element->setName(''); // remove name to prevent saving to config
         $element->setValue($this->getLastOrder()->getIncrementId());
         return parent::_getElementHtml($element)
             . $button->toHtml()
+            . $expiresField->toHtml()
+            . $hashField->toHtml()
             ;
+    }
+
+    /**
+     * Create hidden input
+     *
+     * @param  string $name
+     * @param  string $value
+     * @param  AbstractElement $configElement
+     * @return AbstractElement
+     */
+    protected function _createHiddenElement($name, $value, AbstractElement $configElement)
+    {
+        $fieldName = str_replace(
+            '[order_to_preview]',
+            '[' . $name . ']',
+            $configElement->getName()
+        );
+        $hidden = $this->elementFactory->create(
+            'Magento\Framework\Data\Form\Element\Hidden',
+            [
+                'html_id' => 'success_page__' . $name,
+                'name' => $fieldName,
+                'value' => $value
+            ]
+        );
+        $hidden->setForm($configElement->getForm())->setNoSpan(true);
+        return $hidden;
     }
 
     /**

@@ -59,18 +59,12 @@ class ShippingInformationManagement
 
         $date = null;
         $time = null;
-        $shippingMethod = $addressInformation->getShippingCarrierCode()
-            . '_'
-            . $addressInformation->getShippingMethodCode();
-
-        $isTimeRequired = $this->dataHelper->isTimeRequired($shippingMethod);
-        $isDateRequired = $this->dataHelper->isDateRequired($shippingMethod);
 
         $extAttributes = $addressInformation->getExtensionAttributes();
         if ($extAttributes) {
             $time = $extAttributes->getDeliveryTime();
-            if (!$time && $isTimeRequired) {
-                throw new StateException(__('Delivery Time is required'));
+            if (!$time && $this->dataHelper->isTimeRequired()) {
+                throw new StateException(__('Delivery Time is not set'));
             }
 
             if ($time && !in_array($time, $this->dataHelper->getTimeOptions(true))) {
@@ -78,12 +72,7 @@ class ShippingInformationManagement
             }
 
             $date = $extAttributes->getDeliveryDate();
-            if (!$date && $isDateRequired) {
-                throw new StateException(__('Delivery Date is required'));
-            }
             $date = $this->dataHelper->formatMySqlDateTime($date);
-        } elseif ($isTimeRequired || $isDateRequired) {
-            throw new StateException(__('Delivery Date is required'));
         }
 
         $quote = $this->quoteRepository->getActive($cartId);

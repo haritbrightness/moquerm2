@@ -76,7 +76,7 @@ define([
                 return '';
             }
 
-            text = inputBox.find('> .label').text().trim();
+            text = inputBox.find('.label').text().trim();
 
             if (!text) {
                 return;

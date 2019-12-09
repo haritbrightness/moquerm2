@@ -42,7 +42,7 @@ class GuestPaymentInformationManagementPlugin extends AbstractPaymentInformation
      * @return void
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function beforeSavePaymentInformation(
+    public function beforeSavePaymentInformationAndPlaceOrder(
         \Magento\Checkout\Api\GuestPaymentInformationManagementInterface $subject,
         $cartId,
         $email,

@@ -60,11 +60,22 @@ class Record
     }
 
     /**
-     * @param  array $data
+     * @param  mixed $rawRecord
      * @return $this
      */
-    public function update(array $data = [])
+    public function update($rawRecord)
     {
+        $data = [];
+
+        $this->rawRecord = $rawRecord;
+
+        if ($rawRecord instanceof \GeoIp2\Model\City) {
+            $data['cityName']    = $rawRecord->city->name;
+            $data['regionCode']  = $rawRecord->mostSpecificSubdivision->isoCode;
+            $data['countryCode'] = $rawRecord->country->isoCode;
+            $data['postalCode']  = $rawRecord->postal->code;
+        }
+
         foreach ($data as $key => $value) {
             if (property_exists($this, $key)) {
                 $this->{$key} = $value;

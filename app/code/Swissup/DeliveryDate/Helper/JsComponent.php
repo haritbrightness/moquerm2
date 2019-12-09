@@ -73,7 +73,8 @@ class JsComponent extends AbstractHelper
         return [
             'provider' => 'checkoutProvider',
             'componentDisabled' => !$this->dataHelper->isEnabled(),
-            'filterPerShippingMethod' => $this->dataHelper->isFilterPerShippingMethod(),
+            // for some reason config option means the opposite (💩), so use ! to get what we want...
+            'filterPerShippingMethod' => !$this->dataHelper->isFilterPerShippingMethod(),
             'shippingMethods' => $this->dataHelper->getShippingMethods(),
         ];
     }

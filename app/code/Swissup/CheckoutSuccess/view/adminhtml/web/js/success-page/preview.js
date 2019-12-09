@@ -109,7 +109,7 @@ define([
                         this.source.find('input[id$=order_to_preview]').val()
                     ).replace(
                         '{{previewHash}}',
-                        $('#success_page_layout_preview_hash').val()
+                        this.source.find('input[id$=preview_hash]').val()
                     )
             }).css({
                 'width': '100%',

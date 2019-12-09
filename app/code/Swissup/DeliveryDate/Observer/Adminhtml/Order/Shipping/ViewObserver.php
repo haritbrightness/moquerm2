@@ -68,27 +68,6 @@ class ViewObserver implements ObserverInterface
         $deliveryDateBlock->setDeliveryDate($formattedDate);
         $deliveryDateBlock->setDeliveryTime($deliveryTime);
         $deliveryDateBlock->setTemplate('Swissup_DeliveryDate::order/shipping/view.phtml');
-
-        $deliveryDateEditBlock = $observer->getLayout()->createBlock(
-            'Swissup\DeliveryDate\Block\Adminhtml\DateField'
-        );
-        $deliveryDateEditBlock->setDeliveryDate($formattedDate);
-        $deliveryDateEditBlock->setDeliveryTime($deliveryTime);
-        $deliveryDateEditBlock->setTemplate('Swissup_DeliveryDate::date_field.phtml');
-        $deliveryDateBlock->setAjaxSaveSubmitUrl($deliveryDateEditBlock->getAjaxSaveSubmitUrl());
-
-        $deliveryDateBlock->setChild('edit_block', $deliveryDateEditBlock);
-
-        $button = $deliveryDateBlock->getLayout()->createBlock(
-            \Magento\Backend\Block\Widget\Button::class
-        )->setData(
-            [
-                'label' => __('Save Delivery Date'),
-                'class' => 'action-save action-secondary',
-            ]
-        );
-        $deliveryDateBlock->setChild('submit_button', $button);
-
         $html = $observer->getTransport()->getOutput() . $deliveryDateBlock->toHtml();
 
         $observer->getTransport()->setOutput($html);

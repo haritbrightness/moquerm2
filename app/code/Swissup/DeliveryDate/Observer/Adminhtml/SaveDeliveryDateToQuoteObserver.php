@@ -28,7 +28,6 @@ class SaveDeliveryDateToQuoteObserver implements ObserverInterface
     /**
      *
      * @param DeliverydateFactory $deliverydateFactory
-     * @param DataHelper $dataHelper
      */
     public function __construct(
         DeliverydateFactory $deliverydateFactory,

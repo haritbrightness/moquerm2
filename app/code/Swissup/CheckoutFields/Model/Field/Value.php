@@ -175,20 +175,6 @@ class Value extends AbstractModel implements FieldValueInterface, IdentityInterf
     }
 
     /**
-     * Load by order_id, field_id and store_id
-     *
-     * @param int $orderId
-     * @param int $fieldId
-     * @param int $storeId
-     * @return $this
-     */
-    public function loadByOrderFieldAndStore($orderId, $fieldId, $storeId)
-    {
-        $this->_getResource()->loadByOrderFieldAndStore($this, $orderId, $fieldId, $storeId);
-        return $this;
-    }
-
-    /**
      * Return unique ID(s) for each object in system
      *
      * @return array

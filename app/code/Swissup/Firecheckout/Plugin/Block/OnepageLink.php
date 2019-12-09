@@ -20,31 +20,33 @@ class OnepageLink
 
     /**
      * @param \Magento\Checkout\Block\Onepage\Link $subject
-     * @param string $result
+     * @param \Closure $proceed
      * @return string
      */
-    public function afterGetCheckoutUrl(
+    public function aroundGetCheckoutUrl(
         \Magento\Checkout\Block\Onepage\Link $subject,
-        $result
+        \Closure $proceed
     ) {
         if ($this->helper->isFirecheckoutEnabled()) {
             return $this->helper->getFirecheckoutUrl();
+        } else {
+            return $proceed();
         }
-        return $result;
     }
 
     /**
      * @param \Magento\Checkout\Block\Onepage\Link $subject
-     * @param boolean $result
+     * @param \Closure $proceed
      * @return boolean
      */
-    public function afterIsPossibleOnepageCheckout(
+    public function aroundIsPossibleOnepageCheckout(
         \Magento\Checkout\Block\Onepage\Link $subject,
-        $result
+        \Closure $proceed
     ) {
         if ($this->helper->isFirecheckoutEnabled()) {
             return true;
+        } else {
+            return $proceed();
         }
-        return $result;
     }
 }

@@ -49,8 +49,7 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
             'fi.field_id = main_table.field_id',
             [
                 'frontend_label' => 'fi.frontend_label',
-                'frontend_input' => 'frontend_input',
-                'attribute_code' => 'attribute_code'
+                'frontend_input' => 'frontend_input'
             ]
         );
 

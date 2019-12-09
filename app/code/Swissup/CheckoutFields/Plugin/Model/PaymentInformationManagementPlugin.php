@@ -11,7 +11,7 @@ class PaymentInformationManagementPlugin extends AbstractPaymentInformationManag
      * @return void
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function beforeSavePaymentInformation(
+    public function beforeSavePaymentInformationAndPlaceOrder(
         \Magento\Checkout\Api\PaymentInformationManagementInterface $subject,
         $cartId,
         \Magento\Quote\Api\Data\PaymentInterface $paymentMethod,

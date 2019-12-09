@@ -7,7 +7,6 @@ define([
     'Magento_Customer/js/model/customer',
     'Magento_Checkout/js/model/payment/method-list',
     'Magento_Checkout/js/model/shipping-service',
-    'Swissup_Firecheckout/js/model/layout',
     'Swissup_Firecheckout/js/model/validator',
     'Magento_Checkout/js/model/address-converter',
     'Magento_Checkout/js/action/select-shipping-address',
@@ -23,7 +22,6 @@ define([
     customer,
     paymentMethods,
     shippingService,
-    layout,
     validator,
     addressConverter,
     selectShippingAddress,
@@ -47,8 +45,7 @@ define([
         initQuote: function () {
             quote.firecheckout = {
                 state: {
-                    savingShippingMethod: false,
-                    placeOrderPressed: false
+                    savingShippingMethod: false
                 },
                 // last selected values are stored in memo
                 memo: {
@@ -221,10 +218,6 @@ define([
          * Apply shipping method
          */
         applyShippingMethod: function (force) {
-            if (layout.isMultistep()) {
-                return;
-            }
-
             if (!shippingService.getShippingRates()().length) {
                 quote.shippingMethod(null);
             }

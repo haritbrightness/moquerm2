@@ -11,8 +11,7 @@ define([
                 'div.field-error:visible',
                 'div.mage-error:visible',
                 '.firecheckout-msg:visible',
-                'div.message-error:visible',
-                'div.admin__field._error:visible'
+                'div.message-error:visible'
             ].join(', '),
             messages,
             timeout = 0,

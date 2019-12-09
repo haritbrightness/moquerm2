@@ -1,16 +1,17 @@
 <?php
-
 namespace Swissup\Geoip\Helper;
 
+use GeoIp2\Database\Reader;
 use Magento\Framework\HTTP\PhpEnvironment\RemoteAddress;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Store\Model\ScopeInterface;
-use Swissup\Geoip\Model\ProviderFactory;
+use Psr\Log\LoggerInterface;
+use Swissup\Geoip\Model\RecordFactory;
 
 class Data
 {
-    const ENABLE_CONFIG = 'geoip/main/enable';
-    const PROVIDER_CONFIG = 'geoip/main/provider';
+    const FILENAME_CONFIG = 'geoip/main/filename';
+    const ENABLE_CONFIG   = 'geoip/main/enable';
 
     /**
      * @var RemoteAddress
@@ -23,28 +24,31 @@ class Data
     protected $scopeConfig;
 
     /**
-     * @var ProviderFactory
+     * @var RecordFactory
      */
-    protected $providerFactory;
+    protected $recordFactory;
 
     /**
-     * @var array
+     * @var LoggerInterface
      */
-    protected $memo = [];
+    protected $logger;
 
     /**
      * @param RemoteAddress $remoteAddress
      * @param ScopeConfigInterface $scopeConfig
-     * @param ProviderFactory $providerFactory
+     * @param RecordFactory $recordFactory
+     * @param LoggerInterface $logger
      */
     public function __construct(
         RemoteAddress $remoteAddress,
         ScopeConfigInterface $scopeConfig,
-        ProviderFactory $providerFactory
+        RecordFactory $recordFactory,
+        LoggerInterface $logger
     ) {
         $this->remoteAddress = $remoteAddress;
         $this->scopeConfig = $scopeConfig;
-        $this->providerFactory = $providerFactory;
+        $this->recordFactory = $recordFactory;
+        $this->logger = $logger;
     }
 
     /**
@@ -60,27 +64,55 @@ class Data
 
     /**
      * @param  string $ip
-     * @return \Swissup\Geoip\Model\Record
+     * @return mixed
      */
     public function detect($ip = null)
     {
+        $record = $this->recordFactory->create();
+
         if (!$ip) {
             $ip = $this->remoteAddress->getRemoteAddress();
         }
 
-        if (!isset($this->memo[$ip])) {
-            $this->memo[$ip] = $this->getProvider()->resolve($ip);
+        $filepath = $this->getFilepath();
+        if (!$filepath) {
+            return $record;
         }
 
-        return $this->memo[$ip];
+        try {
+            $reader = new Reader($filepath);
+            $rawRecord = $reader->city($ip);
+            // $rawRecord = $reader->city('128.101.101.101');
+            // $rawRecord = $reader->city('54.195.241.132');
+            $record->update($rawRecord);
+        } catch (\GeoIp2\Exception\AddressNotFoundException $e) {
+            // who cares
+        } catch (\Exception $e) {
+            $this->logger->error($e->getMessage());
+        }
+
+        return $record;
     }
 
-    protected function getProvider()
+    /**
+     * @return mixed
+     */
+    private function getFilepath()
     {
-        $type = $this->scopeConfig->getValue(
-            self::PROVIDER_CONFIG,
+        $filename = $this->scopeConfig->getValue(
+            self::FILENAME_CONFIG,
             ScopeInterface::SCOPE_STORE
         );
-        return $this->providerFactory->create($type);
+        $filename = basename($filename);
+
+        $path = BP . '/var/swissup/geoip/' . $filename;
+        if (!file_exists($path)) {
+            $path = BP . '/vendor/swissup/module-geoip/' . $filename;
+            if (!file_exists($path)) {
+                $path = false;
+            }
+        }
+
+        return $path;
     }
 }

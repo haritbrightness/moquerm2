@@ -28,14 +28,6 @@
                     <label>Layout of Success Page</label>
                     <frontend_model>Swissup\CheckoutSuccess\Block\Adminhtml\Config\Form\Field\Layout</frontend_model>
                 </field>
-                <field id="preview_hash" type="text" sortOrder="26" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Preview hash</label>
-                    <frontend_model>Swissup\CheckoutSuccess\Block\Adminhtml\Config\Form\Field\PreviewHash</frontend_model>
-                </field>
-                <field id="preview_expires" type="text" sortOrder="28" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Preview expires at (timestamp)</label>
-                    <frontend_model>Swissup\CheckoutSuccess\Block\Adminhtml\Config\Form\Field\PreviewExpires</frontend_model>
-                </field>
                 <field id="order_to_preview" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Order # to preview Success Page</label>
                     <frontend_model>Swissup\CheckoutSuccess\Block\Adminhtml\Config\Form\Field\Preview</frontend_model>

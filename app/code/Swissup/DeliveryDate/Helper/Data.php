@@ -91,8 +91,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function isFilterPerShippingMethod()
     {
-        // for some reason config option means the opposite (💩), so use ! to get what we want...
-        return (bool) !$this->getOption(self::CONFIG_FILTER_PER_SHIPPING_METHOD);
+        return (bool) $this->getOption(self::CONFIG_FILTER_PER_SHIPPING_METHOD);
     }
 
     /**
@@ -116,13 +115,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function getExcludedWeekdays()
     {
-        $config = $this->getOption(self::CONFIG_EXCLUDE_WEEKDAYS);
-
-        if (!$config && !is_numeric($config)) {
-            return [];
-        }
-
-        return array_map('intval', explode(',', $config));
+        return array_map('intval', explode(',', $this->getOption(self::CONFIG_EXCLUDE_WEEKDAYS)));
     }
 
     /**
@@ -142,17 +135,10 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     }
 
     /**
-     * @param string $shippingMethod
      * @return bool
      */
-    public function isDateRequired($shippingMethod = null)
+    public function isDateRequired()
     {
-        if ($shippingMethod && $this->isFilterPerShippingMethod()) {
-            $methods = explode(',', $this->getShippingMethods());
-            if (!in_array($shippingMethod, $methods)) {
-                return false;
-            }
-        }
         return $this->getDateStatus() === 'req';
     }
 
@@ -189,17 +175,10 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     }
 
     /**
-     * @param string $shippingMethod
      * @return bool
      */
-    public function isTimeRequired($shippingMethod = null)
+    public function isTimeRequired()
     {
-        if ($shippingMethod && $this->isFilterPerShippingMethod()) {
-            $methods = explode(',', $this->getShippingMethods());
-            if (!in_array($shippingMethod, $methods)) {
-                return false;
-            }
-        }
         return $this->getTimeStatus() === 'req';
     }
 

@@ -25,18 +25,10 @@ class DateField extends \Magento\Framework\View\Element\Template
     protected $deliverydateModel;
 
     /**
-     * Core registry
-     *
-     * @var \Magento\Framework\Registry
-     */
-    protected $coreRegistry = null;
-
-    /**
      * @param \Magento\Framework\View\Element\Template\Context $context
      * @param \Magento\Backend\Model\Session\Quote $quoteSession
      * @param \Swissup\DeliveryDate\Helper\Data $helper
      * @param \Swissup\DeliveryDate\Model\DeliverydateFactory $deliverydateFactory
-     * @param \Magento\Framework\Registry $registry
      * @param array $data
      */
     public function __construct(
@@ -44,14 +36,11 @@ class DateField extends \Magento\Framework\View\Element\Template
         \Magento\Backend\Model\Session\Quote $quoteSession,
         \Swissup\DeliveryDate\Helper\Data $helper,
         \Swissup\DeliveryDate\Model\DeliverydateFactory $deliverydateFactory,
-        \Magento\Framework\Registry $registry,
         array $data = []
     ) {
         $this->helper = $helper;
         $this->quoteSession = $quoteSession;
         $this->deliverydateFactory = $deliverydateFactory;
-        $this->coreRegistry = $registry;
-
         parent::__construct($context, $data);
     }
 
@@ -73,10 +62,6 @@ class DateField extends \Magento\Framework\View\Element\Template
      */
     public function getDeliveryDate()
     {
-        $date = $this->getData('delivery_date');
-        if (!empty($date)) {
-            return $date;
-        }
         $date = '';
         $deliveryDate = $this->getDeliveryDateModel();
         if ($deliveryDate->getId()) {
@@ -91,10 +76,6 @@ class DateField extends \Magento\Framework\View\Element\Template
      */
     public function getDeliveryTime()
     {
-        $time = $this->getData('delivery_time');
-        if (!empty($time)) {
-            return $time;
-        }
         $time = '';
         $deliveryDate = $this->getDeliveryDateModel();
         if ($deliveryDate->getId()) {
@@ -119,25 +100,5 @@ class DateField extends \Magento\Framework\View\Element\Template
                 'buttonText' => '',
             ]
         ]));
-    }
-
-    /**
-     * Retrieve order model
-     *
-     * @return \Magento\Sales\Model\Order
-     */
-    public function getOrder()
-    {
-        return $this->coreRegistry->registry('sales_order');
-    }
-
-    /**
-     * Submit URL getter
-     *
-     * @return string
-     */
-    public function getAjaxSaveSubmitUrl()
-    {
-        return $this->getUrl('deliverydate/deliverydate/save', ['order_id' => $this->getOrder()->getId()]);
     }
 }

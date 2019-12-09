@@ -3,19 +3,35 @@
         .opc-block-summary {
             .details-qty  {
                 .qty-wrapper {
-                    .lib-fc-css(width, @fc-checkout-cart__qty-wrapper-width);
-                    .lib-fc-css(border-color, @fc-checkout-cart__qty-wrapper-border-color);
-                    .lib-fc-css(border-width, @fc-checkout-cart__qty-wrapper-border-width);
-                    .lib-fc-css(border-radius, @fc-checkout-cart__qty-wrapper-border-radius);
-
                     .qty {
-                        &-toggler {
-                            .lib-fc-css(justify-content, @fc-checkout-cart__toggler-justify-content);
-                            .lib-fc-css(width, @fc-checkout-cart__toggler-width);
-                            .lib-fc-css(border-color, @fc-checkout-cart__toggler-border-color);
+                        .lib-fc-css(background-color, @fc-checkout-cart__qty-background);
+                        .border-color(@fc-checkout-cart__qty-border-color);
+                        .lib-fc-css(color, @fc-checkout-cart__qty-color);
+                        .margin(@fc-checkout-cart__qty-margin);
+                        &-more,
+                        &-less {
                             .lib-fc-css(color, @fc-checkout-cart__toggler-color);
-                            .lib-fc-css(background-color, @fc-checkout-cart__toggler-background-color);
-                            .border-left-width(@fc-checkout-cart__qty-wrapper-border-width);
+                            .lib-fc-css(width, @fc-checkout-cart__toggler-width);
+                            border-radius: @fc-checkout-cart__toggler-border-radius;
+                            border-color: @fc-checkout-cart__toggler-border-color;
+
+                            & when (@modrtl-dir = rtl) {
+                                transform: rotate(180deg);
+                            }
+                        }
+                        &-more {
+                            border-radius: @fc-checkout-cart__toggler-more-border-radius;
+                            &:before,
+                            &:after {
+                                left: @fc-checkout-cart__toggler-more-left;
+                            }
+                        }
+                        &-less {
+                            border-radius: @fc-checkout-cart__toggler-less-border-radius;
+                            &:before,
+                            &:after {
+                                left: @fc-checkout-cart__toggler-less-left;
+                            }
                         }
                     }
                 }

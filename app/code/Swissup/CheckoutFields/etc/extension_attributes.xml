@@ -3,7 +3,4 @@
     <extension_attributes for="Magento\Quote\Api\Data\PaymentInterface">
         <attribute code="swissup_checkout_fields" type="anyType"/>
     </extension_attributes>
-    <extension_attributes for="Magento\Sales\Api\Data\OrderInterface">
-        <attribute code="swissup_checkout_fields" type="Swissup\CheckoutFields\Api\Data\FieldDataInterface[]"/>
-    </extension_attributes>
 </config>

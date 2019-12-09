@@ -32,17 +32,18 @@ class CheckoutData
      * This check is used to render header cart actions and subtotal
      *
      * @param \Magento\Checkout\Helper\Data $subject
-     * @param boolean $result
+     * @param \Closure $proceed
      * @return boolean
      */
-    public function afterCanOnepageCheckout(
+    public function aroundCanOnepageCheckout(
         \Magento\Checkout\Helper\Data $subject,
-        $result
+        \Closure $proceed
     ) {
         if ($this->helper->isFirecheckoutEnabled()) {
             return true;
+        } else {
+            return $proceed();
         }
-        return $result;
     }
 
     /**

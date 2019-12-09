@@ -1,14 +1,3 @@
 Geoip,Geoip
-"MaxMind Database","MaxMind Database"
-"MaxMind Service","MaxMind Service"
-"IpStack","IpStack"
-"Database filename","Database filename"
-"<a href='https://geolite.maxmind.com/download/geoip/database/GeoLite2-City.tar.gz' title='Download GeoCity database'>Download</a> and unzip file under the 'MAGETO_ROOT/var/swissup/geoip/' folder.<br/>Looking for more accurate version of free database? <a href='https://www.maxmind.com/en/geoip2-city'>Purchase</a> and download paid database version.","<a href='https://geolite.maxmind.com/download/geoip/database/GeoLite2-City.tar.gz' title='Download GeoCity database'>Download</a> and unzip file under the 'MAGETO_ROOT/var/swissup/geoip/' folder.<br/>Looking for more accurate version of free database? <a href='https://www.maxmind.com/en/geoip2-city'>Purchase</a> and download paid database version."
-"Maxmind database file was not found.","Maxmind database file was not found."
-Provider,Provider
-"Account ID","Account ID"
-"License Key","License Key"
-"Get your Account ID at <a href='https://www.maxmind.com/en/my_license_key'>https://www.maxmind.com/en/my_license_key</a>","Get your Account ID at <a href='https://www.maxmind.com/en/my_license_key'>https://www.maxmind.com/en/my_license_key</a>"
-"Get your License Key at <a href='https://www.maxmind.com/en/my_license_key'>https://www.maxmind.com/en/my_license_key</a>","Get your License Key at <a href='https://www.maxmind.com/en/my_license_key'>https://www.maxmind.com/en/my_license_key</a>"
-"API Key","API Key"
-"Get your free API key at <a href='https://ipstack.com/product'>https://ipstack.com/product</a>","Get your free API key at <a href='https://ipstack.com/product'>https://ipstack.com/product</a>"
+"Maxmind database filename","Maxmind database filename"
+"<a href='https://geolite.maxmind.com/download/geoip/database/GeoLite2-City.tar.gz' title='Download GeoCity database'>Download</a> and unzip file under the 'MAGETO_ROOT/var/swissup/geoip/' folder","<a href='https://geolite.maxmind.com/download/geoip/database/GeoLite2-City.tar.gz' title='Download GeoCity database'>Download</a> and unzip file under the 'MAGETO_ROOT/var/swissup/geoip/' folder"

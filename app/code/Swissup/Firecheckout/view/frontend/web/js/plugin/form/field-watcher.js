@@ -39,7 +39,7 @@ define([
 
             $(document.body).on(events.join(' '), 'input, select, textarea', function (e) {
                 // delay is used to fix paste and cut events
-                _.delay(self.handle.bind(self), 120, $(e.target));
+                _.delay(self.handle.bind(self), 0, $(e.target));
             });
         },
 

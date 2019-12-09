@@ -3,18 +3,11 @@
     <acl>
         <resources>
             <resource id="Magento_Backend::admin">
-                <resource id="Swissup_Core::swissup">
-                    <resource id="Swissup_Checkout::checkout">
-                        <resource id="Swissup_DeliveryDate::deliverydate" title="Delivery Date" sortOrder="420">
-                            <resource id="Swissup_DeliveryDate::save" title="Save" sortOrder="10" />
-                        </resource>
-                    </resource>
-                </resource>
                 <resource id="Magento_Backend::stores">
                     <resource id="Magento_Backend::stores_settings">
                         <resource id="Magento_Config::config">
                             <resource id="Swissup_Checkout::config">
-                                <resource id="Swissup_DeliveryDate::config" title="Delivery Date" sortOrder="420"/>
+                                <resource id="Swissup_DeliveryDate::config" title="Address Autocomplete" sortOrder="420"/>
                             </resource>
                         </resource>
                     </resource>

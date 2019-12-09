@@ -2,15 +2,14 @@ define([
     'underscore',
     'mage/utils/wrapper',
     'Magento_Checkout/js/model/quote',
-    'Swissup_Firecheckout/js/model/layout',
     'Swissup_Firecheckout/js/action/set-shipping-address'
-], function (_, wrapper, quote, layout, setShippingAddressAction) {
+], function (_, wrapper, quote, setShippingAddressAction) {
     'use strict';
 
     var checkoutConfig = window.checkoutConfig;
 
     return function (target) {
-        if (!checkoutConfig || !checkoutConfig.isFirecheckout || layout.isMultistep()) {
+        if (!checkoutConfig || !checkoutConfig.isFirecheckout) {
             return target;
         }
 
@@ -30,10 +29,7 @@ define([
 
             // save shipping address to get updated payment methods
             if (-1 !== checkoutConfig.swissup.firecheckout.dependencies.payment.indexOf('address')) {
-                if (previousValues &&
-                    !_.isEmpty(previousValues) &&
-                    !_.isEqual(currentValues, previousValues)) {
-
+                if (previousValues && !_.isEqual(currentValues, previousValues)) {
                     setShippingAddressAction();
                 }
             }

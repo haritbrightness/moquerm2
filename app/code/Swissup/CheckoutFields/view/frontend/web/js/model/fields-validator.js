@@ -17,11 +17,11 @@ define(
              *
              * @returns {Boolean}
              */
-            validate: function (hideError) {
+            validate: function () {
                 var checkoutProvider,
                     result;
 
-                if (!swissupCheckoutFieldsEnabled || hideError) {
+                if (!swissupCheckoutFieldsEnabled) {
                     return true;
                 }
 

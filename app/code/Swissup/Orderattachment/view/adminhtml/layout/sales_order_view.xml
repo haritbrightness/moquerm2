@@ -3,6 +3,7 @@
     <head>
         <css src="Swissup_Orderattachment::css/orderattachment.css"/>
     </head>
+    <update handle="editor"/>
     <body>
         <referenceBlock name="sales_order_tabs">
             <block class="Swissup\Orderattachment\Block\Adminhtml\Order\View\Tab\Attachments" name="sales.order.view.tab.attachment" as="swissup.attachments" template="order/view/tab/attachments.phtml"/>

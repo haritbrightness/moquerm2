@@ -55,13 +55,8 @@ class AssetPublisher
             return $result;
         }
 
-        try {
-            $filepath = $asset->getSourceFile();
-            $filename = basename($filepath);
-        } catch (\Exception $e) {
-            return $result;
-        }
-
+        $filepath = $asset->getSourceFile();
+        $filename = basename($filepath);
         if (strpos($filename, MixinsRenderer::FILENAME) === false) {
             return $result;
         }
@@ -82,7 +77,7 @@ class AssetPublisher
             );
 
             $assetAbsolutePath = $staticDir->getAbsolutePath($assetPath);
-            if (is_link($assetAbsolutePath)) {
+            if (@is_link($assetAbsolutePath)) {
                 // delete link to empty _modrtl.less file
                 $staticDir->delete($assetPath);
 

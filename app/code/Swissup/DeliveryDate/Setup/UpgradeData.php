@@ -61,7 +61,7 @@ class UpgradeData implements UpgradeDataInterface
                     continue;
                 }
 
-                $raw = unserialize($config->getValue());
+                $raw = @unserialize($config->getValue());
                 $model = $this->serializedArrayFactory->create()->setValue($raw);
                 $model->beforeSave();
 

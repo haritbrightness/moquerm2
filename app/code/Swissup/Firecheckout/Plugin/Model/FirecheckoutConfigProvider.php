@@ -44,9 +44,7 @@ class FirecheckoutConfigProvider
         array $result
     ) {
         if ($this->helper->isOnFirecheckoutPage()) {
-            $this->fixMissingDefaultAddressId($result);
-
-            if (!$this->helper->isMultistepLayout() && empty($result['paymentMethods'])) {
+            if (empty($result['paymentMethods'])) {
                 $quote = $this->checkoutSession->getQuote();
                 if (!$quote->getIsVirtual()) {
                     foreach ($this->paymentMethodManagement->getList($quote->getId()) as $paymentMethod) {
@@ -60,33 +58,6 @@ class FirecheckoutConfigProvider
             $result['checkoutUrl'] = $this->helper->getFirecheckoutUrl();
         }
         return $result;
-    }
-
-    /**
-     * Fixed missing default_shipping value when expanded layout is used
-     * and client somehow removed its default address.
-     *
-     * This is done to prevent js errors caused by code
-     * in Magento_Checkout/js/view/billing-address.js:
-     *
-     *  ```
-     *  quote.shippingAddress().getCacheKey()
-     *  ```
-     *
-     * @param array &$result
-     * @return void
-     */
-    private function fixMissingDefaultAddressId(&$result)
-    {
-        if (!$this->helper->isMultistepLayout() &&
-            !empty($result['customerData']) &&
-            !empty($result['customerData']['addresses']) &&
-            empty($result['customerData']['default_shipping'])
-        ) {
-            $id = key($result['customerData']['addresses']);
-            $result['customerData']['default_shipping'] = $id;
-            $result['customerData']['addresses'][$id]['default_shipping'] = true;
-        }
     }
 
     /**

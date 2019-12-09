@@ -133,11 +133,6 @@ define([
                 return;
             }
 
-            console.log(
-                'Firecheckout and ClassyLlama_AvaTax address autocorrection: ' +
-                'please use multistep layout to prevent conflicts with third-party payments'
-            );
-
             $('body').on('fc:placeOrderBefore', handlePlaceOrderBefore);
             $('body').on('click', '#validate_address .edit-address', function () {
                 getModalPopup().close();

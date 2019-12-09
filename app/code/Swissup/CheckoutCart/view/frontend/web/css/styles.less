@@ -1,73 +1,121 @@
-@import '_modrtl.less';
+@checkout-cart__toggler-style: 'arrow'; // [sign|arrow]
 
-@checkout-cart__qty-wrapper-border: 1px solid #e4e4e4;
-@checkout-cart__qty-wrapper-border-radius: 0;
+@checkout-cart__toggler-width: 32px;
+@checkout-cart__toggler-height: 32px;
+@checkout-cart__toggler-color: #999;
+@checkout-cart__toggler-border: 1px solid #e4e4e4;
+@checkout-cart__toggler-border-radius: 0;
+@checkout-cart__toggler-line-width: 10px;
+@checkout-cart__toggler-line-height: 2px;
 
-@checkout-cart__qty-width: 40px;
-@checkout-cart__qty-height: 40px;
+@checkout-cart__toggler-arrow-line-height: 1px;
 
-@checkout-cart__toggler-width: 20px;
-@checkout-cart__toggler-height: @checkout-cart__qty-height / 2;
-@checkout-cart__toggler-background-color: #fff;
-@checkout-cart__toggler-color: #777;
-@checkout-cart__toggler-icon-size: 16px;
+@checkout-cart__qty-border: 1px solid #e4e4e4;
 
 #checkout .opc-block-summary {
     .details-qty {
         .qty-wrapper {
-            display: inline-block;
-            position: relative;
-            overflow: hidden;
-            width: @checkout-cart__qty-width + @checkout-cart__toggler-width;
-            height: @checkout-cart__qty-height;
-            border: @checkout-cart__qty-wrapper-border;
-            border-radius: @checkout-cart__qty-wrapper-border-radius;
-
+            display: flex;
+            align-items: center;
             .qty {
-                position: absolute;
-                &,
-                &:focus {
-                    border: 0 !important;
-                    border-radius: 0 !important;
-                }
-            }
-
-            .qty {
-                .left(0);
-                width: @checkout-cart__qty-width !important;
-                height: @checkout-cart__qty-height !important;
-                padding: 0 !important;
+                margin: 0 2px;
+                border: @checkout-cart__qty-border;
+                border-radius: 0;
+                width: 36px !important;
+                height: @checkout-cart__toggler-height !important;
                 text-align: center;
+                padding: 0 !important;
+                box-shadow: none;
             }
-            .qty-toggler {
-                cursor: pointer;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                position: absolute;
-                .right(0);
-                height: @checkout-cart__toggler-height;
-                width: @checkout-cart__toggler-width;
+            .qty-less,
+            .qty-more {
+                border: @checkout-cart__toggler-border;
+                border-radius: @checkout-cart__toggler-border-radius;
+                background: none;
                 color: @checkout-cart__toggler-color;
-                .border-left(@checkout-cart__qty-wrapper-border);
-                background-color: @checkout-cart__toggler-background-color;
-
+                box-shadow: none;
+                padding: 0;
+                cursor: pointer;
+                width: @checkout-cart__toggler-width;
+                height: @checkout-cart__toggler-height;
+                position: relative;
                 &:hover {
-                    color: darken(@checkout-cart__toggler-color, 5%);
-                    background: darken(@checkout-cart__toggler-background-color, 1%);
+                    color: darken(@checkout-cart__toggler-color, 20%);
                 }
+                &::after,
+                &::before {
+                    box-sizing: border-box;
+                    content: '';
+                    position: absolute;
+                    top: 50%;
+                    height: @checkout-cart__toggler-line-height;
+                    width: @checkout-cart__toggler-line-width;
+                    background: currentColor;
+                }
+            }
 
-                svg {
-                    width: @checkout-cart__toggler-icon-size;
-                    height: @checkout-cart__toggler-icon-size;
+            // left & right arrows
+            & when (@checkout-cart__toggler-style = 'arrow') {
+                .qty-less,
+                .qty-more {
+                    &::before,
+                    &::after {
+                        left: 50%;
+                        height: @checkout-cart__toggler-arrow-line-height;
+                        margin-top: -(@checkout-cart__toggler-arrow-line-height / 2);
+                        margin-left: -(@checkout-cart__toggler-line-width / 2);
+                        transform-origin: 0 50% 0;
+                    }
+                    &::before {
+                        transform: rotate(45deg);
+                    }
+                    &::after {
+                        transform: rotate(-45deg);
+                    }
                 }
+                .qty-more {
+                    &::before,
+                    &::after {
+                        transform-origin: 100% 50% 0;
+                    }
+                }
+            }
 
-                &.qty-more {
-                    top: 0;
-                    border-bottom: @checkout-cart__qty-wrapper-border;
+            // plus and minus
+            & when (@checkout-cart__toggler-style = 'sign') {
+                .qty-less,
+                .qty-more {
+                    &::before,
+                    &::after {
+                        left: 50%;
+                        margin-top: -(@checkout-cart__toggler-line-height / 2);
+                        margin-left: -(@checkout-cart__toggler-line-width / 2);
+                    }
+                    &::before {
+                        transform: rotate(0deg);
+                    }
+                    &::after {
+                        transform: rotate(90deg);
+                    }
                 }
-                &.qty-less {
-                    bottom: 0;
+                .qty-less {
+                    &::after {
+                        content: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 839px) {
+    .opc-block-summary {
+        .details-qty {
+            .qty-wrapper {
+                .qty-less,
+                .qty-more {
+                    border: 0;
+                    width: 15px;
                 }
             }
         }

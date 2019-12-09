@@ -151,20 +151,6 @@
                     <label>JS</label>
                 </field>
             </group>
-            <group id="performance" translate="label" type="text" sortOrder="600" showInDefault="1" showInWebsite="1" showInStore="1">
-                <label>Performance</label>
-                <field id="jsbuild" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Use jsBuild</label>
-                    <comment>Combine js files into single jsbuild to reduce number of requests and improve page load time.</comment>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                </field>
-                <field id="jsbuild_paths" translate="label" type="textarea" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>jsBuild include paths</label>
-                    <depends>
-                        <field id="jsbuild">1</field>
-                    </depends>
-                </field>
-            </group>
         </section>
     </system>
 </config>

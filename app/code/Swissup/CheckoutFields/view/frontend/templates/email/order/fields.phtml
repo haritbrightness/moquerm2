@@ -9,12 +9,12 @@
             </td>
         </tr>
     </table>
-    <?php if (count($fields)): ?>
+    <?php if ($fields->getSize()): ?>
         <table class="email-items">
             <tbody>
             <?php foreach ($fields as $field): ?>
                 <tr>
-                    <td><?php echo $block->escapeHtml($field->getLabel()); ?></td>
+                    <td><?php echo $block->escapeHtml($field->getStoreLabel()); ?></td>
                     <td class="col"><strong>
                         <?php
                             $fieldValue = $field->getValue();
@@ -24,7 +24,7 @@
                                     echo '<br>';
                                 }
                             } else {
-                                echo nl2br($block->escapeHtml($fieldValue));
+                                echo $block->escapeHtml($fieldValue);
                             }
                         ?>
                     </strong></td>

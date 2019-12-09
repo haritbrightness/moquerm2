@@ -23,6 +23,5 @@ Main,Main
 Holidays,Holidays
 Offset,Offset
 "Add Holiday","Add Holiday"
-"Delivery Time is required","Delivery Time is required"
-"Delivery Date is required","Delivery Date is required"
+"Delivery Time is not set","Delivery Time is not set"
 "Invalid Delivery Time value","Invalid Delivery Time value"

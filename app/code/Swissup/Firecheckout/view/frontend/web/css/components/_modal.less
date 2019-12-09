@@ -141,34 +141,15 @@
 
     .modal-inner-wrap {
         .action-close {
-            width: 30px;
-            height: 30px;
-            margin: 0;
-
-            &::before,
-            &::after {
-                content: '';
-                position: absolute;
-                .left(8px);
-                top: 12px;
-                height: 20px;
-                width: 2px;
-                background-color: #333;
-                .lib-fc-css(background-color, @fc__text-color);
+            &:before,
+            &:after {
                 .lib-fc-css(color, @fc__text-color);
-            }
-            &::before {
-                transform: rotate(45deg);
-            }
-            &::after {
-                transform: rotate(-45deg);
             }
             & when not (@fc__text-color = false) {
                 &:hover {
-                    &::before,
-                    &::after {
+                    &:before,
+                    &:after {
                         .lib-fc-css(color, fadeout(@fc__text-color, 30%));
-                        .lib-fc-css(background-color, fadeout(@fc__text-color, 30%));
                     }
                 }
             }

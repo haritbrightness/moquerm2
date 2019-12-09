@@ -20,16 +20,17 @@ class Link
 
     /**
      * @param \Magento\Checkout\Block\Link $subject
-     * @param string $result
+     * @param \Closure $proceed
      * @return string
      */
-    public function afterGetHref(
+    public function aroundGetHref(
         \Magento\Checkout\Block\Link $subject,
-        $result
+        \Closure $proceed
     ) {
         if ($this->helper->isFirecheckoutEnabled()) {
             return $this->helper->getFirecheckoutUrl();
+        } else {
+            return $proceed();
         }
-        return $result;
     }
 }

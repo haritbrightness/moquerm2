@@ -1,22 +1,29 @@
 <?php
 namespace Swissup\CheckoutFields\Block\Adminhtml\Order\View;
 
-use Swissup\CheckoutFields\Model\ResourceModel\Field\CollectionFactory as FieldCollectionFactory;
-use Swissup\CheckoutFields\Model\ResourceModel\Field\Value\CollectionFactory as ValueCollectionFactory;
-
 class Fields extends \Magento\Sales\Block\Adminhtml\Order\AbstractOrder
 {
     /**
-     * Checkout fields collection factory
-     * @var FieldCollectionFactory
-     */
-    protected $fieldsCollectionFactory;
-
-    /**
      * Field values collection factory
-     * @var ValueCollectionFactory
+     * @var \Swissup\CheckoutFields\Model\ResourceModel\Field\Value\CollectionFactory
      */
     public $fieldValueCollectionFactory;
+
+    /**
+     * Field option factory
+     * @var \Swissup\CheckoutFields\Model\ResourceModel\Field\Option\CollectionFactory
+     */
+    public $fieldOptionCollectionFactory;
+
+    /**
+     * @var \Magento\Framework\Stdlib\DateTime\TimezoneInterface
+     */
+    protected $localeDate;
+
+    /**
+     * @var \Magento\Config\Model\Config\Source\YesnoFactory
+     */
+    protected $yesnoFactory;
 
     /**
      * @var \Swissup\CheckoutFields\Helper\Data
@@ -27,8 +34,9 @@ class Fields extends \Magento\Sales\Block\Adminhtml\Order\AbstractOrder
      * @param \Magento\Backend\Block\Template\Context $context
      * @param \Magento\Framework\Registry $registry
      * @param \Magento\Sales\Helper\Admin $adminHelper
-     * @param FieldCollectionFactory $fieldsCollectionFactory
-     * @param ValueCollectionFactory $fieldValueCollectionFactory
+     * @param \Swissup\CheckoutFields\Model\ResourceModel\Field\Value\CollectionFactory $fieldValueCollectionFactory
+     * @param \Swissup\CheckoutFields\Model\ResourceModel\Field\Option\CollectionFactory $fieldOptionCollectionFactory
+     * @param \Magento\Config\Model\Config\Source\YesnoFactory $yesnoFactory
      * @param \Swissup\CheckoutFields\Helper\Data $helper
      * @param array $data
      */
@@ -36,132 +44,86 @@ class Fields extends \Magento\Sales\Block\Adminhtml\Order\AbstractOrder
         \Magento\Backend\Block\Template\Context $context,
         \Magento\Framework\Registry $registry,
         \Magento\Sales\Helper\Admin $adminHelper,
-        FieldCollectionFactory $fieldsCollectionFactory,
-        ValueCollectionFactory $fieldValueCollectionFactory,
+        \Swissup\CheckoutFields\Model\ResourceModel\Field\Value\CollectionFactory $fieldValueCollectionFactory,
+        \Swissup\CheckoutFields\Model\ResourceModel\Field\Option\CollectionFactory $fieldOptionCollectionFactory,
+        \Magento\Config\Model\Config\Source\YesnoFactory $yesnoFactory,
         \Swissup\CheckoutFields\Helper\Data $helper,
         array $data = []
     ) {
-        $this->fieldsCollectionFactory = $fieldsCollectionFactory;
         $this->fieldValueCollectionFactory = $fieldValueCollectionFactory;
+        $this->fieldOptionCollectionFactory = $fieldOptionCollectionFactory;
+        $this->localeDate = $context->getLocaleDate();
+        $this->yesnoFactory = $yesnoFactory;
         $this->helper = $helper;
         parent::__construct($context, $registry, $adminHelper, $data);
     }
 
     /**
-     * Get checkout fields edit link
+     * Get link to edit checkout fields page
      *
+     * @param string $label
      * @return string
+     * @todo implement fields edit form
      */
-    public function getEditLink()
+    public function getEditLink($label = '')
     {
-        if ($this->_authorization->isAllowed('Magento_Sales::actions_edit')) {
-            return '<a id="checkout-fields-edit-link" href="#">' . __('Edit') . '</a>';
-        }
-
         return '';
+
+        if ($this->_authorization->isAllowed('Magento_Sales::actions_edit')) {
+            if (empty($label)) {
+                $label = __('Edit');
+            }
+            $url = $this->getUrl(
+                'checkoutfields/field/order',
+                ['order_id' => $this->getOrder()->getId()]
+            );
+            return '<a href="' . $url . '">' . $label . '</a>';
+        }
     }
 
-    /**
-     * Get Fields Values for order
-     * @param  \Magento\Sales\Api\Data\OrderInterface $order
-     * @return \Swissup\CheckoutFields\Api\Data\FieldDataInterface[]|null
-     */
     public function getFields($order = null)
-    {
-        if (!$order) {
-            $order = $this->getOrder();
-        }
-
-        if ($selectedFields = $this->getData('fields_to_show')) {
-            $selectedFields = explode(',', $selectedFields);
-        }
-
-        return $this->helper->getOrderFieldsValues($order, $selectedFields);
-    }
-
-    /**
-     * Retrieve serialized JS layout configuration ready to use in template
-     *
-     * @return string
-     */
-    public function getJsLayout()
-    {
-        $this->prepareJsLayout();
-
-        return parent::getJsLayout();
-    }
-
-    private function prepareJsLayout()
     {
         if (!$this->helper->isEnabled()) {
             return null;
         }
 
-        $config = [];
-        $dataConfig = [];
-        $order = $this->getOrder();
+        if (!$order) {
+            $order = $this->getOrder();
+        }
         $storeId = $order->getStore()->getId();
-        $fields = $this->fieldsCollectionFactory->create()
-            ->addStoreFilter($storeId)
-            ->addIsActiveFilter(1)
-            ->addOrder(
-                \Swissup\CheckoutFields\Api\Data\FieldInterface::SORT_ORDER,
-                \Magento\Framework\Data\Collection::SORT_ORDER_ASC
-            );
 
-        $fieldValues = $this->fieldValueCollectionFactory->create()
+        $fields = $this->fieldValueCollectionFactory
+            ->create()
+            ->addEmptyValueFilter()
             ->addOrderFilter($order->getId())
-            ->addStoreFilter($storeId)
-            ->load();
+            ->addStoreLabel($storeId);
 
         foreach ($fields as $field) {
-            $label = $field->getStoreLabel($storeId);
+            if ($field->getFrontendInput() == 'date') {
+                $formattedDate = $this->localeDate->formatDate(
+                    $this->localeDate->scopeDate(
+                        $order->getStore(),
+                        $field->getValue()
+                    ),
+                    \IntlDateFormatter::MEDIUM,
+                    false
+                );
+                $field->setValue($formattedDate);
+            } elseif ($field->getFrontendInput() == 'boolean') {
+                $yesnoValues = $this->yesnoFactory->create()->toArray();
+                $field->setValue($yesnoValues[$field->getValue()]);
+            } else if ($field->getFrontendInput() == 'select' ||
+                $field->getFrontendInput() == 'multiselect')
+            {
+                $options = $this->fieldOptionCollectionFactory->create()
+                    ->setStoreFilter($storeId)
+                    ->setIdFilter(explode(',', $field->getValue()))
+                    ->getColumnValues('value');
 
-            $validation = [];
-            if ($field->getIsRequired() == 1) {
-                if ($field->getFrontendInput() == 'multiselect') {
-                    $validation['validate-one-required'] = true;
-                }
-                $validation['required-entry'] = true;
+                $field->setValue($options);
             }
-
-            $options = $this->helper->getFieldOptions($field, $storeId);
-            $default = $this->helper->getDefaultValue($field);
-
-            $config[$field->getAttributeCode()] = $this->helper
-                ->getFieldComponent($field, $label, $validation, $default, $options, 'swissupCheckoutFields');
-
-            // set fields values
-            $fieldValueItem = $fieldValues->getItemByColumnValue('field_id', $field->getId());
-            $fieldValue = $fieldValueItem ? $fieldValueItem->getValue() : '';
-            if ($field->getFrontendInput() == 'multiselect') {
-                $fieldValue = $fieldValue ? explode(',', $fieldValue) : [];
-            }
-
-            $dataConfig['swissup_checkout_field[' . $field->getAttributeCode() . ']'] = $fieldValue;
         }
 
-        // save button
-        $config['checkoutfields-save-button'] = [
-            'title' => __('Save'),
-            'visible' => true,
-            'sortOrder' => 9998,
-            'component' => 'Magento_Ui/js/form/components/button',
-            'url' => $this->getUrl(
-                'checkoutfields/order/save',
-                ['order_id' => $this->getOrder()->getId(), 'store_id' => $storeId]
-            )
-        ];
-
-        // cancel button
-        $config['checkoutfields-cancel-button'] = [
-            'title' => __('Cancel'),
-            'visible' => true,
-            'sortOrder' => 9999,
-            'component' => 'Magento_Ui/js/form/components/button'
-        ];
-
-        $this->jsLayout['components']['swissup-checkout-fields']['children'] = $config;
-        $this->jsLayout['components']['swissupCheckoutFields']['swissupCheckoutFields'] = $dataConfig;
+        return $fields;
     }
 }

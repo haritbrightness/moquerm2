@@ -20,16 +20,17 @@ class Cart
 
     /**
      * @param \Magento\Checkout\Block\Cart $subject
-     * @param string $result
+     * @param \Closure $proceed
      * @return string
      */
-    public function afterGetCheckoutUrl(
+    public function aroundGetCheckoutUrl(
         \Magento\Checkout\Block\Cart $subject,
-        $result
+        \Closure $proceed
     ) {
         if ($this->helper->isFirecheckoutEnabled()) {
             return $this->helper->getFirecheckoutUrl();
+        } else {
+            return $proceed();
         }
-        return $result;
     }
 }

@@ -1,16 +1,49 @@
 <?php $fields = $block->getFields(); ?>
-<?php if (is_null($fields)) return; ?>
+<?php if (!$fields) return; ?>
 
-<section class="admin__page-section order-view-swissup-fields">
+<section class="admin__page-section order-view-fields">
     <div class="admin__page-section-title">
         <span class="title"><?php /* @escapeNotVerified */ echo __('Additional Information') ?></span>
         <div class="actions"><?php /* @escapeNotVerified */ echo $block->getEditLink() ?></div>
     </div>
     <div class="admin__page-section-content">
         <div class="admin__page-section-item order-information">
-            <div class="admin__page-section-item-content" data-mage-init='{"Magento_Ui/js/core/app": <?= $block->getJsLayout(); ?>}' data-bind="scope: 'swissup-checkout-fields'">
-                <!-- ko template: getTemplate() --><!-- /ko -->
+            <div class="admin__page-section-item-content">
+                <?php if ($fields->getSize()): ?>
+                    <table class="admin__table-secondary order-information-table">
+                        <tbody>
+                            <?php foreach ($fields as $field): ?>
+                            <tr>
+                                <th><?php echo $block->escapeHtml($field->getStoreLabel()) ?></th>
+                                <td><strong>
+                                <?php
+                                    $fieldValue = $field->getValue();
+                                    if (is_array($fieldValue)) {
+                                        foreach ($fieldValue as $value) {
+                                            echo $block->escapeHtml($value);
+                                            echo '<br>';
+                                        }
+                                    } else {
+                                        echo $block->escapeHtml($fieldValue);
+                                    }
+                                ?>
+                                </strong></td>
+                            </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                <?php else: ?>
+                    <?php /* @escapeNotVerified */ echo __('No additional information found.') ?>
+                <?php endif; ?>
             </div>
         </div>
     </div>
 </section>
+
+<script>
+require(['jquery'], function($) {
+    $(function() {
+        jQuery('.order-addresses').after(jQuery('.order-view-fields'));
+    });
+});
+</script>

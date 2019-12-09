@@ -26,9 +26,9 @@ define([
          * Validate firecheckout form
          */
         validate: function () {
-            var isAddressValid     = layout.isMultistep() || this.validateShippingAddress(),
-                isShippingSelected = isAddressValid && (layout.isMultistep() || this.validateShippingRadios()),
+            var isShippingSelected = layout.isMultistep() || this.validateShippingRadios(),
                 isPaymentSelected  = this.validatePayment(),
+                isAddressValid     = layout.isMultistep() || this.validateShippingAddress(),
                 event = $.Event('fc:validate', {
                     valid: true
                 });
@@ -55,14 +55,7 @@ define([
          * @return {Boolean}
          */
         validateShippingAddress: function () {
-            if (quote.isVirtual()) {
-                return true;
-            }
-
-            // Wyomind_Storepickup module integration (address form is hidden)
-            if ((!customer.isLoggedIn() && !$('.form-shipping-address:visible').length) ||
-                (customer.isLoggedIn() && !$('#checkout-step-shipping:visible').length)
-            ) {
+            if (quote.isVirtual() || !$('.form-shipping-address:visible').length) {
                 return true;
             }
 
@@ -98,10 +91,8 @@ define([
         validatePayment: function () {
             var el = $('#co-payment-form .payment-methods'),
                 payment = quote.paymentMethod(),
-                component,
-                componentValid,
-                form,
-                formValid;
+                paymentComponent,
+                form;
 
             if (!el.length) {
                 return true;
@@ -119,15 +110,23 @@ define([
                 return false;
             }
 
-            component = registry.get(
+            paymentComponent = registry.get(
                 'checkout.steps.billing-step.payment.payments-list.' + payment.method
             );
-            componentValid = !component || component.validate();
+
+            if ((paymentComponent && !paymentComponent.validate()) ||
+                !paymentValidators.validate()) {
+
+                return false;
+            }
 
             form = $('.payment-method._active form');
-            formValid = !form.length || !form.validation || form.validation().valid();
 
-            return paymentValidators.validate() && componentValid && formValid;
+            if (form.length && form.validation && !form.validation().valid()) {
+                return false;
+            }
+
+            return true;
         },
 
         /**

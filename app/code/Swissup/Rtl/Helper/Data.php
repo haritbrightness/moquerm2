@@ -71,13 +71,7 @@ class Data extends AbstractHelper
         }
 
         if (!isset($this->memo[$locale])) {
-            if (strstr($locale, '_') === false) {
-                $language = 'en';
-                $country = 'US';
-            } else {
-                list($language, $country) = explode('_', $locale);
-            }
-
+            list($language, $country) = explode('_', $locale);
             $this->memo[$locale] = array_key_exists(
                 $language,
                 $this->rtlLanguages

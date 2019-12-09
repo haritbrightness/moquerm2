@@ -3,7 +3,6 @@
         <geoip>
             <main>
                 <enable>0</enable>
-                <provider>maxmind_database</provider>
                 <filename>GeoLite2-City.mmdb</filename>
             </main>
         </geoip>

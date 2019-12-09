@@ -26,10 +26,6 @@ var config = {
             'Magento_Checkout/js/model/address-converter': {
                 'Swissup_Firecheckout/js/mixin/model/address-converter-mixin': true
             },
-            // Magento 2.2.8 fix for mistakenly equal billing and shipping addresses
-            'Magento_Checkout/js/action/select-billing-address': {
-                'Swissup_Firecheckout/js/mixin/action/select-billing-address-mixin': true
-            },
             // Call payment methods recalculation on address data change
             'Magento_Checkout/js/action/select-shipping-address': {
                 'Swissup_Firecheckout/js/mixin/action/select-shipping-address-mixin': true
