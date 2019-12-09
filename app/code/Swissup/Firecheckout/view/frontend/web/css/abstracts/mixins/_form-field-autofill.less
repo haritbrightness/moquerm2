@@ -1,0 +1,12 @@
+@-webkit-keyframes firecheckout-autofill-styles {
+    to {
+        .lib-fc-css(background, @fc-form-field__autofill__background-color);
+        .lib-fc-css(color, @fc-form-field__autofill__color);
+    }
+}
+.lib-fc-form-input-autofill() {
+    &:-webkit-autofill {
+        -webkit-animation-name: firecheckout-autofill-styles;
+        -webkit-animation-fill-mode: both;
+    }
+}

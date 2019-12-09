@@ -1,0 +1,20 @@
+.firecheckout {
+    .checkout-agreement {
+        &s-block {
+            // margin-top: 15px;
+        }
+
+        // first line of label should be on the same line with checkbox
+        white-space: nowrap;
+
+        .action {
+            white-space: normal;
+            .text-align(left);
+            text-transform: none;
+        }
+
+        + .checkout-agreement {
+            margin-top: 2px;
+        }
+    }
+}

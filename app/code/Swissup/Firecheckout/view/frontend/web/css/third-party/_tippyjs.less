@@ -1,0 +1,93 @@
+.firecheckout {
+    .tippy-popper {
+        max-width: @fc-tooltip__max-width;
+    }
+
+    .tippy-tooltip {
+        box-shadow: @fc-tooltip__box-shadow;
+
+        &[data-size=small] {
+            font-size: 1.1rem;
+        }
+        &[data-size=regular] {
+            font-size: 1.3rem;
+        }
+        &[data-size=large] {
+            font-size: 1.5rem;
+        }
+
+        &.error-theme {
+            background-color: @fc-tooltip__error__background;
+            .tippy-backdrop {
+                background-color: @fc-tooltip__error__background;
+            }
+            .tippy-roundarrow{
+                fill: @fc-tooltip__error__background;
+            }
+            &[data-animatefill] {
+                background-color: transparent;
+            }
+        }
+        &.warning-theme {
+            background-color: @fc-tooltip__warning__background;
+            .tippy-backdrop {
+                background-color: @fc-tooltip__warning__background;
+            }
+            .tippy-roundarrow{
+                fill: @fc-tooltip__warning__background;
+            }
+            &[data-animatefill] {
+                background-color: transparent;
+            }
+        }
+        &.content-theme {
+            text-align: initial;
+            color: #333;
+            background-color: @fc-tooltip__content__background;
+            .tippy-backdrop {
+                background-color: @fc-tooltip__content__background;
+            }
+            .tippy-roundarrow{
+                fill: @fc-tooltip__content__background;
+            }
+            &[data-animatefill] {
+                background-color: transparent;
+            }
+        }
+    }
+
+    .tippy-popper[x-placement^=top] .tippy-tooltip {
+        &.error-theme {
+            .tippy-arrow {
+                border-top-color: @fc-tooltip__error__background
+            }
+        }
+        &.warning-theme {
+            .tippy-arrow {
+                border-top-color: @fc-tooltip__warning__background
+            }
+        }
+        &.content-theme {
+            .tippy-arrow {
+                border-top-color: @fc-tooltip__content__background
+            }
+        }
+    }
+    .tippy-popper[x-placement^=bottom] .tippy-tooltip {
+        &.error-theme {
+            .tippy-arrow {
+                border-bottom-color: @fc-tooltip__error__background
+            }
+        }
+        &.warning-theme {
+            .tippy-arrow {
+                border-bottom-color: @fc-tooltip__warning__background
+            }
+        }
+        &.content-theme {
+            .tippy-arrow {
+                border-bottom-color: @fc-tooltip__content__background
+            }
+        }
+    }
+}

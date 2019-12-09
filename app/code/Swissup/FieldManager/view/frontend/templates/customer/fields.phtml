@@ -1,0 +1,61 @@
+<?php if ($block->canShow()): ?>
+<?php $id = $block->getNameInLayout(); ?>
+<div id="<?= $id ?>-container" data-bind="scope: '<?= $id ?>'" class="block abs-add-clearfix <?= $id ?>-container">
+    <fieldset class="fieldset">
+    <!-- ko foreach: { data: elems, as: 'element' } -->
+        <!-- ko if: hasTemplate() -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+        <!-- /ko -->
+    <!-- /ko -->
+    </fieldset>
+</div>
+<script type="text/x-magento-init">
+{
+    "#<?= $id ?>-container": {
+        "Magento_Ui/js/core/app": <?= $block->getJsLayout(); ?>
+    }
+}
+</script>
+<script type="text/javascript">
+    require([
+        'Magento_Ui/js/lib/view/utils/async',
+        'underscore',
+        'domReady!'
+    ], function($, _) {
+        var fields = $('#<?= $id ?>-container');
+        $('.fieldset.create.info').first().append(fields);
+        $('.form-address-edit .field').last().after(fields);
+        $('.form-address-edit .message.info').first().before(fields);
+
+        $.async({
+            selector: '.field.required .control > :first-child',
+            ctx: $('#<?= $id ?>-container').get(0)
+        }, function (el) {
+            _.defer(handleRequired.bind(this), $(el));
+        });
+
+        function handleRequired(el) {
+            if (!el || el.get(0).type === 'hidden') {
+                return;
+            }
+
+            el.addClass('required-entry');
+        }
+
+        $.async({
+            selector: '.field.multiple .control > :first-child',
+            ctx: $('#<?= $id ?>-container').get(0)
+        }, function (el) {
+            _.defer(handleMultiple.bind(this), $(el));
+        });
+
+        function handleMultiple(el) {
+            if (!el || el.get(0).type === 'hidden') {
+                return;
+            }
+
+            el.attr('multiple', 'multiple');
+        }
+    });
+</script>
+<?php endif; ?>

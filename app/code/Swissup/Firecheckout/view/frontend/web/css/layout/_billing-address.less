@@ -1,0 +1,100 @@
+.firecheckout {
+    .checkout-billing-address {
+        .billing-address-details {
+            box-sizing: border-box;
+            .padding(0 0 0 28px);
+            background: transparent;
+            line-height: 27px;
+            &:empty {
+                display: none;
+            }
+            .action-edit-address {
+                margin: 8px 0 0 0;
+            }
+        }
+        .actions-toolbar {
+            margin-top: 5px;
+            .primary {
+                .float(right);
+                margin: 0;
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+
+                .action {
+                    + .action {
+                        margin: 0 10px;
+                    }
+                    flex-grow: 0;
+                    width: auto;
+                    margin: 0;
+                }
+                .action-cancel {
+                    order: -1;
+                }
+            }
+        }
+    }
+
+    .checkout-payment-method {
+        .payment-method {
+            .checkout-billing-address {
+                margin: 0 0 10px;
+            }
+        }
+    }
+
+    &,
+    .checkout-payment-method,
+    .checkout-payment-method .payment-method .fieldset {
+        .billing-address {
+            &-same-as-shipping-block {
+                margin: 0 0 10px;
+                padding: 0;
+            }
+            &-form {
+                max-width: none;
+            }
+        }
+    }
+
+    &.equal-billing-shipping {
+        .billing-address-details {
+            display: none;
+        }
+    }
+    &.firecheckout-quote-virtual {
+        .checkout-billing-address {
+            > .fieldset {
+                margin-top: -10px;
+            }
+        }
+        .payment-method-content {
+            .billing-address-details {
+                .padding(0 0 0 18px);
+            }
+        }
+    }
+
+    .step-content + .checkout-billing-address {
+        margin-top: 15px;
+    }
+    .checkout-shipping-address {
+        .checkout-billing-address {
+            margin-bottom: 15px;
+        }
+    }
+}
+
+@media @fc-screen__base__media and (max-width: 1150px) {
+    .firecheckout {
+        &:not(.firecheckout-quote-virtual) {
+            .checkout-billing-address {
+                > .fieldset {
+                    margin-left: -5px;
+                    margin-right: -5px;
+                }
+            }
+        }
+    }
+}

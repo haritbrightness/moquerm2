@@ -1,0 +1,12 @@
+<div class="fieldset subscription">
+    <div class="field">
+        <label class="label" data-bind="attr: { for: element.uid }">
+            <!-- ko if: element.label -->
+                <span data-bind="i18n: element.label"></span>
+            <!-- /ko -->
+        </label>
+        <div class="control">
+            <!-- ko template: element.elementTmpl --><!-- /ko -->
+        </div>
+    </div>
+</div>

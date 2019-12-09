@@ -1,0 +1,152 @@
+.firecheckout {
+    // Always show order summary
+    .opc-sidebar {
+        position: static;
+        left: auto;
+        right: auto;
+        top: auto;
+        bottom: auto;
+        visibility: visible;
+        opacity: 1;
+        transition: none;
+        transform: none;
+        overflow: visible;
+        .modal-inner-wrap {
+            padding: 0;
+            border: 0;
+            background: none;
+            box-shadow: none;
+            height: auto;
+            min-height: 0;
+            width: auto;
+            min-width: 0;
+            transition: none;
+            transform: none;
+            overflow: visible;
+        }
+        .modal-header {
+            display: none !important;
+        }
+        .opc-block-summary {
+            padding: 0;
+            margin: 0;
+            background: none;
+            box-shadow: none;
+            border: none;
+        }
+    }
+    @{fc-container__selector} {
+        .modal-content {
+            margin: 0;
+            padding: 0;
+        }
+    }
+
+    // Fix for possible scrollbar in minicart
+    .opc-block-summary {
+        .product-image-wrapper {
+            img {
+                vertical-align: top;
+            }
+        }
+    }
+
+    // Fieldsets
+    .opc-block-summary {
+        .fieldset {
+            margin: 0 0 15px;
+            > .field {
+                margin: 0 0 15px;
+            }
+        }
+    }
+
+    // Minicart items
+    .items-in-cart.block {
+        margin-bottom: 0;
+    }
+    .items-in-cart {
+        margin-bottom: 0;
+        > .title {
+            border: 0;
+            strong {
+                .lib-fc-subtitle();
+            }
+            &:before {
+                display: none;
+            }
+            &:after {
+                .lib-fc-toggler();
+            }
+            &[aria-expanded="true"] {
+                &:after {
+                    .lib-fc-toggler-up();
+                }
+            }
+        }
+        > .minicart-items {
+            & when (@fc-order-summary__use-overflow-gradient = true) {
+                .lib-fc-overflow-gradient()
+            }
+        }
+    }
+    .minicart-items-wrapper.overflowed {
+        .lib-fc-scrollbar();
+        max-height: 50vh;
+        padding-top: 0 !important;
+        overflow: auto;
+    }
+    .minicart-items-wrapper.overflowed,
+    .opc-block-summary .minicart-items-wrapper.overflowed {
+        .margin(0 -@fc-scrollbar__size 0 0);
+        .padding(0 @fc-scrollbar__size 0 0);
+    }
+
+    @{fc-container__selector} {
+        .minicart-items {
+            .product-item {
+                padding: 10px 0;
+                margin: 0;
+                .lib-fc-css(border-color, @fc__divider-color);
+                .toggle {
+                    &:after {
+                        .lib-fc-css(color, @fc-order-summary__item-toggler-color);
+                    }
+                }
+            }
+        }
+    }
+
+    .opc-block-summary {
+        .actions-toolbar {
+            .secondary {
+                .lib-fc-css(border-top, 1px solid @fc__divider-color);
+                padding: 15px 0;
+            }
+        }
+
+        .table-totals {
+            .lib-fc-css(border-color, @fc__divider-color);
+            .lib-fc-css(border-radius, @fc-order-totals__border-radius);
+            .lib-fc-css(border-collapse, @fc-order-totals__border-collapse);
+            .lib-fc-css(border, @fc-order-totals__border);
+            .lib-fc-css(background, @fc-order-totals__background);
+            .lib-fc-css(padding, @fc-order-totals__padding);
+            .lib-fc-css(margin, @fc-order-totals__margin);
+            tbody tr:last-child td {
+                padding-bottom: 10px;
+            }
+            .grand {
+                .mark,
+                .amount {
+                    border: 0;
+                }
+            }
+            .mark {
+                .value {
+                    .lib-fc-css(color, @fc__text-secondary-color);
+                }
+            }
+        }
+    }
+}

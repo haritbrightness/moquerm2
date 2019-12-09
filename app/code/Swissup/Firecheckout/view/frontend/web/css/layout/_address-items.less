@@ -1,0 +1,88 @@
+.firecheckout {
+    @{fc-wrapper__selector} {
+        .shipping-address-items {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 0 15px;
+        }
+        @media @fc-screen__base__media {
+            .checkout-shipping-address {
+                .addresses {
+                    .control {
+                        .lib-fc-overflow-gradient();
+                        .shipping-address-items {
+                            .margin-right(-6px);
+                            .padding-right(15px);
+                            max-height: 600px;
+                            overflow: auto;
+                            .lib-fc-scrollbar();
+                            .firecheckout-col1-set& {
+                                max-height: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .shipping-address-item {
+            .border-radius(@fc-address-item__border-radius);
+            &.selected-item {
+                .lib-fc-css(border-color, @fc-address-item__border-color);
+                &:after {
+                    .lib-fc-css(background, @fc-address-item__border-color);
+                    .border-radius(0 5px 0 @fc-address-item__border-radius);
+                    .right(0);
+                    .left(auto);
+                }
+            }
+            &:not(.selected-item) {
+                border-color: transparent;
+                &:hover {
+                    .lib-fc-css(background, @fc-address-item__hover__background);
+                }
+            }
+            &:before {
+                display: none; // remove luma's border
+            }
+            button,
+            button + button {
+                margin: 10px 0 0;
+            }
+        }
+
+        .fc-size-l,
+        .fc-size-m {
+            .shipping-address-item {
+                width: 50%;
+                padding: 15px;
+            }
+        }
+        .fc-size-s,
+        .fc-size-xs {
+            .shipping-address-item {
+                width: 100%;
+            }
+        }
+
+        .selected-item {
+            .action-select-shipping-item {
+                display: none;
+            }
+        }
+
+        @media (min-width: 640px) {
+            .shipping-address-item {
+                position: relative;
+                padding-bottom: 55px;
+            }
+            .action-select-shipping-item {
+                line-height: 18px;
+                float: none;
+                margin: 0;
+                position: absolute;
+                bottom: 10px;
+                .right(10px);
+            }
+        }
+    }
+}

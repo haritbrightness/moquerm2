@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="geoip" translate="label" type="text" sortOrder="720" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Geoip</label>
+            <tab>swissup_checkout</tab>
+            <resource>Swissup_Geoip::config</resource>
+            <group id="main" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Main</label>
+                <field id="enable" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="provider" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Provider</label>
+                    <source_model>Swissup\Geoip\Model\Config\Source\Provider</source_model>
+                </field>
+                <field id="filename" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Database filename</label>
+                    <comment><![CDATA[<a href='https://geolite.maxmind.com/download/geoip/database/GeoLite2-City.tar.gz' title='Download GeoCity database'>Download</a> and unzip file under the 'MAGETO_ROOT/var/swissup/geoip/' folder.<br/>Looking for more accurate version of free database? <a href='https://www.maxmind.com/en/geoip2-city'>Purchase</a> and download paid database version.]]></comment>
+                    <depends>
+                        <field id="provider">maxmind_database</field>
+                    </depends>
+                </field>
+                <field id="maxmind_service_account_id" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Account ID</label>
+                    <comment><![CDATA[Get your Account ID at <a href='https://www.maxmind.com/en/my_license_key'>https://www.maxmind.com/en/my_license_key</a>]]></comment>
+                    <depends>
+                        <field id="provider">maxmind_service</field>
+                    </depends>
+                </field>
+                <field id="maxmind_service_license_key" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>License Key</label>
+                    <comment><![CDATA[Get your License Key at <a href='https://www.maxmind.com/en/my_license_key'>https://www.maxmind.com/en/my_license_key</a>]]></comment>
+                    <depends>
+                        <field id="provider">maxmind_service</field>
+                    </depends>
+                </field>
+                <field id="ipstack_api_key" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>API Key</label>
+                    <comment><![CDATA[Get your free API key at <a href='https://ipstack.com/product'>https://ipstack.com/product</a>]]></comment>
+                    <depends>
+                        <field id="provider">ipstack</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

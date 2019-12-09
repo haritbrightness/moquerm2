@@ -1,0 +1,80 @@
+.firecheckout {
+    #checkout-shipping-method-load {
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+    #onepage-checkout-shipping-method-additional-load {
+        margin: 0;
+        > div {
+            margin: 10px 0 15px;
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+    .checkout-shipping-method {
+        .checkout-shipping-method {
+            margin: 0;
+        }
+    }
+    .table-checkout-shipping-method {
+        thead {
+            th {
+                display: none;
+            }
+        }
+        tbody {
+            tr {
+                padding: 0;
+                flex-direction: row;
+                &:first-child {
+                    td {
+                        border: 0;
+                    }
+                }
+            }
+            td {
+                border: 0;
+                padding: 10px;
+                text-align: left;
+                &:first-child {
+                    padding-left: 0;
+                    padding-right: 0;
+                }
+            }
+        }
+    }
+
+    &.fc-hide-shipping-methods {
+        &.fc-single-shipping-method {
+            .checkout-shipping-method {
+                display: none;
+            }
+        }
+    }
+
+    .shipping-policy-block {
+        position: absolute;
+        top: @fc-shipping-policy__top;
+        .right(0);
+        cursor: pointer;
+
+        .field-tooltip-action {
+            &:before {
+                display: inline-block !important;
+                vertical-align: top;
+                content: '';
+                width: @fc-form-field-icon__width;
+                height: @fc-form-field-icon__height;
+                background-image: url(@fc-icon__info);
+                background-repeat: no-repeat;
+                background-position: 50% 50%;
+                background-size: contain;
+            }
+            span {
+                display: none;
+            }
+        }
+    }
+}
