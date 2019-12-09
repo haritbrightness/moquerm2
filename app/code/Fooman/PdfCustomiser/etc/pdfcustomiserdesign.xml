@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Fooman_PdfCustomiser:etc/pdfcustomiserdesign.xsd">
+    <pdfDesign id="default"
+               name="Default Design"
+               classname="Fooman\PdfCustomiser\Model\DefaultDesign"/>
+    <pdfDesign id="alternative"
+               name="Alternative Design"
+               classname="Fooman\PdfCustomiser\Model\AlternativeDesign"/>
+    <pdfDesign id="designone"
+               name="Design One"
+               classname="Fooman\PdfCustomiser\Model\DesignOne"/>
+</config>
