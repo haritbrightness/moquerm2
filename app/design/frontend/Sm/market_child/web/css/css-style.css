@@ -706,6 +706,7 @@ body .cart-container .cart-summary .block>.title:after {
     display: inline-block;
     color: #666;
 }
+}
 [type="radio"]:checked + label:before,
 [type="radio"]:not(:checked) + label:before {
     content: '';
@@ -1037,11 +1038,11 @@ table.data.table.table-totals td {
 html .header-style-10 .header-top-services {
     padding-bottom: 10px;
 }
-.account-header a {
+.account-header a, .header-top .toplinks-wrapper a {
     position: relative;
     padding-left: 24px;
 }
-.account-header a:before {
+.account-header a:before, .header-top .toplinks-wrapper a:before {
     content: "\f2be";
     font-family: "FontAwesome";
     position: absolute;
@@ -1442,11 +1443,11 @@ html .header-style-10 .header-wrapper .header-middle .search-wrapper .actions .b
     color: #fff;
     font-size: 18px;
 }
-.account-header a {
+.account-header a, .header-top .toplinks-wrapper a  {
     font-size: 0;
     display: block;
 }
-.account-header {    
+.account-header, .header-top .toplinks-wrapper {    
     line-height: 24px;
     margin-top: 12px;
 }
@@ -1819,6 +1820,347 @@ body #yt-totop-fix:before {
 .amxnotif-block label {
     margin-bottom: 7px;
 }
+.page-footer .footer-style-3 .footer-block .footer-block-content .links-footer li {
+    margin-bottom: 0;
+}
+.page-footer .footer-style-3 .footer-block .footer-block-content .links-footer li a {
+    padding: 0;
+}
+body.firecheckout #checkout .opc-wrapper .step-title:before, 
+body.firecheckout #checkout .opc-block-summary > .title:before, 
+body.firecheckout #checkout .opc-sidebar .step-title:before {
+    color: #f4a137;
+    border-color: #f4a137;
+}
+body.firecheckout #checkout .opc-wrapper .shipping-address-item.selected-item {
+    border-color: #f4a137;
+}
+body.firecheckout #checkout .opc-wrapper .shipping-address-item.selected-item:after {
+    background: #f4a137;
+}
+body.firecheckout .place-order .actions-toolbar .primary .action {
+    background: #f4a137;
+    border-radius: 20px !important;
+}
+body.firecheckout .opc-block-summary > .place-order:last-child .actions-toolbar {
+    margin: 0;
+}
+body.firecheckout .loading-mask .loader::after {
+    border-top: 3px solid #f4a137;
+}
+body.firecheckout #checkout .opc-wrapper .shipping-address-item button, 
+body.firecheckout #checkout .opc-wrapper .shipping-address-item button + button {
+    background: #f4a137;
+    border-radius: 20px;
+}
+body.firecheckout #checkout .opc-wrapper .shipping-address-item:not(.selected-item) {
+    border-color: #ddd;
+}
+body.firecheckout #checkout .opc-wrapper .opc > li, body.firecheckout #checkout .opc-sidebar {
+    border-color: #ddd;
+    box-shadow: none;
+    border-radius: 0;
+}
+body.firecheckout #checkout .opc-wrapper .step-title, 
+body.firecheckout #checkout .opc-block-summary > .title, 
+body.firecheckout #checkout .opc-sidebar .step-title {
+    font-size: 18px;
+    line-height: 22px;
+    color: #222;
+}
+body.firecheckout #checkout [data-collapsible="true"] > [role="tab"] > span,
+.firecheckout #checkout [data-collapsible="true"] > [role="tab"] > strong, .firecheckout #checkout [data-collapsible="true"] > .title[data-role="title"] > strong {
+    color: #222 !important;
+}
+body.firecheckout .form-shipping-address input[type="checkbox"] + label:before, body.firecheckout #checkout input[type="checkbox"] + label:before, 
+body.firecheckout .form-shipping-address input[type="radio"] + label:before, body.firecheckout #checkout input[type="radio"] + label:before {
+    display: block !important;
+}
+.firecheckout .form-shipping-address input[type="checkbox"] + label::before,
+.firecheckout #checkout input[type="checkbox"] + label::before,
+.firecheckout .form-shipping-address input[type="radio"] + label::before,
+.firecheckout #checkout input[type="radio"] + label::before {
+  display: block !important;
+}
+.firecheckout #checkout input[type="radio"]:checked + label:before,
+.firecheckout #checkout input[type="radio"]:not(:checked) + label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    border: 1px solid #ddd;
+    border-radius: 100%;
+    background: #fff;
+}
+body.firecheckout .form-shipping-address input[type="checkbox"], body.firecheckout #checkout input[type="checkbox"], 
+body.firecheckout .form-shipping-address input[type="radio"], body.firecheckout #checkout input[type="radio"] {
+    position: absolute;
+}
+body.firecheckout #checkout #checkout-shipping-method-load input[type="radio"] {
+    position: static;
+    -webkit-appearance:radio;
+}
+body.firecheckout #opc-shipping_method #checkout-shipping-method-load .table-checkout-shipping-method {
+    width: 100% !important;
+    max-width: 100%;
+    min-width: 0 !important;
+}
+body.firecheckout #opc-shipping_method #checkout-shipping-method-load .table-checkout-shipping-method .col-price {
+    min-width: 0;
+}
+.firecheckout .checkout-payment-method .payment-methods .payment-method {
+    border-bottom: 1px solid #ddd;    
+}
+.firecheckout #checkout [data-collapsible="true"] > [role="tab"] > span:after, .firecheckout #checkout [data-collapsible="true"] > .title[data-role="title"] > span:after, .firecheckout #checkout [data-collapsible="true"] > [role="tab"] > strong:after, .firecheckout #checkout [data-collapsible="true"] > .title[data-role="title"] > strong:after, .firecheckout #checkout [data-collapsible="true"] > [role="tab"] .action-toggle:after, .firecheckout #checkout [data-collapsible="true"] > .title[data-role="title"] .action-toggle:after {
+    border-color: #222 !important;
+    width: 8px !important;
+    height: 8px !important;
+    margin: 0 0 0 11px !important;
+}
+.checkout-payment-method .form-discount input#discount-code {
+    border: 1px solid #ddd !important;
+    background: #fff !important;
+    border-radius: 20px !important;
+    padding: 0 15px !important;
+    height: 35px !important;
+}
+.checkout-payment-method .form-discount .actions-toolbar button.action.action-apply {
+    background: #f4a137 !important;
+    margin: 0;
+}
+.firecheckout .checkout-container .opc-sidebar .modal-content .opc-block-summary {
+    background: #fff;
+    padding: 0;
+}
+.firecheckout #checkout .fc-dirty input[type="radio"] + label {
+    display: block;
+}
+.firecheckout .checkout-payment-method .payment-method-content .form > strong {
+    display: block;
+    margin-bottom: 15px;
+    color: #222;
+}
+body.firecheckout .checkout-payment-method .payment-method-content {
+    padding: 0;
+}
+body.firecheckout .checkout-agreements-block .action {
+    color: #f4a137 !important;
+    padding: 0 !important;
+    height: auto;    
+    font-weight: 600;    
+    white-space: normal;
+}
+body.firecheckout .checkout-agreements-block .action:hover {
+    color: #222 !important;
+}
+body.firecheckout .checkout-shipping-address button,
+body.firecheckout .modal-footer button,
+body.firecheckout #maincontent .authentication-wrapper .action-auth-toggle,
+body.firecheckout .actions-toolbar .action.primary, body.firecheckout .checkout-shipping-address button {
+    background: #f4a137;
+    font-weight: 600;
+    border-radius: 20px;
+}
+body.firecheckout .modal-footer button,
+body.firecheckout #maincontent .authentication-wrapper .action-auth-toggle,
+.block-authentication .action.action-login {
+    background: #f4a137 !important;
+    border-radius: 20px !important;
+}
+.checkout-agreements-block {
+    margin-bottom: 15px;
+}
+.firecheckout .checkout-payment-method .payment-method  .payment-method-title.fc-field-choice label {
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 8px;
+}
+body.firecheckout .opc-block-summary .table-totals {
+    margin-top: 15px;
+}
+body.firecheckout .modal-footer button.action-agree {
+    background: #f4a137;
+    border-radius: 20px;
+    font-weight: 600;
+}
+body.firecheckout .modal-footer button.action-agree:hover,
+body.firecheckout .checkout-shipping-address button:hover,
+body.firecheckout .modal-footer button:hover,
+body.firecheckout #maincontent .authentication-wrapper .action-auth-toggle:hover,
+.block-authentication .action.action-login:hover {
+     background: #f4a137;
+    border-radius: 20px;
+    box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.35) !important;
+}
+.checkout-agreements-item-content {
+    color: #222;
+    font-size: 14px;
+    line-height: 20px;
+}
+.firecheckout .checkout-payment-method .payment-method .payment-method-title.fc-field-choice label:before {
+    margin-top: -4px;
+}
+.firecheckout #checkout input[type="radio"]:checked + label:after {
+    -webkit-transform: scale(1) translateY(-50%);
+    transform: scale(1) translateY(-50%);
+    top: 50%;
+}
+.firecheckout .checkout-payment-method .payment-method .payment-method-title.fc-field-choice label:after {
+    margin-top: -4px;
+}
+.firecheckout .opc-block-summary .product-item .price {
+    font-size: 14px;
+    font-weight: 600;
+    color: #222;
+    line-height: 21px;
+}
+.firecheckout.checkout-index-index .modal-popup .form-shipping-address {
+    max-width: 100%;
+}
+body.firecheckout .checkout-container .input-text,
+body.firecheckout .checkout-container select,
+body.firecheckout .modal-popup .form-shipping-address .input-text,
+body.firecheckout .modal-popup .form-shipping-address select,
+body .block-customer-login .modal-custom .input-text,
+.firecheckout.fc-form-hide-labels #maincontent .block-authentication .fieldset div.field:not(.choice) input {
+    background: none !important;
+    border: 1px solid #ddd !important;    
+    border-radius: 0 !important;    
+    height: 35px !important;
+}
+body.firecheckout #checkout .field .field-tooltip, body.firecheckout .modal-custom .field .field-tooltip, 
+body.firecheckout .modal-popup .field .field-tooltip {
+    top: 1px !important;
+}
+.firecheckout.fc-form-hide-labels .form-shipping-address .fieldset div.field:not(.choice).fc-dirty > .label, .firecheckout.fc-form-hide-labels #checkout .form-login .fieldset div.field:not(.choice).fc-dirty > .label, .firecheckout.fc-form-hide-labels #maincontent .block-authentication .fieldset div.field:not(.choice).fc-dirty > .label, .firecheckout.fc-form-hide-labels #checkout .checkout-shipping-address .fieldset div.field:not(.choice).fc-dirty > .label, .firecheckout.fc-form-hide-labels #checkout .checkout-billing-address .fieldset div.field:not(.choice).fc-dirty > .label {
+    top: 5px !important;
+}
+body.firecheckout .checkout-container .field._required._error .input-text {
+    border-color: #f00 !important;
+}
+.checkout-agreement {
+    margin-bottom: 10px;
+}
+body.firecheckout .form-shipping-address input[type="radio"]:after, 
+body.firecheckout #checkout input[type="radio"]:after {
+    background-image: none;
+}
+body.firecheckout .table-checkout-shipping-method .col-method {    
+    padding-left: 2px;
+    padding-right: 2px;
+}
+td.postnl-deliveryoptions {
+    padding: 0 !important;
+}
+
+html .header-style-10 .header-wrapper .right-content .toplinks-wrapper .header.links li.authorization-link a::before {
+    font-size: 23px;
+}
+.header-top .toplinks-wrapper a:hover:before {
+    color: #f4a137 !important;
+}
+.header-style-10 .header-wrapper .right-content .toplinks-wrapper .header.links li:first-child {
+    margin-left: 0 !important;
+}
+body .postnl-deliveryoptions .delivery_options .delivery, 
+body .postnl-deliveryoptions .delivery_options .pickup,
+body .postnl-deliveryoptions .delivery_options .btn-group {
+    background: #fff;
+    border-color: #ddd;
+    border-radius: 0;
+}
+.postnl-deliveryoptions .delivery_options .delivery .days .wrapper,
+.postnl-deliveryoptions .delivery_options .delivery .days .wrapper ul li label, 
+.postnl-deliveryoptions .delivery_options .delivery .days .wrapper ol li label,
+.postnl-deliveryoptions .delivery_options .pickup .locations li label,
+.postnl-deliveryoptions .delivery_options .pickup ul li {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+}
+body .postnl-deliveryoptions .delivery_options .delivery .days .wrapper ul li .tig-postnl-delivery-option, 
+body .postnl-deliveryoptions .delivery_options .delivery .days .wrapper ol li .tig-postnl-delivery-option {
+    position: static;
+}
+body .postnl-deliveryoptions .delivery_options .delivery .days .wrapper strong {
+    width: 35%;
+    color: #222;
+}
+body .postnl-deliveryoptions .delivery_options .delivery .days .wrapper ul, 
+body .postnl-deliveryoptions .delivery_options .delivery .days .wrapper ol {
+    width: 75%;
+}
+.postnl-deliveryoptions .delivery_options .delivery ul li label:hover, .postnl-deliveryoptions .delivery_options .pickup ul li label:hover, .postnl-deliveryoptions .delivery_options .delivery ol li label:hover, .postnl-deliveryoptions .delivery_options .pickup ol li label:hover {
+    background: none !important;
+}
+.postnl-deliveryoptions .delivery_options button.btn.btn-default .data {
+    color: #222;
+    font-weight: 600;
+}
+body .postnl-deliveryoptions .delivery_options button.btn.btn-default:hover,
+body .postnl-deliveryoptions .delivery_options button.btn.btn-default.button-active {
+    background: #f2f2f2;
+}
+body .postnl-deliveryoptions .delivery_options .pickup .locations li .tig-postnl-pickup-hours-clock {
+    fill: #f4a137;
+    vertical-align: middle;
+}
+body .postnl-deliveryoptions .delivery_options .pickup .locations li .tig-postnl-pickup-hours {
+    margin-top: 0;
+}
+body .postnl-deliveryoptions .delivery_options .pickup .locations li .tig-postnl-distance {
+    font-weight: 600;
+    line-height: 15px;
+}
+.postnl-deliveryoptions .delivery_options .pickup .locations li .tig-postnl-pickup-name {
+    color: #222;
+}
+.postnl-deliveryoptions .delivery_options button.btn.btn-default .label {
+    color: #222;
+    font-weight: 600 !important;
+}
+.firecheckout .form-shipping-address input[type="checkbox"]:checked, .firecheckout #checkout input[type="checkbox"]:checked, .firecheckout .form-shipping-address input[type="radio"]:checked, .firecheckout #checkout input[type="radio"]:checked {
+    box-shadow: none !important;
+}
+body .modal-popup .modal-title {
+    border-color: #ddd !important;
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+}
+.firecheckout .modal-popup legend.label {
+    padding-left: 6px !important;
+    font-weight: 600 !important;
+}
+fieldset#pc-postcode-fieldset {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+.modal-slide .modal-header, .modal-slide .modal-content, .modal-slide .modal-footer {
+    padding-bottom: 0;
+}
+.modal-popup .modal-footer {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.firecheckout .checkout-shipping-address .action.primary:hover, .firecheckout .checkout-billing-address .action.primary:hover, .firecheckout .modal-footer .action.primary:hover, .firecheckout .actions-toolbar .action.primary:hover, .firecheckout .checkout-shipping-address button:hover, .firecheckout .checkout-billing-address button:hover, .firecheckout .modal-footer button:hover, .firecheckout .actions-toolbar button:hover, .firecheckout .checkout-shipping-address .action.primary:focus, .firecheckout .checkout-billing-address .action.primary:focus, .firecheckout .modal-footer .action.primary:focus, .firecheckout .actions-toolbar .action.primary:focus, .firecheckout .checkout-shipping-address button:focus, .firecheckout .checkout-billing-address button:focus, .firecheckout .modal-footer button:focus, .firecheckout .actions-toolbar button:focus {
+    background: #f4a137 !important;
+    border-radius: 20px !important;
+    box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.35) !important;
+}
+.firecheckout .modal-custom .action-close, .firecheckout .modal-popup .action-close, .firecheckout .modal-slide .action-close {
+    top: 11px;
+}
+.modal-popup .fieldset > .field, .modal-popup .fieldset > .fields > .field {
+    margin-bottom: 8px !important;
+}
 
 @media print {
     .account .column.main .block:not(.widget) .block-content .box:nth-child(odd) {
@@ -1835,6 +2177,8 @@ body #yt-totop-fix:before {
         width: 48.8%;
     }
 }
+
+
 
 /*--responsive css start--*/
 
@@ -1855,6 +2199,13 @@ body #yt-totop-fix:before {
     }
     .header-wrapper {
         width: 100% !important;
+    }
+    body .postnl-deliveryoptions .delivery_options .pickup .locations li label .location-container {
+        width: auto;
+    }
+    
+    body .postnl-deliveryoptions .delivery_options .pickup .locations li .tig-postnl-address-container {
+        padding-left: 5px;
     }
 }
 @media only screen and (max-width: 1199px) {
@@ -1898,6 +2249,9 @@ body #yt-totop-fix:before {
     }
     .product-1-style .products-grid .product-item-actions .actions-primary .tocart {
         padding: 5px 7px !important;        
+    }
+    .header-style-10 .header-wrapper .right-content .toplinks-wrapper .header.links li {
+        margin-left: 6px !important;
     }
 }
 @media only screen and (max-width: 991px) {
@@ -2039,6 +2393,44 @@ body #yt-totop-fix:before {
     }
     .catalog-product-view .product-info-main .product-info-stock-sku {
         margin-top: -6px;
+    }
+    body.firecheckout.firecheckout-col3-set #checkout .opc-wrapper .opc > li,
+    body.firecheckout.firecheckout-col3-set #checkout .opc-sidebar {
+        width: 100%;
+        margin: 0 0 10px;
+    }
+    body.firecheckout.firecheckout-col3-set #checkout .opc-wrapper {
+        width: 100%;
+    }
+    .header-top .toplinks-wrapper a {
+        font-size: 14px;
+        line-height: 24px;
+        padding-left: 28px;
+    }
+    html .header-style-10 .header-top .toplinks-wrapper:before,
+    html .header-style-10 .header-top .toplinks-wrapper:hover:before {
+        background: #f4a137;
+    }
+    .header-top .toplinks-wrapper {
+        margin-top: 5px;
+    }
+    html .header-style-10 .header-top .toplinks-wrapper .header.links {
+        background: #f4a137;
+    }
+    html .header-style-10 .header-wrapper .right-content .toplinks-wrapper .header.links li.authorization-link a::before {
+        left: 3px;
+        top: 0;
+        margin: 0;
+        width: auto;
+        right: auto;
+        color: #fff;
+    }
+    html .header-style-10 .header-wrapper .right-content .toplinks-wrapper .header.links li {
+        height: auto;
+        margin: 8px 0 !important;
+    }
+    .header-top .toplinks-wrapper a:before {
+        color: #fff;
     }
 }
 
@@ -2332,7 +2724,7 @@ body #yt-totop-fix:before {
         padding-top: 10px !important;
     }
     .header-nav-wrapper {
-        margin: 7px 0;        
+        margin: 7px 0 16px;        
     }
     .navbar-active .header-nav-wrapper {
         z-index: 9999;
@@ -2502,6 +2894,61 @@ body #yt-totop-fix:before {
     .payment-country-option-block {
         width: 50%;
     }
+    .firecheckout.fc-form-compact .form-shipping-address .fieldset div.field, .firecheckout.fc-form-compact #checkout .checkout-shipping-address .fieldset div.field, .firecheckout.fc-form-compact #checkout .checkout-billing-address .fieldset div.field {
+        width: 100% !important;
+    }
+    body.firecheckout .form-shipping-address input[type="checkbox"] + label:before, body.firecheckout #checkout input[type="checkbox"] + label:before {
+        top: 4px;
+    }
+    body.firecheckout .form-shipping-address .fieldset div.field > .label::after {
+        top: 5px;
+    }
+    body.firecheckout .form-shipping-address .fieldset div.field {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    body.firecheckout #checkout input[type="checkbox"] + label:after {
+        top: 5px;
+    }
+    .firecheckout #checkout-shipping-method-load td {
+        border-top: 1px solid #ddd;
+    }
+    .firecheckout #checkout .opc-wrapper .step-content > * + .form-shipping-address,
+    .firecheckout #checkout .opc-wrapper .checkout-shipping-method .methods-shipping {
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+    fieldset#pc-postcode-fieldset {
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+    .header-top .toplinks-wrapper {
+        margin-top: 0;
+    }
+    .postnl-deliveryoptions .delivery_options {
+        margin-top: 10px;
+    }
+    .postnl-deliveryoptions .delivery_options .delivery .days .wrapper, .postnl-deliveryoptions .delivery_options .delivery .days .wrapper ul li label, .postnl-deliveryoptions .delivery_options .delivery .days .wrapper ol li label, .postnl-deliveryoptions .delivery_options .pickup .locations li label, .postnl-deliveryoptions .delivery_options .pickup ul li {
+        -webkit-flex-wrap: wrap;
+        -moz-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+        -o-flex-wrap: wrap;
+        flex-wrap: wrap;
+    }
+    .postnl-deliveryoptions .delivery_options .pickup label {
+        width: auto !important;
+    }
+    body .postnl-deliveryoptions .delivery_options .delivery .days .wrapper ul, body .postnl-deliveryoptions .delivery_options .delivery .days .wrapper ol {
+        width: auto;
+    }
+    body .postnl-deliveryoptions .delivery_options .delivery .days .wrapper ul li .tig-postnl-delivery-option, body .postnl-deliveryoptions .delivery_options .delivery .days .wrapper ol li .tig-postnl-delivery-option {
+        padding-left: 15px;
+    }
+    .postnl-deliveryoptions .delivery_options .delivery .days .wrapper {
+        -webkit-justify-content: space-between;
+        justify-content: space-between;
+        padding-right: 15px;
+    }
 }
 @media only screen and (max-width: 639px) {
     .opc-wrapper .step-title {
@@ -2572,5 +3019,23 @@ body #yt-totop-fix:before {
     #label_method_regular_tig_postnl:before {
         background-size: auto 19px !important;
         width: 33px !important;
+    }
+}
+@media only screen and (max-width: 530px) {
+    .postnl-deliveryoptions .delivery_options .pickup .locations li label {
+        padding-left: 10px !important;
+    }
+}
+@media only screen and (max-width: 399px) {
+    body .postnl-deliveryoptions .delivery_options .delivery .days .wrapper strong {
+        width: 100%;
+    }
+    body .postnl-deliveryoptions .delivery_options .delivery .days .wrapper ul, body .postnl-deliveryoptions .delivery_options .delivery .days .wrapper ol {
+        width: 100%;
+        padding: 0 15px 15px;
+    }
+    body .postnl-deliveryoptions .delivery_options .delivery .days .wrapper ul li .tig-postnl-delivery-option, body .postnl-deliveryoptions .delivery_options .delivery .days .wrapper ol li .tig-postnl-delivery-option {
+        width: auto;
+        padding-left: 0;
     }
 }
