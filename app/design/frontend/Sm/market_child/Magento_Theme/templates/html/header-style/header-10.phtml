@@ -62,9 +62,7 @@
                                         </div>
                                     </div>
                                     <div class="action-content">
-                                        <div class="account-header">
-                                            <a href="<?php echo $block->getUrl('customer/account'); ?>">My Account</a>
-                                        </div>
+                                    <?php echo $block->getChildHtml('toplinks-header'); ?>
                                         <div class="minicart-header">
                                             <?php echo $block->getChildHtml('cart-header'); ?>
                                         </div>
