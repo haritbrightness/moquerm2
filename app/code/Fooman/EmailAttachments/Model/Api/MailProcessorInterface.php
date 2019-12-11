@@ -13,8 +13,7 @@ namespace Fooman\EmailAttachments\Model\Api;
  */
 interface MailProcessorInterface
 {
-    public function createMultipartMessage(
-        \Magento\Framework\Mail\MailMessageInterface $message,
+    public function createMultipartMessage($message,
         AttachmentContainerInterface $attachmentContainer
     );
 }

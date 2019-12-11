@@ -54,7 +54,7 @@ class EmailEventDispatcher
         $this->mailProcessor = $mailProcessor;
     }
 
-    public function dispatch(\Magento\Framework\Mail\MessageInterface $message)
+    public function dispatch($message)
     {
         if ($this->nextEmailInfo->getTemplateIdentifier()) {
             $this->determineEmailAndDispatch();
@@ -78,7 +78,7 @@ class EmailEventDispatcher
         }
     }
 
-    public function attachIfNeeded(\Magento\Framework\Mail\MessageInterface $message)
+    public function attachIfNeeded($message)
     {
         $this->mailProcessor->createMultipartMessage($message, $this->attachmentContainer);
     }

@@ -18,8 +18,7 @@ use Fooman\EmailAttachments\Model\Api\AttachmentInterface;
  */
 class MailProcessor implements Api\MailProcessorInterface
 {
-    public function createMultipartMessage(
-        \Magento\Framework\Mail\MailMessageInterface $message,
+    public function createMultipartMessage($message,
         Api\AttachmentContainerInterface $attachmentContainer
     ) {
         if ($attachmentContainer->hasAttachments()) {
