@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Aitoc Team
+ * @copyright Copyright (c) 2019 Aitoc (https://www.aitoc.com)
+ * @package Aitoc_OrdersExportImport
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/system_file.xsd">
+    <system>
+        <section id="aitoie" translate="label" type="text" sortOrder="300" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Orders Import Export</label>
+            <tab>aitoc_extensions</tab>
+            <resource>Aitoc_OrdersExportImport::aitoie</resource>
+            
+            <group id="general" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General Settings</label>
+                <attribute type="expanded">1</attribute>
+                
+                <field id="bulk_count" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Bulk Export/Import Count</label>
+                    <validate>integer validate-greater-than-zero</validate>
+                </field>
+                
+                <field id="errorlog_diskspace_limit" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Import Error Log Disk Space Limit (Mb)</label>
+                    <validate>integer validate-greater-than-zero</validate>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

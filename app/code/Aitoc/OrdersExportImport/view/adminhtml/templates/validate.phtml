@@ -1,0 +1,142 @@
+<?php
+/**
+ * @author Aitoc Team
+ * @copyright Copyright (c) 2019 Aitoc (https://www.aitoc.com)
+ * @package Aitoc_OrdersExportImport
+ */
+?>
+<script>
+    require([
+         'jquery',
+        'Magento_Ui/js/modal/alert',
+        'Aitoc_OrdersExportImport/js/import',
+        'underscore',
+        'prototype',
+        'jquery/ui'
+    ], function (jQuery,alert, imports,_) {
+
+        aitocImport =  {
+            sampleFilesBaseUrl: "<?= /* @escapeNotVerified */ $block->getUrl('*/*/validate/') ?>",
+
+            /**
+             * Post form data to dynamic iframe.
+             * @param {string} newActionUrl OPTIONAL Change form action to this if specified
+             */
+            postToFrame: function () {
+                jQuery('body')
+                    .loader({
+                        icon: jQuery('#loading_mask_loader img').attr('src')
+                    })
+                    .loader('show');
+                var postData = imports.getData();
+                if (postData != 0) {
+                    var self = this;
+                    jQuery.post(this.sampleFilesBaseUrl, postData, function (data) {
+                        if (data != 0) {
+                            self.postToFrameProcessResponse(jQuery.parseJSON(data));
+                        }
+                    });
+                } else {
+                    jQuery('body')
+                        .loader({
+                            icon: jQuery('#loading_mask_loader img').attr('src')
+                        })
+                        .loader('hide');
+                }
+            },
+
+            /**
+             * Process response JSON.
+             * @param {Object} response
+             */
+            postToFrameProcessResponse: function (response) {
+                if ('object' != typeof(response)) {
+                    alert({
+                        content: 'Invalid response'
+                    });
+
+                    return false;
+                }
+                var exception = 0;
+                $H(response).each(function(pair) {
+                    switch (pair.key) {
+                        case 'show':
+                        case 'clear':
+                        case 'hide':
+                            if (_.size(pair.value) > 0 ) {
+                                if (pair.key == 'show') {
+                                    exception = 1;
+                                }
+
+                                jQuery.each(pair.value,function (val) {
+                                    if ($(val.value)) {
+                                        jQuery("#" +val.value)[pair.key]();
+                                    }
+                                });
+                            }
+                            break;
+                        case 'innerHTML':
+                        case 'value':
+                            if (_.size(pair.value) > 0 ) {
+                                $H(pair.value).each(function (val) {
+                                    var el = $(val.key);
+                                    if (el) {
+                                        if (el.id == 'import_validation_messages') {
+                                            var errorElSelector =
+                                                '.message.message-error.error';
+
+                                            if (jQuery(errorElSelector).length) {
+                                                exception = 1;
+                                            }
+                                        }
+
+                                        el[pair.key] = val.value;
+                                        el.offsetWidth || el.up('div.entry-edit').show();
+                                    }
+                                });
+                            }
+                            break;
+                        case 'removeClassName':
+                        case 'addClassName':
+                            if (_.size(pair.value) > 0 ) {
+                                $H(pair.value).each(function (val) {
+                                    if ($(val.key)) $(val.key)[pair.key](val.value);
+                                });
+                            }
+                            break;
+                        case 'exception':
+                            if (_.size(pair.value) > 0 ) {
+                                $H(pair.value).each(function (val) {
+                                    if (val.value == 1) {
+                                        exception = 1;
+                                    }
+                                });
+                            }
+                            break;
+                        default:
+                            alert({
+                                content: pair.key + ': ' + pair.value
+                            });
+                            break;
+                    }
+                });
+
+                if (exception == 0) {
+                    imports.isShow(1);
+                } else {
+                    imports.isShow(0);
+                }
+                jQuery('body')
+                    .loader({
+                        icon: jQuery('#loading_mask_loader img').attr('src')
+                    })
+                    .loader('hide');
+                jQuery('html, body').animate(
+                    { scrollTop: jQuery("#import_validation_container").offset().top },
+                    'slow'
+                );
+            }
+        };
+
+    });
+</script>

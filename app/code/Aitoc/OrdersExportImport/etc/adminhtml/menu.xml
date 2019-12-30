@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Aitoc Team
+ * @copyright Copyright (c) 2019 Aitoc (https://www.aitoc.com)
+ * @package Aitoc_OrdersExportImport
+ */
+-->
+<!--
+/**
+ * Copyright © Aitoc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Aitoc_OrdersExportImport::import"
+             toolTip="Aitoc Extension"
+             title="Import Profiles"
+             module="Aitoc_OrdersExportImport"
+             parent="Aitoc_OrdersExportImport::manage"
+             action="ordersexportimport/import"
+             resource="Aitoc_OrdersExportImport::import"/>
+        <add id="Aitoc_OrdersExportImport::manage"
+             toolTip="Aitoc Extension"
+             title="Order Export &amp; Import"
+             module="Aitoc_OrdersExportImport"
+             parent="Magento_Backend::system"
+             resource="Aitoc_OrdersExportImport::manage"/>
+             
+        <add id="Aitoc_OrdersExportImport::profile"
+             toolTip="Aitoc Extension"
+             title="Export Profiles"
+             module="Aitoc_OrdersExportImport"
+             parent="Aitoc_OrdersExportImport::manage"
+             action="ordersexportimport/profile"
+             resource="Aitoc_OrdersExportImport::profile"/>
+             
+        <add id="Aitoc_OrdersExportImport::export"
+             toolTip="Aitoc Extension"
+             title="Export History"
+             module="Aitoc_OrdersExportImport"
+             parent="Aitoc_OrdersExportImport::manage"
+             action="ordersexportimport/export"
+             resource="Aitoc_OrdersExportImport::export"/>
+
+    </menu>
+</config>

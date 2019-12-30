@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Aitoc Team
+ * @copyright Copyright (c) 2019 Aitoc (https://www.aitoc.com)
+ * @package Aitoc_OrdersExportImport
+ */
+-->
+<!--
+/**
+ * Copyright © 2016 Aitoc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Aitoc_OrdersExportImport::css/main.css"/>
+    </head>
+    <update handle="editor"/>
+    <body>
+        <referenceContainer name="content">
+            <block class="Aitoc\OrdersExportImport\Block\Adminhtml\Import\Edit\Validate" template="Aitoc_OrdersExportImport::validate.phtml" name="aitocimport.validate"/>
+            <uiComponent name="ordersexportimport_import_edit"/>
+            <block class="Magento\Backend\Block\Template" template="Aitoc_OrdersExportImport::after.phtml" name="import.form.after"/>
+        </referenceContainer>
+    </body>
+</page>

@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Aitoc Team
+ * @copyright Copyright (c) 2019 Aitoc (https://www.aitoc.com)
+ * @package Aitoc_OrdersExportImport
+ */
+-->
+<!--
+/**
+ * Copyright © Aitoc. All rights reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <aitoie>
+            <general>
+                <bulk_count>50</bulk_count>
+                <errorlog_diskspace_limit>500</errorlog_diskspace_limit>
+            </general>
+        </aitoie>
+        
+        <processor>
+            <data_filters>
+                <columnpath>Aitoc\OrdersExportImport\Model\Processor\DataFilter\ColumnPath</columnpath>
+                <multilinecsvparser>Aitoc\OrdersExportImport\Model\Processor\DataFilter\MultilineCsvParser</multilinecsvparser>
+                <xmlparser>Aitoc\OrdersExportImport\Model\Processor\DataFilter\XmlParser</xmlparser>
+                <xmlformatter>Aitoc\OrdersExportImport\Model\Processor\DataFilter\XmlFormatter</xmlformatter>
+                <multilinecsvformatter>Aitoc\OrdersExportImport\Model\Processor\DataFilter\MultilineCsvFormatter</multilinecsvformatter>
+            </data_filters>
+            <containers>
+                <xml>Aitoc\OrdersExportImport\Model\Processor\Container\Xml</xml>
+                <csv>Aitoc\OrdersExportImport\Model\Processor\Container\Csv</csv>
+                <csvmultiline>Aitoc\OrdersExportImport\Model\Processor\Container\CsvMultiline</csvmultiline>
+            </containers>
+            <entity_types>
+                <order>Aitoc\OrdersExportImport\Model\Processor\EntityType\Order</order>
+            </entity_types>
+            <export>
+                <order>
+                    <xml>
+                        <xmlformatter>
+                            <structure>
+                                <shipment>
+                                    <root>shipment</root>
+                                    <multiple>true</multiple>
+                                    <normalize>
+                                        <items><source>item</source><destination>items/item</destination></items>
+                                        <comments><source>comment</source><destination>comments/comment</destination></comments>
+                                        <track><source>trackinginformation</source><destination>trackingsinformation/trackinginformation</destination></track>
+                                    </normalize>
+                                </shipment>
+                                <invoice>
+                                    <root>invoice</root>
+                                    <multiple>true</multiple>
+                                    <normalize>
+                                        <items><source>item</source><destination>items/item</destination></items>
+                                        <comments><source>comment</source><destination>comments/comment</destination></comments>
+                                    </normalize>
+                                </invoice>
+                                <creditmemo>
+                                    <root>creditmemo</root>
+                                    <multiple>true</multiple>
+                                    <normalize>
+                                        <items><source>item</source><destination>items/item</destination></items>
+                                        <comments><source>comment</source><destination>comments/comment</destination></comments>
+                                    </normalize>
+                                </creditmemo>
+                                <!-- parent entity should be at the end -->
+                                <order>
+                                    <root></root>
+                                    <multiple>false</multiple>
+                                    <normalize>
+                                        <items><source>item</source><destination>items/item</destination></items>
+                                        <address><source>address</source><destination>addresses/address</destination></address>
+                                        <payment><source>payment</source><destination>payments/payment</destination></payment>
+                                        <statushistory><source>statushistory</source><destination>statuseshistory/statushistory</destination></statushistory>
+                                        <!-- sub entities -->
+                                        <shipment><source>shipment</source><destination>shipments/shipment</destination></shipment>
+                                        <invoice><source>invoice</source><destination>invoices/invoice</destination></invoice>
+                                        <creditmemo><source>creditmemo</source><destination>creditmemos/creditmemo</destination></creditmemo>
+                                        <transaction><source>paymenttransaction</source><destination>paymentstransaction/paymenttransaction</destination></transaction>
+                                    </normalize>
+                                </order>
+                            </structure>
+                        </xmlformatter>
+                    </xml>
+                    <csvmultiline>
+                        <multilinecsvformatter/>
+                    </csvmultiline>
+                </order>
+            </export>
+            <import>
+                <order>
+                    <csvmultiline>
+                        <multilinecsvparser/>
+                    </csvmultiline>
+                    <csv>
+                        <columnpath>
+                            <fieldname_parse_pattern>/[a-z_]+|\d+/i</fieldname_parse_pattern>
+                        </columnpath>
+                    </csv>
+                    <xml>
+                        <xmlparser/>
+                    </xml>
+                </order>
+            </import>
+            <email>
+                <template>oei_email_template</template>
+            </email>
+        </processor>
+    </default>
+</config>

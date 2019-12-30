@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * @author Aitoc Team
+ * @copyright Copyright (c) 2019 Aitoc (https://www.aitoc.com)
+ * @package Aitoc_OrdersExportImport
+ */
+-->
+<!--
+/**
+ * Copyright © 2016 Aitoc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">ordersexportimport_profile_form.profile_form_data_source</item>
+            <item name="deps" xsi:type="string">ordersexportimport_profile_form.profile_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Profile Information</item>
+        <item name="config" xsi:type="array">
+            <item name="dataScope" xsi:type="string">data</item>
+            <item name="namespace" xsi:type="string">ordersexportimport_profile_form</item>
+        </item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+        <item name="buttons" xsi:type="array">
+            <item name="back" xsi:type="string">Aitoc\OrdersExportImport\Block\Adminhtml\Profile\Edit\BackButton</item>
+            <item name="delete" xsi:type="string">Aitoc\OrdersExportImport\Block\Adminhtml\Profile\Edit\DeleteButton</item>
+            <item name="save" xsi:type="string">Aitoc\OrdersExportImport\Block\Adminhtml\Profile\Edit\SaveButton</item>
+        </item>
+    </argument>
+    <dataSource name="profile_form_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Aitoc\OrdersExportImport\Model\Profile\DataProvider</argument>
+            <argument name="name" xsi:type="string">profile_form_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">profile_id</argument>
+            <argument name="requestFieldName" xsi:type="string">profile_id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="submit_url" xsi:type="url" path="ordersexportimport/profile/save"/>
+                </item>
+            </argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+    </dataSource>
+    <fieldset name="general">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string"/>
+            </item>
+        </argument>
+        <field name="profile_id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">profile</item>
+                    <item name="dataScope" xsi:type="string">profile_id</item>
+                </item>
+            </argument>
+        </field>
+        <field name="name">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Profile Title</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">profile</item>
+                    <item name="sortOrder" xsi:type="number">20</item>
+                    <item name="dataScope" xsi:type="string">name</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="entity">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Entity Type</item>
+                    <item name="formElement" xsi:type="string">hidden</item>
+                    <item name="default" xsi:type="string">order</item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+  <fieldset name="dateformat">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="label" xsi:type="string" translate="true">Data Format</item>
+                <item name="sortOrder" xsi:type="number">10</item>
+            </item>
+        </argument>
+            <field name="typefile">
+                <argument name="data" xsi:type="array">
+                    <item name="options" xsi:type="object">Aitoc\OrdersExportImport\Ui\Component\Listing\Column\OrdersExportImport\OptionsExportType</item>
+                    <item name="config" xsi:type="array">
+                        <item name="dataType" xsi:type="string">int</item>
+                        <item name="label" xsi:type="string" translate="true">Type</item>
+                        <item name="formElement" xsi:type="string">select</item>
+                        <item name="source" xsi:type="string">profile</item>
+                        <item name="sortOrder" xsi:type="number">0</item>
+                        <item name="dataScope" xsi:type="string">file_type</item>
+                        <item name="default" xsi:type="string">0</item>
+                    </item>
+                </argument>
+            </field>
+      <field name="delimeter">
+          <argument name="data" xsi:type="array">
+              <item name="config" xsi:type="array">
+                  <item name="component" xsi:type="string">Aitoc_OrdersExportImport/js/form/type</item>
+                  <item name="dataType" xsi:type="string">text</item>
+                  <item name="label" xsi:type="string" translate="true">Value Delimiter</item>
+                  <item name="formElement" xsi:type="string">input</item>
+                  <item name="source" xsi:type="string">profile</item>
+                  <item name="sortOrder" xsi:type="number">10</item>
+                  <item name="dataScope" xsi:type="string">delimeter</item>
+                  <item name="default" xsi:type="string">,</item>
+                  <item name="prefer" xsi:type="string">toggle</item>
+                  <item name="valuesForOptions" xsi:type="array">
+                      <item name="1" xsi:type="string">1</item>
+                      <item name="2" xsi:type="string">2</item>
+                  </item>
+              </item>
+          </argument>
+      </field>
+      <field name="enclose">
+          <argument name="data" xsi:type="array">
+              <item name="config" xsi:type="array">
+                  <item name="component" xsi:type="string">Aitoc_OrdersExportImport/js/form/type</item>
+                  <item name="dataType" xsi:type="string">text</item>
+                  <item name="label" xsi:type="string" translate="true">Enclose Values In</item>
+                  <item name="formElement" xsi:type="string">input</item>
+                  <item name="source" xsi:type="string">profile</item>
+                  <item name="sortOrder" xsi:type="number">20</item>
+                  <item name="dataScope" xsi:type="string">enclose</item>
+                  <item name="default" xsi:type="string">''</item>
+                  <item name="prefer" xsi:type="string">toggle</item>
+                  <item name="valuesForOptions" xsi:type="array">
+                      <item name="1" xsi:type="string">1</item>
+                      <item name="2" xsi:type="string">2</item>
+                  </item>
+              </item>
+          </argument>
+      </field>
+    </fieldset>
+    <fieldset name="fileinformation">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="label" xsi:type="string" translate="true">File Information</item>
+                <item name="sortOrder" xsi:type="number">30</item>
+            </item>
+        </argument>
+        <field name="prefix">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">File Prefix</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">profile</item>
+                    <item name="sortOrder" xsi:type="number">0</item>
+                    <item name="dataScope" xsi:type="string">prefix</item>
+                    <item name="notice" xsi:type="string" translate="true">Order export date and time will be added to this file name to avoid file overwriting.</item>
+                </item>
+            </argument>
+        </field>
+        <field name="pathlocal">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Local Path</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">profile</item>
+                    <item name="sortOrder" xsi:type="number">10</item>
+                    <item name="dataScope" xsi:type="string">path_local</item>
+                    <item name="notice" xsi:type="string" translate="true">Absolute path or Relative to Magento install root, ex. pub/export.</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="type">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Aitoc\OrdersExportImport\Ui\Component\Listing\Column\OrdersExportImport\OptionsTypePost</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">int</item>
+                    <item name="label" xsi:type="string" translate="true">Type</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">profile</item>
+                    <item name="sortOrder" xsi:type="number">20</item>
+                    <item name="dataScope" xsi:type="string">type</item>
+                    <item name="default" xsi:type="string">0</item>
+                </item>
+            </argument>
+        </field>
+        <field name="ftp">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Aitoc_OrdersExportImport/js/form/point</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">FTP Host[:Port]</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">profile</item>
+                    <item name="sortOrder" xsi:type="number">40</item>
+                    <item name="dataScope" xsi:type="string">ftp</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                    <item name="prefer" xsi:type="string">toggle</item>
+                    <item name="valuesForOptions" xsi:type="array">
+                        <item name="ftp" xsi:type="string">ftp</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="userftp">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Aitoc_OrdersExportImport/js/form/point</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Username</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">profile</item>
+                    <item name="sortOrder" xsi:type="number">50</item>
+                    <item name="dataScope" xsi:type="string">user_ftp</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                    <item name="prefer" xsi:type="string">toggle</item>
+                    <item name="valuesForOptions" xsi:type="array">
+                        <item name="ftp" xsi:type="string">ftp</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="passftp">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Aitoc_OrdersExportImport/js/form/point</item>
+                    <item name="elementTmpl" xsi:type="string">Aitoc_OrdersExportImport/form/element/password</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Password</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">profile</item>
+                    <item name="sortOrder" xsi:type="number">60</item>
+                    <item name="dataScope" xsi:type="string">pass_ftp</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                    <item name="prefer" xsi:type="string">toggle</item>
+                    <item name="valuesForOptions" xsi:type="array">
+                        <item name="ftp" xsi:type="string">ftp</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="pathftp">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Aitoc_OrdersExportImport/js/form/point</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">FTP Path</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">profile</item>
+                    <item name="sortOrder" xsi:type="number">65</item>
+                    <item name="dataScope" xsi:type="string">path_ftp</item>
+                    <item name="prefer" xsi:type="string">toggle</item>
+                    <item name="valuesForOptions" xsi:type="array">
+                        <item name="ftp" xsi:type="string">ftp</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="passmodeftp">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Magento\Config\Model\Config\Source\Yesno</item>
+                <item name="config" xsi:type="array">
+                    <item name="valueMap" xsi:type="array">
+                        <item name="true" xsi:type="number">1</item>
+                        <item name="false" xsi:type="number">0</item>
+                    </item>
+                    <item name="dataType" xsi:type="string">int</item>
+                    <item name="component" xsi:type="string">Aitoc_OrdersExportImport/js/form/point-single-checkbox</item>
+                    <item name="label" xsi:type="string" translate="true">Passive Mode</item>
+                    <item name="formElement" xsi:type="string">checkbox</item>
+                    <item name="default" xsi:type="number">0</item>
+                    <item name="source" xsi:type="string">profile</item>
+                    <item name="sortOrder" xsi:type="number">70</item>
+                    <item name="dataScope" xsi:type="string">passmode_ftp</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                    <item name="prefer" xsi:type="string">toggle</item>
+                    <item name="valuesForOptions" xsi:type="array">
+                        <item name="ftp" xsi:type="string">ftp</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="sendemail">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Aitoc_OrdersExportImport/js/form/point</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Send To</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">profile</item>
+                    <item name="sortOrder" xsi:type="number">30</item>
+                    <item name="dataScope" xsi:type="string">send_email</item>
+                    <item name="prefer" xsi:type="string">toggle</item>
+                    <item name="notice" xsi:type="string" translate="true">Please note: big files (over 5Mb) can fail to attach to emails due to email servers architecture.</item>
+                    <item name="valuesForOptions" xsi:type="array">
+                        <item name="email" xsi:type="string">email</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="senderemail">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Magento\Config\Model\Config\Source\Email\Identity</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">int</item>
+                    <item name="component" xsi:type="string">Aitoc_OrdersExportImport/js/form/point-select</item>
+                    <item name="label" xsi:type="string" translate="true">Email Sender</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">profile</item>
+                    <item name="sortOrder" xsi:type="number">40</item>
+                    <item name="dataScope" xsi:type="string">sender_email</item>
+                    <item name="prefer" xsi:type="string">toggle</item>
+                    <item name="valuesForOptions" xsi:type="array">
+                        <item name="email" xsi:type="string">email</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="templateemail">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Aitoc\OrdersExportImport\Model\Email\TemplateOptions</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">int</item>
+                    <item name="component" xsi:type="string">Aitoc_OrdersExportImport/js/form/point-select</item>
+                    <item name="label" xsi:type="string" translate="true">Email Template</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">profile</item>
+                    <item name="sortOrder" xsi:type="number">50</item>
+                    <item name="dataScope" xsi:type="string">template_email</item>
+                    <item name="prefer" xsi:type="string">toggle</item>
+                    <item name="valuesForOptions" xsi:type="array">
+                        <item name="email" xsi:type="string">email</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+            </fieldset>
+    <fieldset name="automatic">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="label" xsi:type="string" translate="true">Automatic export settings</item>
+                <item name="sortOrder" xsi:type="number">40</item>
+            </item>
+        </argument>
+        <field name="exporttype">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Aitoc\OrdersExportImport\Ui\Component\Listing\Column\OrdersExportImport\OptionsExport</item>
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">10</item>
+                    <item name="dataType" xsi:type="string">int</item>
+                    <item name="label" xsi:type="string" translate="true">Export order</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">profile</item>
+                    <item name="dataScope" xsi:type="string">export_type</item>
+                    <item name="default" xsi:type="string">0</item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+    <fieldset name="orderentities">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="label" xsi:type="string" translate="true">Order Entities</item>
+                <item name="sortOrder" xsi:type="number">70</item>
+            </item>
+        </argument>
+        <field name="allowed_fields[order]">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Aitoc\OrdersExportImport\Ui\Component\Listing\Column\OrdersExportImport\OptionsOrders</item>
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">10</item>
+                    <item name="dataType" xsi:type="string">int</item>
+                    <item name="label" xsi:type="string" translate="true">Orders</item>
+                    <item name="formElement" xsi:type="string">checkboxset</item>
+                    <item name="source" xsi:type="string">profile</item>
+                    <item name="dataScope" xsi:type="string">allowed_fields.order</item>
+                </item>
+            </argument>
+        </field>
+        <field name="allowed_fields[invoice]">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Aitoc\OrdersExportImport\Ui\Component\Listing\Column\OrdersExportImport\OptionsInvoices</item>
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Aitoc_OrdersExportImport/js/form/part-selected</item>
+                    <item name="template" xsi:type="string">Aitoc_OrdersExportImport/form/element/checkbox-set</item>
+                    <item name="sortOrder" xsi:type="number">20</item>
+                    <item name="dataType" xsi:type="string">int</item>
+                    <item name="label" xsi:type="string" translate="true">Invoices</item>
+                    <item name="formElement" xsi:type="string">checkboxset</item>
+                    <item name="source" xsi:type="string">profile</item>
+                    <item name="dataScope" xsi:type="string">allowed_fields.invoice</item>
+                </item>
+            </argument>
+        </field>
+        <field name="allowed_fields[shipment]">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Aitoc\OrdersExportImport\Ui\Component\Listing\Column\OrdersExportImport\OptionsShipments</item>
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Aitoc_OrdersExportImport/js/form/part-selected</item>
+                    <item name="template" xsi:type="string">Aitoc_OrdersExportImport/form/element/checkbox-set</item>
+                    <item name="sortOrder" xsi:type="number">30</item>
+                    <item name="dataType" xsi:type="string">int</item>
+                    <item name="label" xsi:type="string" translate="true">Shipments</item>
+                    <item name="formElement" xsi:type="string">checkboxset</item>
+                    <item name="source" xsi:type="string">profile</item>
+                    <item name="dataScope" xsi:type="string">allowed_fields.shipment</item>
+                </item>
+            </argument>
+        </field>
+        <field name="allowed_fields[creditmemo]">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Aitoc\OrdersExportImport\Ui\Component\Listing\Column\OrdersExportImport\OptionsCreditmemos</item>
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Aitoc_OrdersExportImport/js/form/part-selected</item>
+                    <item name="template" xsi:type="string">Aitoc_OrdersExportImport/form/element/checkbox-set</item>
+                    <item name="sortOrder" xsi:type="number">30</item>
+                    <item name="dataType" xsi:type="string">int</item>
+                    <item name="label" xsi:type="string" translate="true">Credit Memos</item>
+                    <item name="formElement" xsi:type="string">checkboxset</item>
+                    <item name="source" xsi:type="string">profile</item>
+                    <item name="dataScope" xsi:type="string">allowed_fields.creditmemo</item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+    <fieldset name="orderfields">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="label" xsi:type="string" translate="true">Order Fields</item>
+                <item name="sortOrder" xsi:type="number">80</item>
+            </item>
+        </argument>
+        <field name="allowed_fields[fields]">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Aitoc\OrdersExportImport\Ui\Component\Listing\Column\OrdersExportImport\OptionsFields</item>
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Aitoc_OrdersExportImport/js/form/checkbox-set</item>
+                    <item name="template" xsi:type="string">Aitoc_OrdersExportImport/form/element/checkbox-set-seluns</item>
+                    <item name="sortOrder" xsi:type="number">10</item>
+                    <item name="dataType" xsi:type="string">int</item>
+                    <item name="label" xsi:type="string" translate="true">Fields</item>
+                    <item name="formElement" xsi:type="string">checkboxset</item>
+                    <item name="source" xsi:type="string">profile</item>
+                    <item name="dataScope" xsi:type="string">allowed_fields.fields</item>
+                    <item name="collection" xsi:type="string">orderfields</item>
+                </item>
+            </argument>
+        </field>
+
+    </fieldset>
+</form>

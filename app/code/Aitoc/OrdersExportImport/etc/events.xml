@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Aitoc Team
+ * @copyright Copyright (c) 2019 Aitoc (https://www.aitoc.com)
+ * @package Aitoc_OrdersExportImport
+ */
+-->
+<!--
+/**
+ * Copyright © Aitoc. All rights reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="checkout_submit_all_after">
+        <observer name="oei_export_checkout" instance="Aitoc\OrdersExportImport\Observer\ExportCheckout" />
+    </event>
+    <event name="sales_invoice_item_save_after">
+        <observer name="oei_export_invoice" instance="Aitoc\OrdersExportImport\Observer\ExportInvoice" />
+    </event>
+</config>

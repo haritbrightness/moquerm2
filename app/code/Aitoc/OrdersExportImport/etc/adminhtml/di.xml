@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Aitoc Team
+ * @copyright Copyright (c) 2019 Aitoc (https://www.aitoc.com)
+ * @package Aitoc_OrdersExportImport
+ */
+-->
+<!--
+/**
+ * Copyright © Aitoc. All rights reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Aitoc\OrdersExportImport\Block\Adminhtml\Profile\Grid\Renderer\Action\UrlBuilder">
+        <arguments>
+            <argument name="frontendUrlBuilder" xsi:type="object">Magento\Framework\Url</argument>
+        </arguments>
+    </type>
+    <type name="Magento\InventoryShipping\Observer\SourceDeductionProcessor">
+        <plugin name="skipImportedItems" type="Aitoc\OrdersExportImport\Plugin\InventoryShipping\SourceDeductionProcessor" sortOrder="2"/>
+    </type>
+    <type name="Aitoc\OrdersExportImport\Ui\Component\MassAction\Profile\Options">
+        <arguments>
+            <argument name="data" xsi:type="array">
+                <item name="urlPath" xsi:type="string">ordersexportimport/profile/export</item>
+                <item name="paramName" xsi:type="string">profile_id</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

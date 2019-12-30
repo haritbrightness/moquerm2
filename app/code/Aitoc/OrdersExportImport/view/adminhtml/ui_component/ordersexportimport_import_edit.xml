@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * @author Aitoc Team
+ * @copyright Copyright (c) 2019 Aitoc (https://www.aitoc.com)
+ * @package Aitoc_OrdersExportImport
+ */
+-->
+<!--
+/**
+ * Copyright © 2016 Aitoc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">ordersexportimport_import_edit.import_edit_data_source</item>
+            <item name="deps" xsi:type="string">ordersexportimport_import_edit.import_edit_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Import File</item>
+        <item name="config" xsi:type="array">
+            <item name="dataScope" xsi:type="string">data</item>
+            <item name="namespace" xsi:type="string">ordersexportimport_import_edit</item>
+        </item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+        <item name="buttons" xsi:type="array">
+            <item name="back" xsi:type="string">Aitoc\OrdersExportImport\Block\Adminhtml\Import\Edit\BackButton</item>
+            <item name="validate" xsi:type="string">Aitoc\OrdersExportImport\Block\Adminhtml\Import\Edit\ValidateButton</item>
+            <item name="save" xsi:type="string">Aitoc\OrdersExportImport\Block\Adminhtml\Import\Edit\SaveButton</item>
+        </item>
+    </argument>
+    <dataSource name="import_edit_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Aitoc\OrdersExportImport\Model\Import\DataProvider</argument>
+            <argument name="name" xsi:type="string">import_edit_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">import_id</argument>
+            <argument name="requestFieldName" xsi:type="string">import_id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="submit_url" xsi:type="url" path="ordersexportimport/import/save"/>
+                </item>
+            </argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+    </dataSource>
+    <fieldset name="general">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string"/>
+            </item>
+        </argument>
+        <field name="try_storeviews">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Magento\Config\Model\Config\Source\Yesno</item>
+                <item name="config" xsi:type="array">
+                    <item name="valueMap" xsi:type="array">
+                        <item name="true" xsi:type="number">1</item>
+                        <item name="false" xsi:type="number">0</item>
+                    </item>
+                    <item name="dataType" xsi:type="string">int</item>
+                    <item name="component" xsi:type="string">Aitoc_OrdersExportImport/js/form/point-single-checkbox</item>
+                    <item name="label" xsi:type="string" translate="true">Try to import orders to corresponding store views</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="default" xsi:type="number">0</item>
+                    <item name="source" xsi:type="string">import</item>
+                    <item name="sortOrder" xsi:type="number">10</item>
+                    <item name="dataScope" xsi:type="string">try_storeviews</item>
+                    <item name="notice" xsi:type="string">If there's no corresponding storeview the order would be imported into storeview defined by 'Store Views' setting</item>
+                    <item name="prefer" xsi:type="string">toggle</item>
+                </item>
+            </argument>
+        </field>
+        <field name="storeviews">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Magento\Store\Ui\Component\Listing\Column\Store\Options</item>
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">20</item>
+                    <item name="dataType" xsi:type="string">int</item>
+                    <item name="label" xsi:type="string" translate="true">Store Views</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">import</item>
+                    <item name="dataScope" xsi:type="string">store_id</item>
+                    <item name="default" xsi:type="string">0</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="customers_autocreate">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Magento\Config\Model\Config\Source\Yesno</item>
+                <item name="config" xsi:type="array">
+                    <item name="valueMap" xsi:type="array">
+                        <item name="true" xsi:type="number">1</item>
+                        <item name="false" xsi:type="number">0</item>
+                    </item>
+                    <item name="dataType" xsi:type="string">int</item>
+                    <item name="component" xsi:type="string">Aitoc_OrdersExportImport/js/form/point-single-checkbox</item>
+                    <item name="label" xsi:type="string" translate="true">Create customers based on Billing/Shipping Address</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="default" xsi:type="number">0</item>
+                    <item name="source" xsi:type="string">import</item>
+                    <item name="sortOrder" xsi:type="number">30</item>
+                    <item name="dataScope" xsi:type="string">customers_autocreate</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                    <item name="prefer" xsi:type="string">toggle</item>
+                    <item name="valuesForOptions" xsi:type="array">
+                        <item name="1" xsi:type="string">1</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="import_behavior">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Aitoc\OrdersExportImport\Ui\Component\Listing\Column\OrdersExportImport\OptionsImportBehavior</item>
+                <item name="config" xsi:type="array">
+                    <item name="valueMap" xsi:type="array">
+                        <item name="true" xsi:type="number">1</item>
+                        <item name="false" xsi:type="number">0</item>
+                    </item>
+                    <item name="sortOrder" xsi:type="number">40</item>
+                    <item name="dataType" xsi:type="string">int</item>
+                    <item name="label" xsi:type="string" translate="true">Import Behavior</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">import</item>
+                    <item name="dataScope" xsi:type="string">import_behavior</item>
+                    <item name="default" xsi:type="string">0</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="file_name">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Upload a File</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="formElement" xsi:type="string">fileUploader</item>
+                    <item name="allowedExtensions" xsi:type="array">
+                        <item name="xml" xsi:type="string">xml</item>
+                        <item name="csv" xsi:type="string">csv</item>
+                    </item>
+                    <item name="source" xsi:type="string">import</item>
+                    <item name="sortOrder" xsi:type="number">60</item>
+                    <item name="dataScope" xsi:type="string">file_name</item>
+                    <item name="default" xsi:type="string">0</item>
+                    <item name="uploaderConfig" xsi:type="array">
+                        <item name="url" xsi:type="url" path="ordersexportimport/import/upload"/>
+                    </item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+    <fieldset name="dateformat">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="label" xsi:type="string" translate="true">Data Format</item>
+                <item name="sortOrder" xsi:type="number">10</item>
+                <item name="opened" xsi:type="string">true</item>
+            </item>
+        </argument>
+        <field name="entity">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Entity Type</item>
+                    <item name="formElement" xsi:type="string">hidden</item>
+                    <item name="default" xsi:type="string">order</item>
+                </item>
+            </argument>
+        </field>
+        <field name="typefile">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Aitoc\OrdersExportImport\Ui\Component\Listing\Column\OrdersExportImport\OptionsImportType</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">int</item>
+                    <item name="label" xsi:type="string" translate="true">Type</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">import</item>
+                    <item name="sortOrder" xsi:type="number">0</item>
+                    <item name="dataScope" xsi:type="string">file_type</item>
+                    <item name="default" xsi:type="string">0</item>
+                </item>
+            </argument>
+        </field>
+        <field name="oldmagento">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Magento\Config\Model\Config\Source\Yesno</item>
+                <item name="config" xsi:type="array">
+                    <item name="valueMap" xsi:type="array">
+                        <item name="true" xsi:type="number">1</item>
+                        <item name="false" xsi:type="number">0</item>
+                    </item>
+                    <item name="component" xsi:type="string">Aitoc_OrdersExportImport/js/form/oldm-single-checkbox</item>
+                    <item name="dataType" xsi:type="string">int</item>
+                    <item name="label" xsi:type="string" translate="true">From Magento 1</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">import</item>
+                    <item name="default" xsi:type="number">0</item>
+                    <item name="sortOrder" xsi:type="number">10</item>
+                    <item name="prefer" xsi:type="string">toggle</item>
+                    <item name="dataScope" xsi:type="string">oldmagento</item>
+                    <item name="valuesForOptions" xsi:type="array">
+                        <item name="0" xsi:type="string">0</item>
+                    </item>
+                </item>
+            </argument>
+
+        </field>
+        <field name="delimeter">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Aitoc_OrdersExportImport/js/form/type-import</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Value Delimiter</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">import</item>
+                    <item name="sortOrder" xsi:type="number">10</item>
+                    <item name="dataScope" xsi:type="string">delimeter</item>
+                    <item name="default" xsi:type="string">,</item>
+                    <item name="prefer" xsi:type="string">toggle</item>
+                    <item name="valuesForOptions" xsi:type="array">
+                        <item name="1" xsi:type="string">1</item>
+                        <item name="2" xsi:type="string">2</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="enclose">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Aitoc_OrdersExportImport/js/form/type-import</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Enclose Values In</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">import</item>
+                    <item name="sortOrder" xsi:type="number">20</item>
+                    <item name="dataScope" xsi:type="string">enclose</item>
+                    <item name="default" xsi:type="string">''</item>
+                    <item name="prefer" xsi:type="string">toggle</item>
+                    <item name="valuesForOptions" xsi:type="array">
+                        <item name="1" xsi:type="string">1</item>
+                        <item name="2" xsi:type="string">2</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+</form>

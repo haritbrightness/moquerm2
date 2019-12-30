@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Aitoc Team
+ * @copyright Copyright (c) 2019 Aitoc (https://www.aitoc.com)
+ * @package Aitoc_OrdersExportImport
+ */
+-->
+<!--
+/**
+ * Copyright © Aitoc. All rights reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Aitoc\OrdersExportImport\Api\Data\ProfileSearchResultsInterface"
+                type="Magento\Framework\Api\SearchResults" />
+    <preference for="Aitoc\OrdersExportImport\Api\Data\ProfileInterface" type="Aitoc\OrdersExportImport\Model\Profile" />
+    <preference for="Aitoc\OrdersExportImport\Api\Data\ExportInterface" type="Aitoc\OrdersExportImport\Model\Export" />
+    <preference for="Aitoc\OrdersExportImport\Api\Data\ImportInterface" type="Aitoc\OrdersExportImport\Model\Import" />
+    <preference for="Aitoc\OrdersExportImport\Api\ProfileRepositoryInterface" type="Aitoc\OrdersExportImport\Model\ProfileRepository" />
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="ordersexportimport_profiles_listing_data_source" xsi:type="string">Aitoc\OrdersExportImport\Model\ResourceModel\Profile\Grid\Collection</item>
+                <item name="ordersexportimport_export_listing_data_source" xsi:type="string">Aitoc\OrdersExportImport\Model\ResourceModel\Export\Grid\Collection</item>
+                <item name="ordersexportimport_import_listing_data_source" xsi:type="string">Aitoc\OrdersExportImport\Model\ResourceModel\Import\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Aitoc\OrdersExportImport\Model\ResourceModel\Profile\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">aitoc_export_profile</argument>
+            <argument name="eventPrefix" xsi:type="string">ordersexportimport_profile_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">profile_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Aitoc\OrdersExportImport\Model\ResourceModel\Profile</argument>
+        </arguments>
+    </type>
+    <type name="Aitoc\OrdersExportImport\Model\ResourceModel\Export\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">aitoc_export</argument>
+            <argument name="eventPrefix" xsi:type="string">ordersexportimport_export_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">export_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Aitoc\OrdersExportImport\Model\ResourceModel\Export</argument>
+        </arguments>
+    </type>
+    <type name="Aitoc\OrdersExportImport\Model\ResourceModel\Import\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">aitoc_import</argument>
+            <argument name="eventPrefix" xsi:type="string">ordersexportimport_import_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">import_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Aitoc\OrdersExportImport\Model\ResourceModel\Import</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\Model\Entity\RepositoryFactory">
+        <arguments>
+            <argument name="entities" xsi:type="array">
+                <item name="Aitoc\OrdersExportImport\Api\Data\ProfileInterface" xsi:type="string">Aitoc\OrdersExportImport\Api\ProfileRepositoryInterface</item>
+            </argument>
+        </arguments>
+    </type>
+</config>
