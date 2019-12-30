@@ -34,11 +34,11 @@ class CategoryViewPlugin
      * @param Page $result
      * @return ResultInterface
      */
-    public function afterExecute(Action $subject, $result)
+    /*public function afterExecute(Action $subject, $result)
     {
         if ($result instanceof Page) {
             $this->metaHelper->setPageTags($result->getConfig());
         }
         return $result;
-    }
+    }*/
 }
