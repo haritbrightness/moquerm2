@@ -1,8 +1,9 @@
 <?xml version="1.0"?>
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
-    <body>
-        <referenceContainer name="checkout.cart.container">
-            <block class="Magento\Cms\Block\Block" name="checkout.cart.content.block" after="-" >
+    <body>            
+
+        <referenceContainer name="cart.summary">
+            <block class="Magento\Cms\Block\Block" name="cart.summary.custom.block" after="-" >
                  <arguments>
                     <argument name="block_id" xsi:type="string">cart_review_block</argument>
                 </arguments>
