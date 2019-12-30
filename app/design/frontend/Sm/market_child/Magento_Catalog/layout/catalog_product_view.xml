@@ -10,7 +10,8 @@
     <body>
         <referenceBlock name="product.info.overview" remove="true"/>
         <referenceBlock name="product.info.description" remove="true"/>
-        <referenceBlock name="product.info.details">
+        <referenceBlock name="product.info.details">           
+
             <block class="Magento\Catalog\Block\Product\View\Description" name="product.info.overview.details" template="Magento_Catalog::product/view/attribute.phtml" group="detailed_info" before="product.attributes">
                 <arguments>
                     <argument name="at_call" xsi:type="string">getShortDescription</argument>

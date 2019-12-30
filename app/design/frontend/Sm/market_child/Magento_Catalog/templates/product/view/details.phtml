@@ -20,7 +20,7 @@ $custom_tab_name   = $_config->getProductDetail('custom_tab_name');
 $customtab_content = $_config->getProductDetail('customtab_content');
 ?>
 <?php if ($detailedInfoGroup = $block->getGroupChildNames('detailed_info', 'getChildHtml')): ?>
-    <?php $newOrderTabbing = array('product.info.overview.details','product.attributes','reviews.tab','amasty_faq_product_tab'); ?>
+    <?php $newOrderTabbing = array('product.info.overview.details','product.attributes','reviews.tab'); ?>
     <div class="product info detailed">
         <?php $layout = $block->getLayout(); ?>
         <div class="product data items <?php echo $tabStyle . '-style' ?>"

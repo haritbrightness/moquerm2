@@ -165,7 +165,7 @@ h4.inner-sub-title:before {
 
 .minicart-header .action.showcart:after {
     color: #333;
-    font-size: 20px !important;
+    font-size: 19px !important;
     line-height: 48px !important;
 }
 
@@ -637,13 +637,94 @@ form.search.advanced .field.manufacturer select option {
     margin-left: 0;
 }
 
+.sitemap-container {
+    -webkit-column-count: 4;
+    -moz-column-count: 4;
+    column-count: 4;
+    -moz-column-gap: 30px;
+    -webkit-column-gap: 30px;
+    column-gap: 30px;
+}
+.sitemap-container .sitemap-list {
+    width: 100%;
+}
+#mageplaza-seo-html-sitemap {
+    -webkit-column-count: 4;
+    -moz-column-count: 4;
+    column-count: 4;
+    -moz-column-gap: 30px;
+    -webkit-column-gap: 30px;
+    column-gap: 30px;
+}
+#mageplaza-seo-html-sitemap .row {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 0 0;
+}
+#mageplaza-seo-html-sitemap .row h2 {
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 133.33%;
+    color: #f4a137;
+    padding: 10px 0 10px;
+    margin: 0 0;
+}
+#mageplaza-seo-html-sitemap .row ul {
+    /*display: flex;
+    flex-wrap: wrap;
+    width: 100%;*/
+}
+#mageplaza-seo-html-sitemap .row ul li {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 5px 0;
+    text-transform: uppercase;
+    font-size: 91.67%;
+    color: #777777;
+}
+
 
 @media only screen and (min-width: 768px) {
     .who-we-are .team-block {
         width: 25%;
     }
 }
-
+@media only screen and (max-width: 1199px) {
+    .sitemap-container {
+        -webkit-column-count: 3;
+        -moz-column-count: 3;
+        column-count: 3;
+    }
+    .sitemap-container .sitemap-list {
+        display: inline-block;
+        width: 100%;
+    }
+    #mageplaza-seo-html-sitemap {
+        -webkit-column-count: 3;
+        -moz-column-count: 3;
+        column-count: 3;
+    }
+    #maincontent .brand-images ul.bare-list li.brand-item {
+        width: calc(25% - 15px);
+    }
+}
+@media only screen and (max-width: 991px) {
+    .sitemap-container {
+        -webkit-column-count: 2;
+        -moz-column-count: 2;
+        column-count: 2;
+    }    
+    #mageplaza-seo-html-sitemap {
+        -webkit-column-count: 2;
+        -moz-column-count: 2;
+        column-count: 2;
+    }
+    #maincontent .brand-images ul.bare-list li.brand-item {
+        width: calc(33.333% - 15px);
+    }
+}
 @media only screen and (max-width: 767px) {
     .grid-container-spaced .grid12-3 {
         width: 100%!important;
@@ -709,11 +790,29 @@ form.search.advanced .field.manufacturer select option {
     }
     .table-responsive table.table td strong {
         font-weight: normal;
+    }        
+    #maincontent .brand-images ul.bare-list li.brand-item {
+        width: calc(50% - 15px);
     }
 }
 
 @media only screen and (max-width: 567px) {
     .who-we-are .team-block {
         width: 100%;
-    }    
+    }
+    .sitemap-container {
+        -webkit-column-count: 1;
+        -moz-column-count: 1;
+        column-count: 1;
+    }
+    #mageplaza-seo-html-sitemap {
+        -webkit-column-count: 1;
+        -moz-column-count: 1;
+        column-count: 1;
+    }
+}
+@media only screen and (max-width: 480px) {
+    #maincontent .brand-images ul.bare-list li.brand-item {
+        width: calc(100% - 15px);
+    }
 }

@@ -15,3 +15,85 @@
 "Packages","Pakketten",module,Magento_Theme
 "Packages","Pakketten",module,Magento_Theme
 "Packages","Pakketten",module,Magento_Theme
+"Dear","Beste",,
+"Welcome to %store_name.","Welkom bij %store_name",,
+"Email:","Email:",,
+"Password:","Wachtwoord:",,
+"Password you set when creating account","Wachtwoord dat je hebt opgegeven bij het maken van de account",,
+"Forgot your account password? Click <a href=""%reset_url"" style=""color:#114745;"">here</a> to reset it.","Wachtwoord vergeten? Klik <a href=""%reset_url"" style=""color:#114745;"">hier</a> om het te resetten.",,
+"When you sign in to your account, you will be able to:","Wanneer je inlogt op je account, dan kan je:",,
+"Proceed through checkout faster","Sneller je bestelling afronden",,
+"Check the status of orders","De status van je bestelling bekijken",,
+"View past orders","Oude bestellingen bekijken",,
+"Store alternative addresses (for shipping to multiple family members and friends)","Sla alternatieven addressen op (om te verzenden naar verschillende familieleden en vrienden)",,
+"You must confirm your %customer_email email before you can sign in (link is only valid once):","Je %customer_email e-mailadres dient bevestigd te worden alvorens je in kan loggen (de link werkt eenmalig):",,
+"Confirm Your Account","Bevestig je account",,
+"Thank you for confirming your %store_name account.","Bedankt voor het bevestigen van je %store_name account",,
+"Welcome to %store_name.","Welkom bij %store_name",,
+"To sign in to our site and set a password, click on the <a href=""%create_password_url"" style=""color:#ffffff;font-weight:bold;text-decoration:underline;"">link</a>:","Om in te loggen op onze site en om een wachtwoord aan te maken, klik op de <a href=""%create_password_url"" style=""color:#ffffff;font-weight:bold;text-decoration:underline;"">link</a>:",,
+"Hello,","Hallo,",,
+"We have received a request to change the following information associated with your account at %store_name: email.","We hebben een verzoek gekregen om de volgende informatie te wijzigen op je account bij %store_name: e-mail.",,
+"If you have not authorized this action, please contact us immediately at <a href=""mailto:%store_email"">%store_email</a>","Als je deze actie niet hebt geautoriseerd, neem dan meteen contact op met <a href=""mailto:%store_email"">%store_email</a>",,
+"We have received a request to change the following information associated with your account at %store_name: email, password.","We hebben een verzoek gekregen om de volgende informatie te wijzigen op je account bij %store_name: e-mail, wachtwoord",,
+"There was recently a request to change the password for your account.","Er is zojuist een verzoek gekomen om het wachtwoord van je account te veranderen.",,
+"If you requested this change, set a new password here:","Als jij dit verzoek hebt ingediend, stel dan hier een nieuw wachtwoord in:",,
+"Set a New Password","Stel een nieuw wachtwoord in",,
+"If you did not make this request, you can ignore this email and your password will remain the same.","Als jij dit verzoek niet hebt ingediend, dan kan je deze e-mail negeren en dan blijft je wachtwoord hetzelfde.",,
+"We have received a request to change the following information associated with your account at %store_name: password.","We hebben een verzoek gekregen om de volgende informatie te wijzigen op je account bij %store_name: wachtwoord",,
+"Thank you for subscribing to our newsletter.","Bedankt voor het abonneren op onze nieuwsbrief.",,
+"To begin receiving the newsletter, you must first confirm your subscription by clicking on the following link:","Om nieuwsbrieven te kunnen ontvangen, dien je je aanmelding te bevestigen middels de volgende link:",,
+"When clicking this link does not work, please copy and paste this link in the address bar of your browser.","Wanneer het klikken op deze link niet werkt, kopieer deze dan in je adresbalk in je browser.",,
+"You have been successfully subscribed to our newsletter.","Je bent nu succesvol geabonneerd op onze nieuwsbrief.",,
+"You have been unsubscribed from the newsletter.","Je bent nu uitgeschreven voor de nieuwsbrief.",,
+"Thank you for your order from %store_name.","Bedankt voor je bestelling bij %store_name.",,
+"Once your package ships we will send you a tracking number.","Wanneer je pakket verzonden wordt, ontvang je een tracking nummer.",,
+"You can check the status of your order by <a href="%account_url">logging into your account</a>.","Je kan de status van je bestelling bekijken door <a href="%account_url">in te loggen op je account</a>.",,
+"Order Summary","Samenvatting van bestelling",,
+"Your Order: <strong>#%increment_id</strong>","Je bestelling: <strong>#%increment_id</strong>",,
+"Ordered on: <strong>%created_at</strong>","Besteld op: <strong>%created_at</strong>",,
+"Billing Info","Betaalinformatie",,
+"Shipping Info","Verzendinformatie",,
+"Payment Method","Betaalmethode",,
+"Shipping Method","Verzendmethode",,
+"If you have questions about your order, you can email us at <a href="mailto:%store_email">%store_email</a>","Als je vragen hebt over je bestelling, dan kan je ons e-mailen op <a href="mailto:%store_email">%store_email</a>",,
+"Our hours are <span class="no-link">%store_hours</span>.","Our hours are <span class="no-link">%store_hours</span>.",,
+"Thank you for your order from %store_name.","Bedankt voor je bestelling bij %store_name.",,
+"Once your package ships we will send an email with a link to track your order.","Wanneer je pakket wordt verzonden, dan sturen we een e-mail met een tracking link.",,
+"Your order #%increment_id has been updated with a status of <strong>%order_status</strong>.","Je bestelling #%increment_id heeft een nieuwe status van <strong>%order_status</strong>.",,
+"You can check the status of your order by <a href=""%account_url"">logging into your account</a>.","Je kan de status van je bestelling bekijken door <a href=""%account_url">in te loggen op je account</a>.",,
+"Comment:","Opmerking:",,
+"Your Invoice #%invoice_id for Order #%order_id","Je factuur #%invoice_id voor bestelling #%order_id",,
+"Your shipping confirmation is below. Thank you again for your business.","Je verzendbevestiging is hieronder te zien. Bedankt voor je bestelling.",,
+"Your Shipment #%shipment_id for Order #%order_id","Je zending #%shipment_id voor bestelling #%order_id",,
+"Your Credit Memo #%creditmemo_id for Order #%order_id","Je creditfactuur #%creditmemo_id voor bestelling #%order_id",
+"Credit Memo Date","Credit factuurdatum",module
+"Order # :","Bestelling # :"
+"Back in Stock Subscriptions","Voorraadnotificaties",module
+"Price: low to high","Prijs: laag naar hoog",module
+"Price: high to low","Prijs: hoog naar laag",module
+"Biggest Saving","Hoogste Korting",module
+"Reviews Count","Meeste Reviews",module
+"Best Sellers","Bestverkocht",module
+"Top Rated","Hoogst gewaardeerd",module
+"Street Address %1","Straat + huisnummer *",module
+"Enter your destination to get a shipping estimate.","Voer je afleverlocatie in en bereken de verzendkosten",module
+"Write a review","Schrijf een review",module
+"Share your thoughts with other customers","Deel je ervaring met andereklanten",module
+"Enter keywords to search...","Voer zoekwoord in",module
+"My Back in Stock Subscriptions","Mijn voorraadnotificaties",module
+"Item was removed successfully.","Product us succesvol verwijderd.",module
+"Vasthouden","HOLD in Dutch",module
+"Top customer reviews","Beste klantbeoordelingen",module
+"Verified Buyer","Geverifieerde koper",module
+"people found this helpful","personen vonden dit nuttig",module
+"Read more","Lees verder",module
+"Was this review helpful?","Was deze review nuttig?",module
+"View Cart","Winkelwagen bekijken",module
+"Your email address","Jouw e-mailadres",module
+"Street Address","Straat + huisnummer",module,Magento_Checkout
+"Great trial sizes and styling tools","Mooie meepakkers",module
+"Hold","HOLD in Dutch",module
+"Rating","test",module
+
+
+           

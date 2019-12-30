@@ -1,0 +1,81 @@
+"Credit Memo #","Gutschrift #",module
+"Credit Memo Date","Gutschriftdatum",module
+"Order # :","Bestellung # :",module
+"Back in Stock Subscriptions","Produktbenachrichtigungen",module
+"Enter keywords to search...","Geben Sie einen Suchbegriff ein",module
+"Rating","Bewertung",module
+"I recommend this product","Ich empfehle dieses Produkt",module
+"Enter your destination to get a shipping estimate.","Geben Sie Ihren Bestimmungsort ein, umein Versandangebot zu erhalten",module
+"Best Sellers","Bestseller",module
+"Reviews Count","Bewertungen",module
+"Price: low to high","Preis: niedrig bis hoch",module
+"Price: high to low","Preis: hoch zu niedrig ",module
+"Biggest Saving","Größter Rabatt",module
+"Top Rated","Bestbewertet",module
+"My Back in Stock Subscriptions","Meine produkt benachrichtigungen",module
+"Write a review","Bewertung schreiben",module
+"Share your thoughts with other customers","Teilen Sie lhre Gedanken mit anderen Kunden",module
+"people found this helpful","Personen fanden das hilfreich",module
+"Was this review helpful?","War diese Kritik hilfreich?",module
+"Response from store","Antwort von Moquer",module
+"Details","Einzelheiten",module
+"Your email address","Ihre E-Mail-Adresse",module
+"of customers recommend this product","der Kunden empfehlen dieses Produkt",module
+"reviews","Bewertung(en)",module,Magento_Review
+"Ship here","Lieferadresse bestätigen",module
+"View Cart","warenkorb anzeigen",module
+"Item was removed successfully.","Artikel wurde erfolgreich entfernt.",module
+"Great trial sizes and styling tools","Extras und Zubehör",module
+"Dear","Sehr geehrter",module
+"Welcome to %store_name.","Wilkomme bei %store_name.",module
+"To sign in to our site, use these credentials during checkout or on the <a href=""%customer_url"" style=""color:#ffffff;"">My Account</a> page:","Verwenden Sie diese Anmeldeinformationen beim Auschecken oder auf der <a href=""%customer_url"" style=""color:#ffffff;"">Kontoseite</a>, um sich auf unserer Website anzumelden:",,
+"Email:","E-Mail:",module
+"Password:","Passwort:",module
+"Password you set when creating account","Passwort, das Sie beim Erstellen des Kontos festgelegt haben",,
+"Forgot your account password? Click <a href=""%reset_url"" style=""color:#114745;"">here</a> to reset it.","Haben Sie Ihr Passwort vergessen? Klicken Sie <a href=""%reset_url"" style=""color:#114745;"">hier</a> um es zurückzusetzen.",,
+"When you sign in to your account, you will be able to:","Wenn Sie sich in Ihrem Konto anmelden, können Sie:",module
+"Proceed through checkout faster","Schneller durch die Kasse gehen",module
+"Check the status of orders","Überprüfen den Status von Ihre Bestellungen",module
+"View past orders","Frühere Bestellungen anzeigen",module
+"Store alternative addresses (for shipping to multiple family members and friends)","Speichern Sie alternative Adressen (für den Versand an mehrere Familienmitglieder und Freunde)",module
+"You must confirm your %customer_email email before you can sign in (link is only valid once):","Sie müssen Ihre E-Mail-Adresse %customer_email bestätigen, bevor Sie sich anmelden können (Link ist nur einmal gültig):",,
+"Confirm Your Account","Bestätigen Sie ihr Konto",,
+"Thank you for confirming your %store_name account.","Vielen Dank für die Bestätigung Ihres %store_name Kontos.",,
+"To sign in to our site and set a password, click on the <a href=""%create_password_url"" style=""color:#ffffff;font-weight:bold;text-decoration:underline;"">link</a>:","Klicken Sie auf den <a href=""%create_password_url"" style=""color:#ffffff;font-weight:bold;text-decoration:underline;""> Link</a>, um sich auf unserer Website anzumelden und ein Passwort festzulegen:",,
+"Hello,","Hallo,",,
+"We have received a request to change the following information associated with your account at %store_name: email.","Wir haben die Bitte erhalten, die folgenden Informationen zu Ihrem Konto bei %store_name zu ändern: E-Mail.",,
+"If you have not authorized this action, please contact us immediately at <a href=""mailto:%store_email"">%store_email</a>","Wenn Sie diese Aktion nicht autorisiert haben, kontaktieren Sie uns bitte umgehend auf <a href=""mailto:%store_email"">%store_email</a>",,
+"We have received a request to change the following information associated with your account at %store_name: email, password.","Wir haben die Bitte erhalten, die folgenden Informationen zu Ihrem Konto bei %store_name zu ändern: E-Mail, Passwort.",,
+"There was recently a request to change the password for your account.","Vor kurzem wurde eine Änderung des Passworts für Ihr Konto angefordert.",,
+"If you requested this change, set a new password here:","Wenn Sie diese Änderung angefordert haben, legen Sie hier ein neues Passwort fest:",,
+"Set a New Password","Legen Sie ein neues Passwort fest",,
+"If you did not make this request, you can ignore this email and your password will remain the same.","Wenn Sie diese Anfrage nicht gestellt haben, können Sie diese E-Mail ignorieren und Ihr Passwort bleibt unverändert.",,
+"We have received a request to change the following information associated with your account at %store_name: password.","Wir haben die Bitte erhalten, die folgenden Informationen zu Ihrem Konto unter %store_name zu ändern: Passwort.",,
+"Thank you for subscribing to our newsletter.","Danke, dass Sie unseren Newsletter abonniert haben.",,
+"To begin receiving the newsletter, you must first confirm your subscription by clicking on the following link:","Um den Newsletter zu erhalten, müssen Sie zunächst Ihr Abonnement bestätigen, indem Sie auf den folgenden Link klicken:",,
+"When clicking this link does not work, please copy and paste this link in the address bar of your browser.","Wenn das Klicken auf diesen Link nicht funktioniert, kopieren Sie diesen Link und fügen Sie ihn in die Adressleiste Ihres Browsers ein.",,
+"You have been successfully subscribed to our newsletter.","Sie haben unseren Newsletter erfolgreich abonniert.",,
+"You have been unsubscribed from the newsletter.","Sie wurden vom Newsletter abgemeldet.",,
+"Thank you for your order from %store_name.","Vielen Dank für Ihre Bestellung bei % store_name.",,
+"Once your package ships we will send you a tracking number.","Sobald Ihr Paket versandt wurde, senden wir Ihnen eine Sendungsverfolgungsnummer.",,
+"You can check the status of your order by <a href=""%account_url"">logging into your account</a>.","Sie können den Status Ihrer Bestellung überprüfen, indem Sie sich in <a href=""%account_url"">Ihrem Konto anmelden</a>.",,
+"Order Summary","Bestellübersicht",,
+"Your Order: <strong>#%increment_id</strong>","Ihre Bestellung: <strong>#%increment_id</strong>",,
+"Ordered on: <strong>%created_at</strong>","Bestellt am <strong>%created_at</strong>",,
+"Billing Info","Rechnungsinformation",,
+"Shipping Info","Versandinformation",,
+"Payment Method","Zahlungsmethode",,
+"If you have questions about your order, you can email us at <a href=""mailto:%store_email"">%store_email</a>","Wenn Sie Fragen zu Ihrer Bestellung haben, senden Sie uns eine E-Mail an <a href=""mailto:%store_email"">%store_email</a>",,
+"Thank you for your order from %store_name.","Vielen Dank für Ihre Bestellung bei % store_name.",,
+"Once your package ships we will send an email with a link to track your order.","Sobald Ihr Paket versandt wurde, senden wir Ihnen eine E-Mail mit einem Link, über den Sie Ihre Bestellung verfolgen können.",,
+"Your order #%increment_id has been updated with a status of <strong>%order_status</strong>.","Ihre Bestellung wurde aktualisiert mit einem Status von <strong>%order_status</strong>.",,
+"You can check the status of your order by <a href=""%account_url"">logging into your account</a>.","Sie können den Status Ihrer Bestellung überprüfen, indem Sie sich in <a href=""%account_url""> Ihrem Konto anmelden </a>.",,
+"Comment:","Kommentar:",,
+"Your Invoice #%invoice_id for Order #%order_id","Ihre Rechnung #%invoice_id for Order #%order_id",,
+"Your shipping confirmation is below. Thank you again for your business.","Ihre Versandbestätigung ist unten. Nochmals vielen Dank für Ihre Bestellung.",,
+"Your Shipment #%shipment_id for Order #%order_id","Ihre Sendung #%shipment_id for Order #%order_id",,
+"Your Credit Memo #%creditmemo_id for Order #%order_id","Ihre Gutschrift #%creditmemo_id for Order #%order_id",,
+
+
+
+

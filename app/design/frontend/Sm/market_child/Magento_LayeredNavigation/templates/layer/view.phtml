@@ -1,0 +1,49 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+<?php
+/**
+ * Category layered navigation
+ *
+ * @var $block \Magento\LayeredNavigation\Block\Navigation
+ */
+?>
+
+<?php if ($block->canShowBlock()) : ?>
+    <div class="block filter">
+        <div class="block-title filter-title">
+            <strong><?= $block->escapeHtml(__('Shop By')) ?></strong>
+        </div>
+
+        <div class="block-content filter-content">
+            <?= $block->getChildHtml('state') ?>
+
+            <?php if ($block->getLayer()->getState()->getFilters()) : ?>
+                <div class="block-actions filter-actions">
+                    <a href="<?= $block->escapeUrl($block->getClearUrl()) ?>" class="action clear filter-clear"><span><?= $block->escapeHtml(__('Clear All')) ?></span></a>
+                </div>
+            <?php endif; ?>
+            <?php $wrapOptions = false; ?>
+            <?php foreach ($block->getFilters() as $filter) : ?>
+                <?php if (!$wrapOptions) : ?>
+                    <strong role="heading" aria-level="2" class="block-subtitle filter-subtitle"><?= $block->escapeHtml(__('Shopping Options')) ?></strong>
+                    <dl class="filter-options" id="narrow-by-list">
+                                <?php $wrapOptions = true;
+                            endif; ?>
+                                <?php if ($filter->getItemsCount()) : ?>
+                                   <div data-role="collapsible" class="filter-options-item" role="presentation" data-collapsible="true" aria-disabled="false">
+                                    <dt data-role="title" role="tab" aria-selected="false" aria-expanded="false" aria-level="3" class="filter-options-title"><?= $block->escapeHtml(__($filter->getName())) ?></dt>
+                                    
+                                    <dd data-role="content" class="filter-options-content"  role="tabpanel" aria-hidden="true"><?= /* @noEscape */ $block->getChildBlock('renderer')->render($filter) ?></dd>
+                                       </div>
+                                <?php endif; ?>
+                        <?php endforeach; ?>
+                        <?php if ($wrapOptions) : ?>
+                    </dl>
+            <?php endif; ?>
+        </div>
+    </div>
+<?php endif; ?>

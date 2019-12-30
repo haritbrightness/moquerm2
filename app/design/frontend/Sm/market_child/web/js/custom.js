@@ -1,7 +1,8 @@
 /*Custom Script*/
 require(['jquery'], function (jQuery) {
     (function ($) {
-    	/*---------- Responsive table Start ----------*/
+    	/*---------- Responsive table Start ----------*/       
+
 		$('.table-responsive').each(function() {
 			var tablesResp_t = [];
 			$(this).find("th").each(function() {
