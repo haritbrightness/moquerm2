@@ -25,7 +25,7 @@ class CategoryViewAjax extends Ajax
     public function beforeExecute(Action $controller)
     {
         if ($this->isAjax($controller->getRequest())) {
-            $this->getActionFlag()->set('', 'no-renderLayout', true);
+            $this->getActionFlag()->set('', 'no-renderLayout', false);
         }
 
         return [];
@@ -38,13 +38,7 @@ class CategoryViewAjax extends Ajax
      * @return \Magento\Framework\Controller\Result\Raw|Page
      */
     public function afterExecute(Action $controller, $page)
-    {
-        if (!$this->isAjax($controller->getRequest())) {
-            return $page;
-        }
-
-        $responseData = $this->getAjaxResponseData();
-        $response = $this->prepareResponse($responseData);
-        return $response;
+    {  
+        return $page;
     }
 }
