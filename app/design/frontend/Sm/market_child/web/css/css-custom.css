@@ -739,9 +739,14 @@ form.search.advanced .field.manufacturer select option {
     }
     .footer-style-3 .footer-wrapper .footer-top {
         padding-top: 25px;
+        padding-bottom: 25px;
     }
     .amslider.am-brand-slider {
         padding: 5px 35px;
+    }
+    .account .block-content .box-actions a.action {
+        font-size: 10px;
+        padding: 9px 16px;
     }
 }
 
