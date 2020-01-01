@@ -12,6 +12,7 @@
         
 
         <referenceContainer name="checkout.cart.items">
+            <referenceBlock name="checkout.cart.crosssell.theme" remove="true"/>
             <referenceBlock name="checkout.cart.crosssell" remove="true"/>
             <block class="Magento\Checkout\Block\Cart\Crosssell" name="checkout.cart.crosssell.theme"
                    template="Magento_Catalog::product/list/crosssell.phtml" after="-">
