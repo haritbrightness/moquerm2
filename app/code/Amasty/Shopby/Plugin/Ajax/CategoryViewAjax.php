@@ -39,6 +39,12 @@ class CategoryViewAjax extends Ajax
      */
     public function afterExecute(Action $controller, $page)
     {  
-        return $page;
+        if (!$this->isAjax($controller->getRequest())) {
+            return $page;
+        }
+
+        $responseData = $this->getAjaxResponseData();
+        $response = $this->prepareResponse($responseData);
+        return $response;
     }
 }
