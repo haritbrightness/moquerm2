@@ -133,7 +133,6 @@ define([
         },
 
         callAjax: function (clearUrl, data, pushState, cacheKey, isSorting) {
-            console.log(data);
             var self = this;
             if (pushState || isSorting) {
                 this.$shopbyOverlay.show();
@@ -167,6 +166,7 @@ define([
                 cache: true,
                 success: function (response) {
                     try {
+                        console.log(response);
                         $.mage.amShopbyAjax.prototype.startAjax = false;
 
                         response = $.parseJSON(response);
@@ -383,7 +383,7 @@ define([
         generateOverlayElement: function () {
             var productListContainer = $(this.selectors.products_wrapper + ' .products.wrapper');
             if (!$(this.selectors.overlay).length) {
-                //productListContainer.append("<div id='amasty-shopby-overlay'><div class='loader'></div></div>");
+                productListContainer.append("<div id='amasty-shopby-overlay'><div class='loader'></div></div>");
             }
 
             this.$shopbyOverlay = $(this.selectors.overlay);
