@@ -1,5 +1,0 @@
-#row_amsociallogin_google_info span[data-config-scope="[STORE VIEW]"],
-#row_amsociallogin_facebook_info span[data-config-scope="[STORE VIEW]"],
-#row_amsociallogin_twitter_info span[data-config-scope="[STORE VIEW]"]{
-    display: none;
-}
