@@ -33,7 +33,45 @@ HTML;
     exit(1);
 }
 
-$bootstrap = \Magento\Framework\App\Bootstrap::create(BP, $_SERVER);
-/** @var \Magento\Framework\App\Http $app */
+$params = $_SERVER;
+
+switch($_SERVER['HTTP_HOST']) {
+
+        case 'moquer.nl':
+        case 'www.moquer.nl':
+             $params[\Magento\Store\Model\StoreManager::PARAM_RUN_CODE] = 'base';
+                         $params[\Magento\Store\Model\StoreManager::PARAM_RUN_TYPE] = 'store';
+        break;
+
+
+        case 'moquer.fr':
+        case 'www.moquer.fr':
+             $params[\Magento\Store\Model\StoreManager::PARAM_RUN_CODE] = 'fr';
+                         $params[\Magento\Store\Model\StoreManager::PARAM_RUN_TYPE] = 'store';
+        break;
+
+
+        case 'moquer.de':
+        case 'www.moquer.de':
+             $params[\Magento\Store\Model\StoreManager::PARAM_RUN_CODE] = 'de';
+                         $params[\Magento\Store\Model\StoreManager::PARAM_RUN_TYPE] = 'store';
+        break;
+
+
+        case 'moquer.com':
+        case 'www.moquer.com':
+             $params[\Magento\Store\Model\StoreManager::PARAM_RUN_CODE] = 'com';
+                         $params[\Magento\Store\Model\StoreManager::PARAM_RUN_TYPE] = 'store';
+        break;
+
+
+        case 'moquer.be':
+        case 'www.moquer.be':
+             $params[\Magento\Store\Model\StoreManager::PARAM_RUN_CODE] = 'be';
+                         $params[\Magento\Store\Model\StoreManager::PARAM_RUN_TYPE] = 'store';
+        break;
+}
+
+$bootstrap = \Magento\Framework\App\Bootstrap::create(BP, $params);
 $app = $bootstrap->createApplication(\Magento\Framework\App\Http::class);
 $bootstrap->run($app);
