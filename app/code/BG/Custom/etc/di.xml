@@ -3,5 +3,7 @@
 	<preference for="Amasty\Gdpr\Block\AccountLinkPlugin" type="BG\Custom\Block\AccountLinkPlugin" />
 	<preference for="Sm\Market\Controller\Cms\Index" type="BG\Custom\Controller\Cms\Index" />
 	<preference for="Magento\Review\Block\Product\ReviewRenderer" type="BG\Custom\Block\Product\ReviewRenderer" />
+	<preference for="Magento\Cookie\Block\Html\Notices" type="BG\Custom\Block\Html\Notices" />
+	
 	<!-- <preference for="Mageplaza\Sitemap\Block\Sitemap" type="BG\Custom\Block\Sitemap" /> -->
 </config>
