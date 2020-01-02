@@ -39,7 +39,7 @@ switch($_SERVER['HTTP_HOST']) {
 
         case 'moquer.nl':
         case 'www.moquer.nl':
-             $params[\Magento\Store\Model\StoreManager::PARAM_RUN_CODE] = 'base';
+             $params[\Magento\Store\Model\StoreManager::PARAM_RUN_CODE] = 'nl';
                          $params[\Magento\Store\Model\StoreManager::PARAM_RUN_TYPE] = 'store';
         break;
 
@@ -60,7 +60,7 @@ switch($_SERVER['HTTP_HOST']) {
 
         case 'moquer.com':
         case 'www.moquer.com':
-             $params[\Magento\Store\Model\StoreManager::PARAM_RUN_CODE] = 'com';
+             $params[\Magento\Store\Model\StoreManager::PARAM_RUN_CODE] = 'en';
                          $params[\Magento\Store\Model\StoreManager::PARAM_RUN_TYPE] = 'store';
         break;
 
