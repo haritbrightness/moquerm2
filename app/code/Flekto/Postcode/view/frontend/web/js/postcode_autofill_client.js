@@ -557,7 +557,7 @@ var PostcodeNl = PostcodeNl || {};
 				}
 			});
 			console.log(url);
-			xhr.open('GET', '/~moquerm2'+url);
+			xhr.open('GET', url);
 			xhr.setRequestHeader('X-Autocomplete-Session', getSessionId());
 			xhr.send();
 

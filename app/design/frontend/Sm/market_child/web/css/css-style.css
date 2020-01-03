@@ -215,7 +215,8 @@ ul.nav-submenu {
     display: none;
 }
 .sidebar ul.am-filter-items-attr_category_ids input[type="radio"]:checked + a:after,
-.sidebar .am-ranges input[type="radio"]:checked + a:after {
+.sidebar .am-ranges input[type="radio"]:checked + a:after,
+body .block .block-content.filter-content .filter-options-content .items li a:hover:after {
     content: "";
     background: url("../images/tick.svg") no-repeat center center;
     background-size: contain;
@@ -226,9 +227,9 @@ ul.nav-submenu {
     height: 10px;    
     z-index: 99;
 }
-body .block .block-content.filter-content .filter-options-content .items li a:hover:after {
+/*body .block .block-content.filter-content .filter-options-content .items li a:hover:after {
     display: none;
-}
+}*/
 .catalog-topnav .filter-options .filter-options-content {
     position: static;
     display: inline-block;
@@ -474,6 +475,8 @@ html .header-style-10 .header-wrapper .right-content .minicart-header .cart-wrap
     background: #f4a137;
     border-radius: 20px;
     color: #fff;
+    padding: 0 12px;
+    margin-right: 5px;
 }
 .product-add-form .product-options-wrapper {
     padding-top: 0;
@@ -1173,8 +1176,24 @@ div#remember-me-box label {
     line-height: 19px;
     padding-bottom: 12px;
 }
-.customer-account-forgotpassword .fieldset {
-    margin-bottom: 0;
+.customer-account-forgotpassword .fieldset,
+.page-main .form.password.reset .fieldset {
+    border: 1px solid #ddd;
+    padding: 20px;
+    max-width: 650px;
+    margin: 0 auto 20px;
+}
+.customer-account-forgotpassword .actions-toolbar,
+.form.password.reset .actions-toolbar {
+    border: 1px solid #ddd;
+    padding: 20px;    
+}
+.form.password.reset .actions-toolbar {
+    max-width: 650px;
+    margin: 0 auto !important;
+}
+.customer-account-forgotpassword .actions-toolbar .secondary {
+    margin-top: 8px;
 }
 .customer-account-forgotpassword .control {
     position: relative;
@@ -1188,10 +1207,11 @@ div#remember-me-box label {
     text-align: right;
     float: right;
 }
+.customer-account-forgotpassword .actions-toolbar .secondary a.action {
+    margin-top: 0;
+}
 .customer-account-forgotpassword .field .input-text {    
-    width: 100%;
-    border-radius: 20px;
-    padding-right: 200px;
+    width: 100%;    
 }
 a.action.back {
     position: relative;
@@ -1206,9 +1226,6 @@ a.action.back:before {
     top: 0;
     font-size: 14px;
     line-height: 23px;
-}
-.customer-account-forgotpassword .actions-toolbar .secondary {
-    float: left;
 }
 .form-create-account .fieldset, .form-create-account .actions-toolbar {
     background: none;
@@ -1523,6 +1540,7 @@ body .product-info-main .product-add-form .box-tocart .fieldset .qty .control #q
     left: 70px;
     top: -6px;
     background: none;
+    padding: 0;
 }
 .block-minicart .minicart-items .product-item-details .product.actions .action.edit:hover {
     box-shadow: none;
@@ -2500,6 +2518,60 @@ body .minicart-header .loading-mask .loader:after {
     margin-left: -12px;
     margin-top: -12px;
 }
+.checkout-agreement.field.choice.required.fc-dirty {
+    margin: 0 !important;
+    padding: 0;
+}
+html .firecheckout .form-shipping-address input[type="checkbox"] + label, 
+html .firecheckout #checkout input[type="checkbox"] + label, 
+html .firecheckout .form-shipping-address input[type="radio"] + label, 
+html .firecheckout #checkout input[type="radio"] + label {
+    display: block;
+    line-height: 19px;    
+}
+html .firecheckout #checkout input[type="checkbox"] + label:after {
+    position: absolute !important;
+    top: 2px !important;
+}
+.checkout-agreement .label {
+    margin: 0 !important;
+}
+body .fotorama__wrap--slide .fotorama__stage__frame {
+    border: none;
+}
+.fotorama__wrap--slide .fotorama__stage {
+    border: 1px solid #ddd;
+    overflow: hidden;
+}
+body .product-info-main .price-box .old-price .price {
+    color: #999;
+}
+.block-minicart .block-content .actions a.action.checkout {
+    margin-right: 0;
+}
+.block-minicart .block-content > .actions {
+    text-align: center;
+}
+.opc-block-summary .product-item .subtotal {
+    min-width: 50px;
+}
+.category-view {
+    margin-bottom: 15px;
+}
+body .category-view .category-image {
+    display: block;
+}
+.category-view .category-description {
+    margin-bottom: 25px;
+}
+.checkout-payment-method .payment-method._active .payment-method-content .checkout-agreements-block {
+    margin: 0;
+}
+body .form.form-orders-search {
+    min-width: 0;
+    float: left;
+}
+
 @media print {
     .account .column.main .block:not(.widget) .block-content .box:nth-child(odd) {
         clear: left;
@@ -2889,6 +2961,12 @@ body .minicart-header .loading-mask .loader:after {
     }
     div#swissup-address-fields-container {
         margin-bottom: 0;
+    }
+    .header-top .toplinks-wrapper li.customer-account-link a:before {
+        position: static;
+    }
+    .header-top .toplinks-wrapper li.customer-account-link a {
+        padding-left: 0 !important;
     }
 }
 
@@ -3360,10 +3438,7 @@ body .minicart-header .loading-mask .loader:after {
     }
     .firecheckout.fc-form-compact .form-shipping-address .fieldset div.field, .firecheckout.fc-form-compact #checkout .checkout-shipping-address .fieldset div.field, .firecheckout.fc-form-compact #checkout .checkout-billing-address .fieldset div.field {
         width: 100% !important;
-    }
-    body.firecheckout .form-shipping-address input[type="checkbox"] + label:before, body.firecheckout #checkout input[type="checkbox"] + label:before {
-        top: 4px;
-    }
+    }  
     body.firecheckout .form-shipping-address .fieldset div.field > .label::after {
         top: 5px;
     }
@@ -3502,6 +3577,9 @@ body .minicart-header .loading-mask .loader:after {
     }
     .related-upsell-wrapper.block {
         margin-bottom: 10px;
+    }
+    body .form.form-orders-search {
+        width: 100%;
     }
 }
 @media only screen and (max-width: 639px) {
