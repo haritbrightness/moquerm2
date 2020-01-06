@@ -27,7 +27,7 @@ $canApplyMsrp = $helper->isShowBeforeOrderConfirm($product) && $helper->isMinima
             <?php else :?>
                 <span class="product-item-photo">
             <?php endif;?>
-            <?= $block->getImage($block->getProductForThumbnail(), 'cart_page_product_thumbnail')->toHtml() ?>
+            <?= $block->getImage($block->getProduct(), 'product_page_image_small')->toHtml() ?>
             <?php if ($block->hasProductUrl()) :?>
                 </a>
             <?php else :?>
