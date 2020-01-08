@@ -26,7 +26,6 @@
 "Enter keywords to search...","Rechercher",module
 "Your email address","Votre adresse email",module
 "Great trial sizes and styling tools","Extras et outils de coiffage",module
-
 "Dear","Cher",module
 "Welcome to %store_name.","Bienvenue à %store_name.",module
 "To sign in to our site, use these credentials during checkout or on the <a href=""%customer_url"" style=""color:#ffffff;"">My Account</a> page:","Pour vous connecter à notre site, utilisez ces informations d'identification lors du paiement ou sur la <a href=""%customer_url"" style=""color:#ffffff;"">page du compte</a>:",,
@@ -75,4 +74,4 @@
 "Your shipping confirmation is below. Thank you again for your business.","Ihre Versandbestätigung ist unten. Nochmals vielen Dank für Ihre Bestellung.",,
 "Your Shipment #%shipment_id for Order #%order_id","Ihre Sendung #%shipment_id for Order #%order_id",,
 "Your Credit Memo #%creditmemo_id for Order #%order_id","Ihre Gutschrift #%creditmemo_id for Order #%order_id",,
-
+"Search Brand","Recherche de marque"

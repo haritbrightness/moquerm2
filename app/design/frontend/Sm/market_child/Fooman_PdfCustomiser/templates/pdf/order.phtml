@@ -54,9 +54,9 @@
                     </tr>
                 </table>
             </td>-->
-            <td valign="top" width="50%"><b><?= $block->escapeHtml(__('Sold to:')) ?></b><br/>
+            <td valign="top" width="50%" style="padding: 0px;"><b><?= $block->escapeHtml(__('Sold to:')) ?></b><br/>
                 <?= /* @noEscape */ $block->getBillingAddress() ?></td>
-            <td valign="top"><?php if (!$order->getIsVirtual()) :
+            <td valign="top" width="50%" style="padding: 0px;"><?php if (!$order->getIsVirtual()) :
                 ?><b><?= $block->escapeHtml(__('Ship to:')) ?></b>
                     <br/><?= /* @noEscape */ $block->getShippingAddress() ?><?php
                              endif; ?></td>
