@@ -4,6 +4,7 @@
 	<preference for="Sm\Market\Controller\Cms\Index" type="BG\Custom\Controller\Cms\Index" />
 	<preference for="Magento\Review\Block\Product\ReviewRenderer" type="BG\Custom\Block\Product\ReviewRenderer" />
 	<preference for="Magento\Cookie\Block\Html\Notices" type="BG\Custom\Block\Html\Notices" />
+	<preference for="TIG\PostNL\Helper\DeliveryOptions\PickupAddress" type="BG\Custom\Helper\DeliveryOptions\PickupAddress" />
 	
 	<!-- <preference for="Mageplaza\Sitemap\Block\Sitemap" type="BG\Custom\Block\Sitemap" /> -->
 </config>
